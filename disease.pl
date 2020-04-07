@@ -10,7 +10,7 @@ disease(hyperparathyroidism,[easily_broken_bones, kidney_stones, peeing_more_oft
 disease(hypoparathyroidism,[tingling_fingertips_and_toes, cramps_in_legs, twitching_muscles, fatigue, hair_loss, dry_skin, brittle_nails]).
 disease(low_testosterone,[low_sex_drive, erectile_dysfunction, low_semen_volume, hair_loss, fatigue, loss_of_muscle_mass, increased_body_fat, decreased_bone_mass, mood_changes, affected_memory, low_blood_counts]).
 disease(menopause,[irregular_periods, vaginal_dryness, hot_flashes, chills, night_sweats, sleep_problems, mood_changes, weight_gain, thinning_hair, dry_skin]).
-disease(Addison's_disease,[fatigue, weight_loss, hyperpigmentation, low_blood_pressure, salt_craving, hypoglycemia, nausea, diarrhea, vomiting, abdominal_pain, muscle_pain, irritability, depression, body_hair_loss]).
+disease(?ddisons_disease,[fatigue, weight_loss, hyperpigmentation, low_blood_pressure, salt_craving, hypoglycemia, nausea, diarrhea, vomiting, abdominal_pain, muscle_pain, irritability, depression, body_hair_loss]).
 disease(cushing_syndrome,[weight_gain, striae, thinning, slow_healing_sores_or_cuts, ance, decreased_libido, erectile_dysfunction, congnitive_difficulties, headache]).
 
 
