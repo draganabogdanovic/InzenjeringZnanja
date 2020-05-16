@@ -6,7 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/Korisnik/Downloads/Microsoft.SkypeApp_kzf8qxf38zg5c!App/All/Application (3)/Application/lib/log4j-api-2.11.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Korisnik/Downloads/Microsoft.SkypeApp_kzf8qxf38zg5c!App/All/Application (3)/Application/lib/jCOLIBRI-3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Lenovo/Documents/InzеnjeringZnanja/Application/lib/jCOLIBRI-3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Lenovo/Documents/InzеnjeringZnanja/Application/lib/log4j-api-2.11.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
