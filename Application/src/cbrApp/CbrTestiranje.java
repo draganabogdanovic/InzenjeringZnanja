@@ -167,8 +167,8 @@ public class CbrTestiranje implements StandardCBRApplication{
 			testiranje.setDry_mouth(1);
 			testiranje.setItchy_skin(1);
 			testiranje.setBlurred_vision(1);
-			testiranje.setWeight_loss(1);
-			testiranje.setNausea(1);
+			testiranje.setWeight_loss(0);
+			testiranje.setNausea(0);
 			testiranje.setVomiting(1);
 			testiranje.setYeast_infections(0);
 			testiranje.setSlow_healing_sores_or_cuts(0);
@@ -182,7 +182,7 @@ public class CbrTestiranje implements StandardCBRApplication{
 			testiranje.setSweating(0);
 			testiranje.setHeavy_thirst(0);
 			testiranje.setTingling_feet(0);
-			testiranje.setSugar_in_urine(0);
+			testiranje.setSugar_in_urine(1);
 			testiranje.setVaginal_infection(0);
 			testiranje.setSkin_infection(0);
 			testiranje.setDry_skin(0);
