@@ -673,71 +673,18 @@ public class Pregled implements CaseComponent {
 
 	@Override
 	public String toString() {
-		return "Pregled [hunger=" + hunger + ", fatigue=" + fatigue + ", peeing_more_often=" + peeing_more_often
-				+ ", dry_mouth=" + dry_mouth + ", itchy_skin=" + itchy_skin + ", blurred_vision=" + blurred_vision
-				+ ", weight_loss=" + weight_loss + ", nausea=" + nausea + ", vomiting=" + vomiting
-				+ ", yeast_infections=" + yeast_infections + ", slow_healing_sores_or_cuts="
-				+ slow_healing_sores_or_cuts + ", pain_in_legs=" + pain_in_legs + ", fast_heartbeat=" + fast_heartbeat
-				+ ", pale_skin=" + pale_skin + ", headache=" + headache + ", nightmares=" + nightmares
-				+ ", seizures=" + seizures + ", sweating="
-				+ sweating + ", heavy_thirst=" + heavy_thirst + ", tingling_feet=" + tingling_feet + ", sugar_in_urine="
-				+ sugar_in_urine + ", vaginal_infection=" + vaginal_infection + ", skin_infection=" + skin_infection
-				+ ", dry_skin=" + dry_skin + ", high_fever=" + high_fever + ", vision_loss=" + vision_loss + ", hallucinations=" + hallucinations + ", weakness=" + weakness
-				+ ", back_pain=" + back_pain + ", a_stooped_posture=" + a_stooped_posture + ", easily_broken_bones="
-				+ easily_broken_bones + ", a_lump_on_the_neck=" + a_lump_on_the_neck + ", changed_voice="
-				+ changed_voice + ", difficulty_swallowing=" + difficulty_swallowing + ", throat_pain=" + throat_pain
-				+ ", kidney_stones=" + kidney_stones
-				+ ", abdominal_pain=" + abdominal_pain + ", depression=" + depression
-				+ ", cramps_in_legs="
-				+ cramps_in_legs + ", twitching_muscles=" + twitching_muscles + ", hair_loss=" + hair_loss
-				+ ", brittle_nails=" + brittle_nails + ", low_sex_drive=" + low_sex_drive + ", erectile_dysfunction="
-				+ erectile_dysfunction + ", low_semen_volume=" + low_semen_volume + ", loss_of_muscle_mass="
-				+ loss_of_muscle_mass + ", increased_body_fat=" + increased_body_fat + ", mood_changes=" + mood_changes + ", affected_memory=" + affected_memory
-				+ ", low_blood_counts=" + low_blood_counts + ", irregular_periods=" + irregular_periods
-				+ ", hot_flashes=" + hot_flashes + ", chills=" + chills
-				+ ", night_sweats=" + night_sweats + ", sleep_problems=" + sleep_problems + ", weight_gain="
-				+ weight_gain + ", thinning_hair=" + thinning_hair + ", hyperpigmentation=" + hyperpigmentation
-				+ ", low_blood_pressure=" + low_blood_pressure + ", salt_craving=" + salt_craving + ", hypoglycemia="
-				+ hypoglycemia + ", diarrhea=" + diarrhea + ", muscle_pain=" + muscle_pain + ", irritability="
-				+ irritability + ", body_hair_loss=" + body_hair_loss + ", striae=" + striae + ", ance=" + ance + ", decreased_libido=" + decreased_libido + ", cognitive_difficulties="
-				+ cognitive_difficulties + ", getHunger()=" + getHunger() + ", getFatigue()=" + getFatigue()
-				+ ", getPeeing_more_often()=" + getPeeing_more_often() + ", getDry_mouth()=" + getDry_mouth()
-				+ ", getItchy_skin()=" + getItchy_skin() + ", getBlurred_vision()=" + getBlurred_vision()
-				+ ", getWeight_loss()=" + getWeight_loss() + ", getNausea()=" + getNausea() + ", getVomiting()="
-				+ getVomiting() + ", getYeast_infections()=" + getYeast_infections()
-				+ ", getSlow_healing_sores_or_cuts()=" + getSlow_healing_sores_or_cuts() + ", getPain_in_legs()="
-				+ getPain_in_legs() + ", getFast_heartbeat()=" + getFast_heartbeat() + ", getPale_skin()="
-				+ getPale_skin() + ", getHeadache()=" + getHeadache() + ", getNightmares()=" + getNightmares()
-				+ ", getSeizures()=" + getSeizures()
-				+ ", getSweating()=" + getSweating() + ", getHeavy_thirst()=" + getHeavy_thirst()
-				+ ", getTingling_feet()=" + getTingling_feet() + ", getSugar_in_urine()=" + getSugar_in_urine()
-				+ ", getVaginal_infection()=" + getVaginal_infection() + ", getSkin_infection()=" + getSkin_infection()
-				+ ", getDry_skin()=" + getDry_skin() + ", getHigh_fever()=" + getHigh_fever() + ", getVision_loss()=" + getVision_loss() + ", getHallucinations()="
-				+ getHallucinations() + ", getWeakness()=" + getWeakness() + ", getBack_pain()=" + getBack_pain()
-				+ ", getA_stooped_posture()=" + getA_stooped_posture() + ", getEasily_broken_bones()="
-				+ getEasily_broken_bones() + ", getA_lump_on_the_neck()=" + getA_lump_on_the_neck()
-				+ ", getChanged_voice()=" + getChanged_voice() + ", getDifficulty_swallowing()="
-				+ getDifficulty_swallowing() + ", getThroat_pain()=" + getThroat_pain()
-				+ ", getKidney_stones()="
-				+ getKidney_stones() + ", getAbdominal_pain()=" + getAbdominal_pain() + ", getDepression()="
-				+ getDepression() + ", getCramps_in_legs()=" + getCramps_in_legs() + ", getTwitching_muscles()=" + getTwitching_muscles()
-				+ ", getHair_loss()=" + getHair_loss() + ", getBrittle_nails()=" + getBrittle_nails()
-				+ ", getLow_sex_drive()=" + getLow_sex_drive() + ", getErectile_dysfunction()="
-				+ getErectile_dysfunction() + ", getLow_semen_volume()=" + getLow_semen_volume()
-				+ ", getLoss_of_muscle_mass()=" + getLoss_of_muscle_mass() + ", getIncreased_body_fat()="
-				+ getIncreased_body_fat() + ",getMood_changes()=" + getMood_changes() + ", getAffected_memory()=" + getAffected_memory()
-				+ ", getLow_blood_counts()=" + getLow_blood_counts() + ", getIrregular_periods()="
-				+ getIrregular_periods() + ", getHot_flashes()="
-				+ getHot_flashes() + ", getChills()=" + getChills() + ", getNight_sweats()=" + getNight_sweats()
-				+ ", getSleep_problems()=" + getSleep_problems() + ", getWeight_gain()=" + getWeight_gain()
-				+ ", getThinning_hair()=" + getThinning_hair() + ", getHyperpigmentation()=" + getHyperpigmentation()
-				+ ", getLow_blood_pressure()=" + getLow_blood_pressure() + ", getSalt_craving()=" + getSalt_craving()
-				+ ", getHypoglycemia()=" + getHypoglycemia() + ", getDiarrhea()=" + getDiarrhea()
-				+ ", getMuscle_pain()=" + getMuscle_pain() + ", getIrritability()=" + getIrritability()
-				+ ", getBody_hair_loss()=" + getBody_hair_loss() + ", getStriae()=" + getStriae() + ", getAnce()=" + getAnce() + ", getDecreased_libido()=" + getDecreased_libido()
-				+ ", getCognitive_difficulties()=" + getCognitive_difficulties() + ", getIdAttribute()="
-				+ getIdAttribute() + "]";
+		return "disease=" + disease + "";
 	}
+
+	public String getDisease() {
+		return disease;
+	}
+
+
+	public void setDisease(String disease) {
+		this.disease = disease;
+	}
+
 
 	public int getCoordination_problems() {
 		return coordination_problems;

@@ -33,6 +33,7 @@ public class CsvConnector implements Connector {
 				CBRCase cbrCase = new CBRCase();
 
 				Pregled pregled = new Pregled();
+				pregled.setDisease(values[0]);
 				pregled.setHunger(Integer.parseInt(values[1]));
 				pregled.setFatigue(Integer.parseInt(values[2]));
 				pregled.setPeeing_more_often(Integer.parseInt(values[3]));
