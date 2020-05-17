@@ -1,20 +1,8 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-<<<<<<< HEAD
-	<classpathentry kind="lib" path="C:/Users/Korisnik/Desktop/InzenjeringZnanja/Application/lib/jCOLIBRI-3.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Korisnik/Desktop/InzenjeringZnanja/Application/lib/log4j-api-2.11.1.jar"/>
-=======
-
-	<classpathentry kind="lib" path="C:/Users/Korisnik/eclipse-workspace/InzenjeringZnanja/Application/lib/jCOLIBRI-3.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Korisnik/eclipse-workspace/InzenjeringZnanja/Application/lib/log4j-api-2.11.1.jar"/>
-
-
->>>>>>> 76e768d866d094f0b951fccc1b3c984f9b72cf06
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/Korisnik/eclipse/InzenjeringZnanja/Application/lib/jCOLIBRI-3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Korisnik/eclipse/InzenjeringZnanja/Application/lib/log4j-api-2.11.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

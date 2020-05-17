@@ -1,7 +1,5 @@
 package model;
 
-import java.util.HashMap;
-
 import ucm.gaia.jcolibri.cbrcore.Attribute;
 import ucm.gaia.jcolibri.cbrcore.CaseComponent;
 
