@@ -161,7 +161,7 @@ public class CbrApp implements StandardCBRApplication {
 			Pregled pregled = new Pregled();
 			pregled.setHunger(1);
 			pregled.setFatigue(1);
-			pregled.setPeeing_more_often(1);
+			pregled.setPeeing_more_often(0);
 			pregled.setDry_mouth(1);
 			pregled.setItchy_skin(1);
 			pregled.setBlurred_vision(1);
