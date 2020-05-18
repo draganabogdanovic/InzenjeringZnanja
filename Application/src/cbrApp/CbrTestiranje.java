@@ -117,7 +117,7 @@ public class CbrTestiranje implements StandardCBRApplication{
 		// TODO Auto-generated method stub
 		
 		Collection<RetrievalResult> eval = NNScoringMethod.evaluateSimilarity(_caseBase.getCases(), query, simConfig);
-		eval = SelectCases.selectTopKRR(eval, 4);
+		eval = SelectCases.selectTopKRR(eval, 10);
 		System.out.println("Retrieved cases:");
 		for (RetrievalResult nse : eval)
 			System.out.println(nse.get_case().getDescription() + " -> " + nse.getEval());

@@ -98,6 +98,7 @@ public Testiranje(String t) {
 		this.ance = Integer.parseInt(values[68]);
 		this.decreased_libido = Integer.parseInt(values[69]);
 		this.cognitive_difficulties = Integer.parseInt(values[70]);	
+		this.testiranje = values[71];
 	}
 	
 	public int getHunger() {
@@ -680,16 +681,16 @@ public Testiranje(String t) {
 
 	@Override
 	public String toString(){
-		return disease;
+		return disease + " - " + testiranje;
 	}
 
 	public String getTestiranje(){
 		return testiranje;
-	}
+	} 
 
 	public void setTestiranje(String testiranje){
 		this.testiranje = testiranje;
-	}
+	} 
 	
 	
 
