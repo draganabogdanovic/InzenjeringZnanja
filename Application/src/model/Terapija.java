@@ -5,7 +5,7 @@ import ucm.gaia.jcolibri.cbrcore.CaseComponent;
 
 public class Terapija implements CaseComponent{
 
-	private int hunger, fatigue, peeing_more_often, dry_mouth, itchy_skin, blurred_vision, weight_loss, nausea,
+	/*private int hunger, fatigue, peeing_more_often, dry_mouth, itchy_skin, blurred_vision, weight_loss, nausea,
 				vomiting, yeast_infections, slow_healing_sores_or_cuts, pain_in_legs, fast_heartbeat, pale_skin, headache,
 				nightmares, coordination_problems, seizures, sweating, heavy_thirst, tingling_feet, sugar_in_urine,
 				vaginal_infection, skin_infection, dry_skin, high_fever, vision_loss, hallucinations, weakness, 
@@ -678,9 +678,9 @@ public class Terapija implements CaseComponent{
 		return terapija;
 	}
 
-	/*public void setTerapija(String terapija) {
+	public void setTerapija(String terapija) {
 		this.terapija = terapija;
-	}*/
+	}
 	
 	
 	@Override
@@ -688,6 +688,162 @@ public class Terapija implements CaseComponent{
 		return disease +" - "+ terapija;
 	}
 	
+	*/
+	
+	
+
+	private int diabetes_type_1,diabetes_type_2,hypoglycemia,hyperglycemia,diabetic_coma,osteoporosis,thyroid_cancer,hyperparathyroidism,
+				hypoparathyroidism,low_testosterone,menopause,addisons_disease,cushing_syndrome;
+		
+	private String terapija;
+	
+	public Terapija() {
+		
+	}
+	
+	public Terapija(String t) {
+		
+			String[] values = t.split(";");
+		
+			this.terapija = values[0];
+			this.diabetes_type_1 = Integer.parseInt(values[1]);
+			this.diabetes_type_2 = Integer.parseInt(values[2]);
+			this.hypoglycemia = Integer.parseInt(values[3]);
+			this.hyperglycemia = Integer.parseInt(values[4]);
+			this.diabetic_coma = Integer.parseInt(values[5]);
+			this.osteoporosis = Integer.parseInt(values[6]);
+			this.thyroid_cancer = Integer.parseInt(values[7]);
+			this.hyperparathyroidism = Integer.parseInt(values[8]);
+			this.hypoparathyroidism = Integer.parseInt(values[9]);
+			this.low_testosterone = Integer.parseInt(values[10]);
+			this.menopause = Integer.parseInt(values[11]);
+			this.addisons_disease = Integer.parseInt(values[12]);
+			this.cushing_syndrome = Integer.parseInt(values[13]);
+	}
+	
+	@Override
+		public String toString() {
+			return "Terapija -" +  terapija;
+		}
+
+	@Override
+	public Attribute getIdAttribute() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int getDiabetes_type_1() {
+		return diabetes_type_1;
+	}
+
+	public void setDiabetes_type_1(int diabetes_type_1) {
+		this.diabetes_type_1 = diabetes_type_1;
+	}
+
+	public int getDiabetes_type_2() {
+		return diabetes_type_2;
+	}
+
+	public void setDiabetes_type_2(int diabetes_type_2) {
+		this.diabetes_type_2 = diabetes_type_2;
+	}
+
+	public int getHypoglycemia() {
+		return hypoglycemia;
+	}
+
+	public void setHypoglycemia(int hypoglycemia) {
+		this.hypoglycemia = hypoglycemia;
+	}
+
+	public int getHyperglycemia() {
+		return hyperglycemia;
+	}
+
+	public void setHyperglycemia(int hyperglycemia) {
+		this.hyperglycemia = hyperglycemia;
+	}
+
+	public int getDiabetic_coma() {
+		return diabetic_coma;
+	}
+
+	public void setDiabetic_coma(int diabetic_coma) {
+		this.diabetic_coma = diabetic_coma;
+	}
+
+	public int getOsteoporosis() {
+		return osteoporosis;
+	}
+
+	public void setOsteoporosis(int osteoporosis) {
+		this.osteoporosis = osteoporosis;
+	}
+
+	public int getThyroid_cancer() {
+		return thyroid_cancer;
+	}
+
+	public void setThyroid_cancer(int thyroid_cancer) {
+		this.thyroid_cancer = thyroid_cancer;
+	}
+
+	public int getHyperparathyroidism() {
+		return hyperparathyroidism;
+	}
+
+	public void setHyperparathyroidism(int hyperparathyroidism) {
+		this.hyperparathyroidism = hyperparathyroidism;
+	}
+
+	public int getHypoparathyroidism() {
+		return hypoparathyroidism;
+	}
+
+	public void setHypoparathyroidism(int hypoparathyroidism) {
+		this.hypoparathyroidism = hypoparathyroidism;
+	}
+
+	public int getLow_testosterone() {
+		return low_testosterone;
+	}
+
+	public void setLow_testosterone(int low_testosterone) {
+		this.low_testosterone = low_testosterone;
+	}
+
+	public int getMenopause() {
+		return menopause;
+	}
+
+	public void setMenopause(int menopause) {
+		this.menopause = menopause;
+	}
+
+	public int getAddisons_disease() {
+		return addisons_disease;
+	}
+
+	public void setAddisons_disease(int addisons_disease) {
+		this.addisons_disease = addisons_disease;
+	}
+
+	public int getCushing_syndrome() {
+		return cushing_syndrome;
+	}
+
+	public void setCushing_syndrome(int cushing_syndrome) {
+		this.cushing_syndrome = cushing_syndrome;
+	}
+
+	public String getTerapija() {
+		return terapija;
+	}
+
+	public void setTerapija(String terapija) {
+		this.terapija = terapija;
+	}
+
 
 }
 

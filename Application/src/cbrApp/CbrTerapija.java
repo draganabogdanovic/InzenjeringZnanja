@@ -46,7 +46,7 @@ public class CbrTerapija implements StandardCBRApplication
 		simConfig.setDescriptionSimFunction(new Average()); // global similarity function = average
 
 		
-		simConfig.addMapping(new Attribute("hunger", Terapija.class), new Equal());
+		/*simConfig.addMapping(new Attribute("hunger", Terapija.class), new Equal());
 		simConfig.addMapping(new Attribute("fatigue", Terapija.class), new Equal());
 		simConfig.addMapping(new Attribute("peeing_more_often", Terapija.class), new Equal());
 		simConfig.addMapping(new Attribute("dry_mouth", Terapija.class), new Equal());
@@ -116,7 +116,24 @@ public class CbrTerapija implements StandardCBRApplication
 		simConfig.addMapping(new Attribute("ance", Terapija.class), new Equal());
 		simConfig.addMapping(new Attribute("decreased_libido", Terapija.class), new Equal());
 		simConfig.addMapping(new Attribute("cognitive_difficulties", Terapija.class), new Equal());
+		*/
 		
+		simConfig.addMapping(new Attribute("terapija", Terapija.class), new Equal());
+		
+		simConfig.addMapping(new Attribute("diabetes_type_1", Terapija.class), new Equal());
+		simConfig.addMapping(new Attribute("diabetes_type_2", Terapija.class), new Equal());
+		simConfig.addMapping(new Attribute("hypoglycemia", Terapija.class), new Equal());
+		simConfig.addMapping(new Attribute("hyperglycemia", Terapija.class), new Equal());
+		simConfig.addMapping(new Attribute("diabetic_coma", Terapija.class), new Equal());
+		simConfig.addMapping(new Attribute("osteoporosis", Terapija.class), new Equal());
+		simConfig.addMapping(new Attribute("thyroid_cancer", Terapija.class), new Equal());
+		simConfig.addMapping(new Attribute("hyperparathyroidism", Terapija.class), new Equal());
+		simConfig.addMapping(new Attribute("hypoparathyroidism", Terapija.class), new Equal());
+		simConfig.addMapping(new Attribute("low_testosterone", Terapija.class), new Equal());
+		simConfig.addMapping(new Attribute("menopause", Terapija.class), new Equal());
+		simConfig.addMapping(new Attribute("addisons_disease", Terapija.class), new Equal());
+		simConfig.addMapping(new Attribute("cushing_syndrome", Terapija.class), new Equal());
+
 		
 		
 		
@@ -127,7 +144,7 @@ public class CbrTerapija implements StandardCBRApplication
 	{
 
 		Collection<RetrievalResult> eval = NNScoringMethod.evaluateSimilarity(_caseBase.getCases(), query, simConfig);
-		eval = SelectCases.selectTopKRR(eval, 14);
+		eval = SelectCases.selectTopKRR(eval, 4);
 		System.out.println("Retrieved cases:");
 		for (RetrievalResult nse : eval)
 		{
@@ -167,7 +184,7 @@ public class CbrTerapija implements StandardCBRApplication
 			
 			Terapija t = new Terapija();
 			
-			t.setHunger(1);
+			/*t.setHunger(1);
 			t.setFatigue(1);
 			t.setPeeing_more_often(1);
 			t.setDry_mouth(1);
@@ -237,7 +254,24 @@ public class CbrTerapija implements StandardCBRApplication
 			t.setAnce(0);
 			t.setDecreased_libido(0);
 			t.setCognitive_difficulties(0);
+			*/
 			
+			
+			t.setDiabetes_type_1(1);
+			t.setDiabetes_type_2(1);
+			t.setHypoglycemia(0);
+			t.setHyperglycemia(1);
+			t.setDiabetic_coma(0);
+			t.setOsteoporosis(0);
+			t.setThyroid_cancer(0);
+			t.setHyperparathyroidism(0);
+			t.setHypoparathyroidism(0);
+			t.setLow_testosterone(0);
+			t.setMenopause(0);
+			t.setAddisons_disease(0);
+			t.setCushing_syndrome(0);
+			
+
 		
 			
 			query.setDescription(t);

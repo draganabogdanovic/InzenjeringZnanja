@@ -24,7 +24,10 @@ public class CsvConnectorTerapija implements Connector
 
 		try
 		{
-			BufferedReader br = new BufferedReader(new InputStreamReader(FileIO.openFile("data/cases_therapy.csv")));
+			//BufferedReader br = new BufferedReader(new InputStreamReader(FileIO.openFile("data/cases_therapy.csv")));
+			
+			BufferedReader br = new BufferedReader(new InputStreamReader(FileIO.openFile("data/cases_therapy_1.csv")));
+			
 			if (br == null)
 				throw new Exception("Error opening file");
 
