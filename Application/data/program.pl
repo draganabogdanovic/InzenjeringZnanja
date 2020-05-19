@@ -56,6 +56,11 @@ person_symptom(ana, a_stooped_posture).
 person_symptom(petar, hunger).
 person_symptom(petar, vomiting).
 
+contains(S,[]).
+contains(S,[H|T]) :- member(H,S), contains(S,T).
+
+symptom(person_name, list_of_symptoms).
+
 disease(diabetes_type_1,[hunger, fatigue, peeing_more_often, dry_mouth, itchy_skin, blurred_vision, weight_loss, nausea, vomiting]).
 disease(diabetes_type_2,[hunger, fatigue, peeing_more_often, dry_mouth, itchy_skin, blurred_vision, yeast_infections, slow-healing_sores_or_cuts, pain_in_legs]).
 disease(hypoglycemia,[fast_heartbeat, pale_skin, blurred_vision, headache, nightmares, coordination_problems, seizures, sweating]).
@@ -70,9 +75,68 @@ disease(menopause,[irregular_periods, hot_flashes, chills, night_sweats, sleep_p
 disease(addisons_disease,[fatigue, weight_loss, hyperpigmentation, low_blood_pressure, salt_craving, hypoglycemia, nausea, diarrhea, vomiting, abdominal_pain, muscle_pain, irritability, body_hair_loss]).
 disease(cushing_syndrome,[weight_gain, striae, slow_healing_sores_or_cuts, ance, decreased_libido, erectile_dysfunction, congnitive_difficulties, headache]).
 
+additional_test(symptoms(X, S), hemoglobin_a1c) :-
+    disease(diabetes_type_1, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, random_blood_sugar_test) :- 
+   disease(diabetes_type_1, S2), contains(S2, S),  person__name(X).
+   
+additional_testing(X, autoantibodies) :- 
+   disease(diabetes_type_1, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, fasting_blood_sugar_test) :- 
+   disease(diabetes_type_1, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, random_blood_sugar_test) :- 
+   disease(diabetes_type_2, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, fasting_blood_sugar_test) :- 
+   disease(diabetes_type_2, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, random_blood_sugar_test) :- 
+   disease(hypoglycemia, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, fasting_blood_sugar_test) :- 
+   disease(hyperglycemia, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, random_blood_sugar_test) :- 
+   disease(diabetic_coma, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, bone_density_test) :- 
+   disease(osteoporosis, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, ultrasound) :- 
+   disease(thyroid_cancer, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, biopsy) :- 
+   disease(thyroid_cancer, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, ultrasound) :- 
+   disease(hyperparathyroidism, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, calcium_level) :- 
+   disease(hyperparathyroidism, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, parathyroid_hormone_level) :- 
+   disease(hyperparathyroidism, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, calcium_level) :- 
+   disease(hypoparathyroidism, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, parathyroid_hormone_level) :- 
+   disease(hypoparathyroidism, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, testosterone_level) :- 
+   disease(low_testosterone, S2), contains(S2, S),  person__name(X).
+
 additional_testing(X, thyroid_function_test) :- 
-   person_symptom(X, tingling_fingertips_and_toes),
-   person_symptom(X, back_pain).
+   disease(addisons_disease, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, ct) :- 
+   disease(addisons_disease, S2), contains(S2, S),  person__name(X).
+
+additional_testing(X, ct) :- 
+   disease(cushing_syndrome, S2), contains(S2, S),  person__name(X).
 
 additional_testing(X, oral_glucose_tolerance_test) :-  
    person_symptom(X, vomiting),
@@ -107,7 +171,19 @@ additional_testing(X, HbA1c_test) :-
 %za osobu x je uradjen test OGTT i utvrdjeno je da je njegova vrednost 210 sto nas dovodi do cinjenice da pacijent x ima dijabetes tipa 1
 %vrednosti nisu tacne ovo je primer
 
-diagnosis(X, diabetes_type_1) :- fasting_test(X, Y), Y = 110;
+diagnosis(X, diabetes_type_1) :- hemoglobin_a1c(X, Y), Y > 6.5;
+                                 random_blood_sugar_test(X, Y2), Y2 >200;
+                                 fasting_blood_sugar_test(X, Y3), Y3 > 126;
+                                 autoantibodies (X, Y4), Y4 = high.
+
+diagnosis(X, osteoporosis) :- bone_density_test(X, Y), Y < -2.5.
+
+diagnosis(X, hyperglycemia) :-random_blood_sugar_test(X, Y2), Y2 <70;
+                                 fructosamine(X, Y3), Y3 > 175.
+
+
+
+diagnosis(X, diabetes_type_1) :- fasting(X, Y), Y = 110;
                                  oral_glucose_tolerance_test(X, 210);
                                  random_test(X, 110);
                                  hb1ac(X, D), D = 200.
