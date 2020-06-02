@@ -28,6 +28,7 @@ import javax.swing.tree.TreeSelectionModel;
 import model.Workspace;
 import view.CellEditor;
 import view.NodeTreeCellRenderer;
+import view.NoviPacijent;
 
 
 public class MainFrame extends JFrame{
@@ -43,6 +44,7 @@ public class MainFrame extends JFrame{
 //	private JPanel showViewParameter1 = new JPanel();
 	private Workspace root;
 	private JPanel showView = new JPanel();
+	private NoviPacijent noviPacijent;
 	
 	private MainFrame() {
 		Toolkit kit = Toolkit.getDefaultToolkit();
@@ -159,6 +161,14 @@ public class MainFrame extends JFrame{
 			}
 		});
 
+	}
+
+	public NoviPacijent getNoviPacijent() {
+		return noviPacijent;
+	}
+
+	public void setNoviPacijent(NoviPacijent noviPacijent) {
+		this.noviPacijent = noviPacijent;
 	}
 
 	

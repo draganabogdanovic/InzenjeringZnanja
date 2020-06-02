@@ -1,6 +1,4 @@
 /app/
-/cbrApp/
-/connector/
-/model/
-/similarity/
 /view/
+/model/
+/controller/
