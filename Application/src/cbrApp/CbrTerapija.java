@@ -2,11 +2,8 @@ package cbrApp;
 
 import java.util.Collection;
 
-
-
 import connector.CsvConnectorTerapija;
 import model.Terapija;
-import model.Testiranje;
 import ucm.gaia.jcolibri.casebase.LinealCaseBase;
 import ucm.gaia.jcolibri.cbraplications.StandardCBRApplication;
 import ucm.gaia.jcolibri.cbrcore.Attribute;
