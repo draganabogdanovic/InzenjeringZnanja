@@ -1,4 +1,239 @@
 %sve u jedan strpati
+
+symptoms(diabetes_type_1, hunger).
+symptoms(diabetes_type_1, fatigue).
+symptoms(diabetes_type_1, peeing_more_often).
+symptoms(diabetes_type_1, dry_mouth).
+symptoms(diabetes_type_1, weight_loss).
+symptoms(diabetes_type_1, itchy_skin).
+symptoms(diabetes_type_1, blurred_vision).
+symptoms(diabetes_type_1, nausea).
+symptoms(diabetes_type_1, vomiting).
+
+symptoms(diabetes_type_2, hunger).
+symptoms(diabetes_type_2, fatigue).
+symptoms(diabetes_type_2, peeing_more_often).
+symptoms(diabetes_type_2, dry_mouth).
+symptoms(diabetes_type_2, itchy_skin).
+symptoms(diabetes_type_2, blurred_vision).
+symptoms(diabetes_type_2, yeast_infection).
+symptoms(diabetes_type_2, slow-healing_sores_or_cuts).
+symptoms(diabetes_type_2, pain_in_legs).
+
+symptoms(hypoglycemia, fast_heartbeat).
+symptoms(hypoglycemia, pale_skin).
+symptoms(hypoglycemia, blured_vision).
+symptoms(hypoglycemia, headache).
+symptoms(hypoglycemia, nightmares).
+symptoms(hypoglycemia, coordination_problems).
+symptoms(hypoglycemia, seizures).
+symptoms(hypoglycemia, sweating).
+
+symptoms(hyperglycemia, heavy_thirst).
+symptoms(hyperglycemia, blurred_vision).
+symptoms(hyperglycemia, peeing_more_often).
+symptoms(hyperglycemia, hunger).
+symptoms(hyperglycemia, tingling_feet).
+symptoms(hyperglycemia, fakigue).
+symptoms(hyperglycemia, sugar_in_urine).
+symptoms(hyperglycemia, weight_loss).
+symptoms(hyperglycemia, vaginal_infection).
+symptoms(hyperglycemia, skin_infection).
+symptoms(hyperglycemia, slow_healing_sores_or_cuts).
+
+
+symptoms(diabetic_coma, dry_mought).
+symptoms(diabetic_coma, heavy_thirst).
+symptoms(diabetic_coma, dry_skin).
+symptoms(diabetic_coma, high_fever).
+symptoms(diabetic_coma, vidion_loss).
+symptoms(diabetic_coma, hallucinations).
+symptoms(diabetic_coma, weakness).
+
+symptoms(osteoporosis, pack_pain).
+symptoms(osteoporosis, weight_loss).
+symptoms(osteoporosis, a_stooped_posture).
+symptoms(osteoporosis, easily_broken_bones).
+
+symptoms(throid_cancer, a_lump_on_the_neck).
+symptoms(throid_cancer, change_voice).
+symptoms(throid_cancer, difficulty_swalloving).
+symptoms(throid_cancer, throat_pain).
+
+symptoms(hyperparathyroidism, easily_broken_bones).
+symptoms(hyperparathyroidism, kidney_stones).
+symptoms(hyperparathyroidism, peeing_more_often).
+symptoms(hyperparathyroidism, abdominal_pain).
+symptoms(hyperparathyroidism, weakness).
+symptoms(hyperparathyroidism, depressions).
+symptoms(hyperparathyroidism, nausea).
+symptoms(hyperparathyroidism, vomiting).
+
+symptoms(hypoparathyroidism, tingling_feet).
+symptoms(hypoparathyroidism, cramps_in_legs).
+symptoms(hypoparathyroidism, twitching_muscles).
+symptoms(hypoparathyroidism, fatigue).
+symptoms(hypoparathyroidism, hair_loss).
+symptoms(hypoparathyroidism, dry_skin).
+symptoms(hypoparathyroidism, brittle_nails).
+
+symptoms(low_testosterone, low_sex_drive).
+symptoms(low_testosterone, erectile_dysfunction).
+symptoms(low_testosterone, low_semen_volume).
+symptoms(low_testosterone, hair_loss).
+symptoms(low_testosterone, fatigue).
+symptoms(low_testosterone, loss_of_muscle_mass).
+symptoms(low_testosterone, increased_body_fat).
+symptoms(low_testosterone, mood_changes).
+symptoms(low_testosterone, affected_memory).
+symptoms(low_testosterone, low_blood_counts).
+
+symptoms(menopause, irregular_periods).
+symptoms(menopause, hot_flashes).
+symptoms(menopause, chills).
+symptoms(menopause, night_sweats).
+symptoms(menopause, sleep_problems).
+symptoms(menopause, mood_changes).
+symptoms(menopause, weight_gain).
+symptoms(menopause, thinning_hair).
+symptoms(menopause, dry_skin).
+
+symptoms(addisons_disease, fatigue).  
+symptoms(addisons_disease, weight_loss).
+symptoms(addisons_disease, hyperpigmentation).
+symptoms(addisons_disease, low_blood_pressure).
+symptoms(addisons_disease, salt_craving).
+symptoms(addisons_disease, hypoglycemia).
+symptoms(addisons_disease, nausea).
+symptoms(addisons_disease, diarrhea).
+symptoms(addisons_disease, vomiting).
+symptoms(addisons_disease, abdominal_pain).
+symptoms(addisons_disease, muscle_pain).
+symptoms(addisons_disease, irritability).
+symptoms(addisons_disease, body_hair_loss).
+
+symptoms(cushing_syndrome, weight_gain).
+symptoms(cushing_syndrome, striae).
+symptoms(cushing_syndrome, slow_healing_sores_or_cuts).
+symptoms(cushing_syndrome, ance).
+symptoms(cushing_syndrome, decreased_libido).
+symptoms(cushing_syndrome, erectile_dysfunction).
+symptoms(cushing_syndrome, congnitive_difficulties).
+symptoms(cushing_syndrome, headache).
+
+test(diabetes_type_1, hemoglobin_a1c).
+test(diabetes_type_1, random_blood_sugar_test).
+test(diabetes_type_1, fasting_blood_sugar_test).
+test(diabetes_type_1, autoantibodies_test).
+
+test(diabetes_type_2, random_blood_sugar_test).
+test(diabetes_type_2, fasting_blood_sugar_test).
+
+test(hypoglycemia, random_blood_sugar_test).
+test(hypoglycemia, fasting_blood_sugar_test).
+test(hypoglycemia, fructosamine).
+
+test(diabetic_coma, random_blood_sugar_test).
+
+test(osteoporosis, bone_density_test).
+
+test(thyroid_cancer, ultrasound).
+test(tryroid_cancer, biopsy).
+
+test(hyperparathyroidism, ultrasound).
+test(hyperparathyroidism, calcium_level).
+test(hyperparathyroidism, x_ray).
+test(hyperparathyroidism, parathyroid_hormone_level).
+
+test(hypoparathyroidism, calcium_level).
+test(hypoparathyroidism, parathyroid_hormone_level).
+
+test(low_testosterone, testosterone_level).
+
+test(menopause, x).
+
+test(addisons_disease, thyroid_function_test).
+test(addisons_disease, ct).
+
+test(cushing_syndrome, ct).
+
+
+therapy(diabetes_type_1, insulin_therapy).
+therapy(diabetes_type_1, diet).
+therapy(diabetes_type_1, exercise).
+
+therapy(diabetes_type_2, insulin_therapy).
+therapy(diabetes_type_2, metformin).
+therapy(diabetes_type_2, sulfonylureas).
+therapy(diabetes_type_2, meglitinides).
+therapy(diabetes_type_2, diet).
+therapy(diabetes_type_2, exercise).
+therapy(diabetes_type_2, thiayolidinediones).
+
+therapy(hypoglycemia, pure_glucose_tablets).
+therapy(hypoglycemia, pure_glucose_food).
+therapy(hypoglycemia, glucagon).
+
+therapy(hyperglycemia, diet).
+therapy(hyperglycemia, exercise).
+therapy(hyperglycemia, insulin_therapy).
+therapy(hyperglycemia, fluid_replacement).
+therapy(hyperglycemia, electrolyte_replacment).
+
+therapy(diabetic_coma, intravenous_fluids).
+therapy(diabetic_coma, insulin_therapy).
+therapy(diabetic_coma, potassium).
+therapy(diabetic_coma, sodium).
+therapy(diabetic_coma, phosphate).
+therapy(diabetic_coma, glucagon_injection).
+
+therapy(osteporosis, alendronate).
+therapy(osteporosis, risedronate).
+therapy(osteporosis, ibandronate).
+therapy(osteporosis, zoledronic_acid).
+
+therapy(thyroid_cancer, surgery).
+therapy(thyroid_cancer, thyroid_hormone_drug).
+therapy(thyroid_cancer, radioactive_iodne).
+therapy(thyroid_cancer, radiation_therapy).
+therapy(thyroid_cancer, chemotherapy).
+therapy(thyroid_cancer, injecting_alcohol).
+
+therapy(hyperparathyroidism, surgery).
+therapy(hyperparathyroidism, calcimemetics).
+therapy(hyperparathyroidism, hormone_replacement).
+therapy(hyperparathyroidism, bisphosphonates).
+
+therapy(hypoparathyroidism, calcium).
+therapy(hypoparathyroidism, vitamin_d).
+therapy(hypoparathyroidism, magnesium).
+therapy(hypoparathyroidism, thiayide_diuretics).
+therapy(hypoparathyroidism, parathyroid_hormone).
+therapy(hypoparathyroidism, diet).
+therapy(hypoparathyroidism, intravenous_infusion).
+
+therapy(low_testosterone, diet).
+therapy(low_testosterone, testosterone_replacement_drug).
+therapy(low_testosterone, testosterone_replacement_gel).
+therapy(low_testosterone, testosterone_injection).
+
+therapy(menopause, hormone_therapy).
+therapy(menopause, vaginal_estrogen).
+therapy(menopause, antidepressants).
+therapy(menopause, gabapentin).
+therapy(menopause, clonidine).
+
+therapy(addisons_disease, hydrocortisone).
+therapy(addisons_disease, prednisone).
+therapy(addisons_disease, intravenous_injections).
+therapy(addisons_disease, fludrocortisone_acetate).
+therapy(addisons_disease, methylprednisolone).
+
+therapy(cushing_syndrome, surgery).
+therapy(cushing_syndrome, reducing_corticosteroid_drug).
+therapy(cushing_syndrome, radiation_therapy).
+therapy(cushing_syndrome, mifepristone).
+
 person_name(ana).
 person_name(ljubica).
 person_name(milisav).
@@ -30,6 +265,7 @@ person_disease_history(ljubica, [menopause]).
 person_disease_history(milisav, []).
 person_disease_history(slavica, [menopause]).
 person_disease_history(petar, [diabetes_type_2]).
+
 
 person_BMI(ana, 23).
 person_BMI(ljubica, 29).
@@ -171,11 +407,11 @@ additional_testing(X, HbA1c_test) :-
 %za osobu x je uradjen test OGTT i utvrdjeno je da je njegova vrednost 210 sto nas dovodi do cinjenice da pacijent x ima dijabetes tipa 1
 %vrednosti nisu tacne ovo je primer
 
-diagnosis(X, diabetes_type_1) :- hemoglobin_a1c(X, Y), Y > 6.5;
-                                 random_blood_sugar_test(X, Y2), Y2 >200;
-                                 fasting_blood_sugar_test(X, Y3), Y3 > 126;
-                                 autoantibodies (X, Y4), Y4 = high.
-
+%diagnosis(X, diabetes_type_1) :- hemoglobin_a1c(X, Y), Y > 6.5;
+%                               random_blood_sugar_test(X, Y2), Y2 >200;
+ %                               fasting_blood_sugar_test(X, Y3), Y3 > 126;
+  %                              autoantibodies (X, Y4), Y4 = high.
+								
 diagnosis(X, osteoporosis) :- bone_density_test(X, Y), Y < -2.5.
 
 diagnosis(X, hyperglycemia) :-random_blood_sugar_test(X, Y2), Y2 <70;

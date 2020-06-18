@@ -1,5 +1,7 @@
 package model;
 
+import java.util.HashMap;
+
 import ucm.gaia.jcolibri.cbrcore.Attribute;
 import ucm.gaia.jcolibri.cbrcore.CaseComponent;
 
@@ -22,6 +24,80 @@ public class Terapija implements CaseComponent{
 	
 	public Terapija() {
 		
+	}
+	
+		public Terapija(HashMap<String, Integer> map) {
+		
+		this.hunger = map.get("hunger");
+		this.fatigue = map.get("fatigue");
+		this.peeing_more_often = map.get("peeing_more_often");
+		this.dry_mouth = map.get("dry_mouth");
+		this.itchy_skin = map.get("itchy_skin");
+		this.blurred_vision = map.get("blurred_vision");
+		this.weight_loss = map.get("weight_loss");
+		this.nausea = map.get("nausea");
+		this.vomiting = map.get("vomiting");
+		this.yeast_infections = map.get("yeast_infections");
+		this.slow_healing_sores_or_cuts = map.get("slow_healing_sores_or_cuts");
+		this.pain_in_legs = map.get("pain_in_legs");
+		this.fast_heartbeat = map.get("fast_heartbeat");
+		this.pale_skin = map.get("pale_skin");
+		this.headache = map.get("headache");
+		this.nightmares = map.get("nightmares");
+		this.coordination_problems = map.get("coordination_problems");
+		this.seizures = map.get("seizures");
+		this.sweating = map.get("sweating");
+		this.heavy_thirst = map.get(heavy_thirst);
+		this.tingling_feet = map.get("tingling_feet");
+		this.sugar_in_urine = map.get("sugar_in_urine");
+		this.vaginal_infection = map.get("vaginal_infection");
+		this.skin_infection = map.get("skin_infection");
+		this.dry_skin = map.get("dry_skin");
+		this.high_fever = map.get("high_fever");
+		this.vision_loss = map.get("vision_loss");
+		this.hallucinations = map.get("hallucinations");
+		this.weakness = map.get("weakness");
+		this.back_pain = map.get("back_pain");
+		this.a_stooped_posture = map.get("a_stooped_posture");
+		this.easily_broken_bones = map.get("easily_broken_bones");
+		this.a_lump_on_the_neck = map.get("a_lump_on_the_neck");
+		this.changed_voice = map.get("changed_voice");
+		this.difficulty_swallowing = map.get("difficulty_swallowing");
+		this.throat_pain = map.get("throat_pain");
+		this.kidney_stones = map.get("kidney_stones");
+		this.abdominal_pain = map.get("abdominal_pain");
+		this.depression = map.get("depression");
+		this.cramps_in_legs = map.get("cramps_in_legs");
+		this.twitching_muscles = map.get("twitching_muscles");
+		this.hair_loss = map.get("hair_loss");
+		this.brittle_nails = map.get("brittle_nails");
+		this.low_sex_drive = map.get("low_sex_drive");
+		this.erectile_dysfunction = map.get("erectile_dysfunction");
+		this.low_semen_volume = map.get("low_semen_volume");
+		this.loss_of_muscle_mass = map.get("loss_of_muscle_mass");
+		this.increased_body_fat = map.get("increased_body_fat");
+		this.mood_changes = map.get("mood_changes");
+		this.affected_memory = map.get("affected_memory");
+		this.low_blood_counts = map.get("low_blood_counts");
+		this.irregular_periods = map.get("irregular_periods");
+		this.hot_flashes = map.get("hot_flashes");
+		this.chills = map.get("chills");
+		this.night_sweats = map.get("night_sweats");
+		this.sleep_problems = map.get("sleep_problems");
+		this.weight_gain = map.get("weight_gain");
+		this.thinning_hair = map.get("thinning_hair");
+		this.hyperpigmentation = map.get("hyperpigmentation"); 
+		this.low_blood_pressure = map.get("low_blood_pressure");
+		this.salt_craving = map.get("salt_craving");
+		this.hypoglycemia = map.get("hypoglycemia");
+		this.diarrhea = map.get("diarrhea");
+		this.muscle_pain = map.get("muscle_pain");
+		this.irritability = map.get("irritability");
+		this.body_hair_loss = map.get("body_hair_loss");
+		this.striae = map.get("striae");
+		this.ance = map.get("ance");
+		this.decreased_libido = map.get("decreased_libido");
+		this.cognitive_difficulties = map.get("cognitive_difficulties");
 	}
 	
 	public Terapija(String t) {	
@@ -699,6 +775,22 @@ public class Terapija implements CaseComponent{
 	
 	public Terapija() {
 		
+	}
+	
+	public Terapija(HashMap<String, Integer> mapa, String terapija, int procenat) {
+		this.terapija = terapija;
+		this.diabetes_type_1 = mapa.get("diabetes type 1");
+		this.diabetes_type_2 = mapa.get("diabetes type 2");
+		this.hyperglycemia = mapa.get("hyperglycemia");
+		this.diabetic_coma = mapa.get("diabetic coma");
+		this.osteoporosis = mapa.get("osteoporosis");
+		this.thyroid_cancer = mapa.get("thyroid cancer");
+		this.hyperparathyroidism = mapa.get("hyperparathyroidism");
+		this.low_testosterone = mapa.get("low testosterone");
+		this.menopause = mapa.get("menopause");
+		this.addisons_disease = mapa.get("addisons disease");
+		this.cushing_syndrome = mapa.get("cushing syndrome");
+		this.hypoparathyroidism = mapa.get("hypoparathyroidism");
 	}
 	
 	public Terapija(String t) {

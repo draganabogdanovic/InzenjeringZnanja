@@ -16,45 +16,41 @@ public class Pacijent implements Serializable {
 	private String prezime;
 	private Date datumRodjenja;
 	private Karton kartonPacijenta;
-	private Pol pol;
-	private String brLicneKarte;
-	private ArrayList<PregledPacijenta> pregledi;
+	private String JMBG;
+	private ArrayList<PregledPacijenta> children;
 	
-	
-	public Pol getPol() {
-		return pol;
+	public String getJMBG() {
+		return JMBG;
 	}
 
-	public void setPol(Pol pol) {
-		this.pol = pol;
-	}
-
-	public String getBrLicneKarte() {
-		return brLicneKarte;
-	}
-
-	public void setBrLicneKarte(String brLicneKarte) {
-		this.brLicneKarte = brLicneKarte;
+	public void setJMBG(String JMBG) {
+		this.JMBG = JMBG;
 	}
 
 	public ArrayList<PregledPacijenta> getPregledi() {
-		return pregledi;
+		return children;
 	}
 
 	public void setPregledi(ArrayList<PregledPacijenta> pregledi) {
-		this.pregledi = pregledi;
+		this.children = pregledi;
 	}
 
 	public void addPregled(PregledPacijenta pregled)
 	{
-		this.pregledi.add(pregled);
+		this.children.add(pregled);
 	}
 	
-	public Pacijent(String string, String stringP) {
+	public Pacijent(String ime, String prezime) {
 		// TODO Auto-generated constructor stub
-		setIme(string);
-		setPrezime(stringP);
+		super();
+		this.ime = ime;
+		this.prezime = prezime;
 	}
+	
+	public Pacijent() {
+		
+	}
+	
 
 	public String getIme() {
 		return ime;
@@ -80,4 +76,5 @@ public class Pacijent implements Serializable {
 	public void setKartonPacijenta(Karton kartonPacijenta) {
 		this.kartonPacijenta = kartonPacijenta;
 	}
+	
 }

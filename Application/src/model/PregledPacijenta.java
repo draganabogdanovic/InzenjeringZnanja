@@ -90,28 +90,13 @@ public class PregledPacijenta extends JPanel {
 		this.bolest = bolest;
 	}
 
-	public void pregledToString()
-	{
-		System.out.println("simptomi : ");
-		for (String s : getListaSimptoma())
-			System.out.println(s);
-
-		System.out.println("datum pregleda : " + getDatumPregleda());
-		System.out.println(" lista lekova :");
-		for (String s : getListaLekova())
-			System.out.println(s);
-
-		System.out.println(" lista terapija :: ");
-		for (String s : getListaTerapija())
-			System.out.println(s);
-
-		System.out.println("bolest je :" + getBolest());
-	}
 
 	@Override
 	public String toString()
 	{
-		return dajDatum() + " " + bolest;
+		return "PregledPacijenta [listaSimptoma=" + listaSimptoma + ", datumPregleda=" + datumPregleda
+				+ ", listaLekova=" + listaLekova + ", listaTerapija=" + listaTerapija + ", bolest=" + bolest
+				+ ", nalaz=" + nalaz + "]";
 	}
 
 	public String getNalaz()

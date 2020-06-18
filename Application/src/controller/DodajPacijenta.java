@@ -1,20 +1,12 @@
 package controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.tree.DefaultMutableTreeNode;
-
-import app.MainFrame;
-import model.Karton;
-import model.Pacijent;
-import view.NoviPacijent;
 
 
-public class DodajPacijenta implements ActionListener{
+
+public class DodajPacijenta{// implements ActionListener{
 	
-	@Override
-	public void actionPerformed(ActionEvent e)
+	//@Override
+	/*public void actionPerformed(ActionEvent e)
 	{
 		
 		
@@ -31,7 +23,7 @@ public class DodajPacijenta implements ActionListener{
 			Karton.getInstance().dodajPacijenta(noviPac);
 
 			np.dispose();
-	}
+	}*/
 }
 
 

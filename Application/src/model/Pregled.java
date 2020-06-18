@@ -1,5 +1,7 @@
 package model;
 
+import java.util.HashMap;
+
 import ucm.gaia.jcolibri.cbrcore.Attribute;
 import ucm.gaia.jcolibri.cbrcore.CaseComponent;
 
@@ -23,15 +25,11 @@ public class Pregled implements CaseComponent {
 	
 	public Pregled() {
 		
-		/*this.hunger = 0;
-		this.fatigue = 0;
-		this.peeing_more_often = 0;
-		this.dry_mouth = 0;*/
 		
 	}
 	
 	
-/*	public Pregled(HashMap<String, Integer> map) {
+	public Pregled(HashMap<String, Integer> map) {
 		
 		this.hunger = map.get("hunger");
 		this.fatigue = map.get("fatigue");
@@ -104,8 +102,7 @@ public class Pregled implements CaseComponent {
 		this.decreased_libido = map.get("decreased_libido");
 		this.cognitive_difficulties = map.get("cognitive_difficulties");
 		
-		
-	}*/
+	}
 
 	public int getHunger() {
 		return hunger;

@@ -1,5 +1,4 @@
-/app/
-/view/
-/model/
 /controller/
-/cbrApp/
+/model/
+/view/
+/app/

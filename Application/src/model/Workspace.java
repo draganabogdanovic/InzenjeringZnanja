@@ -1,16 +1,17 @@
 package model;
 
+import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 
 public class Workspace {
-	
 	String name;
-	ImageIcon pn;
-	//ArrayList<PacijentCvor> children;
+	ImageIcon image;
+	ArrayList<PacijentCvor> children;
 	Workspace parent;
 	
 	public Workspace(){
-	//	this.children=new ArrayList<PacijentCvor>();
+		this.children=new ArrayList<PacijentCvor>();
 	}
 
 	
@@ -38,14 +39,14 @@ public class Workspace {
 		this.parent=parent;
 	}
 	
-	/*public ArrayList<PacijentCvor> getChildren(){
+	public ArrayList<PacijentCvor> getChildren(){
 		return children;
 	}
 	
 	public void setChildren(ArrayList<PacijentCvor> children){
 		this.children=children;
 	}
-	*/
+	
 	public String toString(){
 		return this.name;
 	}
@@ -54,7 +55,7 @@ public class Workspace {
 		return this.parent == null;
 	}
 	
-	/*public void addChildren(PacijentCvor newChild) {
+	public void addChildren(PacijentCvor newChild) {
 		// TODO: eventualne provere da li je dodavanja moguce
 		// dodavanje cvora
 		this.children.add(newChild);
@@ -72,6 +73,5 @@ public class Workspace {
 		// da li je list u modelu, ne odnosi se ne JTreeModel
 		return this.children.isEmpty();
 	}
-*/
 }
 

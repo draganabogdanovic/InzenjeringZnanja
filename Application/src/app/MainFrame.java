@@ -20,18 +20,29 @@ import javax.swing.JTree;
 import javax.swing.KeyStroke;
 import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
+import controller.Close;
+import controller.DijalogZaBolesti;
+import controller.UcitajIzBaze;
+
 import model.Karton;
 import model.Pacijent;
+import model.PacijentCvor;
+import model.Pregled;
+import model.PregledCvor;
 import model.PregledPacijenta;
+import model.Rezim;
 import model.Workspace;
 import view.CellEditor;
 import view.NodeTreeCellRenderer;
-import view.NoviPacijent;
+import view.PacijentView;
+import view.PregledPacijentaView;
 
 
 public class MainFrame extends JFrame{
@@ -43,15 +54,20 @@ public class MainFrame extends JFrame{
 	private static MainFrame instance = new MainFrame();
 	private JTree tree;
 	private DefaultTreeModel modelTree;
-	private JPanel panel;
+	
+	private JPanel showViewKarton1 = new JPanel();
+	private JPanel showViewPacijent1 = new JPanel();
+	private JPanel showViewPregled1 = new JPanel();
+	
 	private Workspace root;
 	private JPanel showView = new JPanel();
-	private NoviPacijent noviPacijent;
-	private JPanel leftPanel, rightPanel;
+	private UcitajIzBaze baza;
+	private Rezim rezim;
+	private PregledPacijentaView pacijentView;
+	private JPanel rightPanel;
+	private DijalogZaBolesti dijalog;
+	private Pregled bolest;
 
-
-	private Karton kartoni;
-	DefaultMutableTreeNode workspace;
 	
 	private MainFrame() {
 		Toolkit kit = Toolkit.getDefaultToolkit();
@@ -59,20 +75,17 @@ public class MainFrame extends JFrame{
 		int screenHeight = screenSize.height;
 		int screeWidth = screenSize.width;
 		setSize(screeWidth / 2, screenHeight / 2);
-		setTitle("MyApp");
-		Image img = kit.getImage("img/movie.png");
+		setTitle("My app");
+		Image img = kit.getImage("img/prvi.png");
 		setIconImage(img);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
 
-		MenuBar mb = new MenuBar(this);
-		setJMenuBar(mb);
-
 		ToolBar tool = new ToolBar();
 		add(tool, BorderLayout.NORTH);
 
-		JLabel label = new JLabel("Welcome!");
+		JLabel label = new JLabel("Status bar");
 		add(label, BorderLayout.SOUTH);
 
 		JPanel leftPanel = new JPanel();
@@ -80,15 +93,13 @@ public class MainFrame extends JFrame{
 		leftPanel.setPreferredSize(new Dimension(300, 300));
 		leftPanel.setMinimumSize(new Dimension(200, 200));
 		initTree();
-		kartoni = Karton.getInstance();
 		JScrollPane scrollPane = new JScrollPane(tree,
 				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-		JPanel rightPanel = new JPanel();
+		rightPanel = new JPanel();
 		rightPanel.setBackground(Color.WHITE);
 		rightPanel.setPreferredSize(new Dimension(300, 300));
-		
 		
 
 		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
@@ -99,23 +110,27 @@ public class MainFrame extends JFrame{
 		add(splitPane, BorderLayout.CENTER);
 
 		leftPanel.setMinimumSize(new Dimension(200, 200));
+		
+		setBaza(new UcitajIzBaze());
+		
+		addWindowListener(new Close());
 
 	}
 
 	public static MainFrame getInstance() {
 		return instance;
 	}
-	
+
 	public JTree getTree() {
 		return tree;
 	}
-	
+
 	public DefaultTreeModel getModel() {
 		return modelTree;
 	}
 
 	private void initTree() {
-		this.root = new Workspace("Kartoni", null);
+		this.root = new Workspace("Kartoni pacijenata", null);
 		modelTree = new DefaultTreeModel(new DefaultMutableTreeNode(this.root));
 		modelTree.setAsksAllowsChildren(true);
 		tree = new JTree(modelTree) {
@@ -141,60 +156,80 @@ public class MainFrame extends JFrame{
 		tree.setCellRenderer(new NodeTreeCellRenderer());
 		tree.getSelectionModel().setSelectionMode(
 				TreeSelectionModel.SINGLE_TREE_SELECTION);
+
+		tree.addTreeSelectionListener(new TreeSelectionListener() {
+
+			public void valueChanged(TreeSelectionEvent arg0) {
+				if (arg0.getNewLeadSelectionPath() != null) {
+					if (((DefaultMutableTreeNode) arg0
+							.getNewLeadSelectionPath().getLastPathComponent())
+							.getUserObject() instanceof PacijentCvor) {
+						PacijentCvor selektovan = (PacijentCvor) ((DefaultMutableTreeNode) arg0
+								.getNewLeadSelectionPath()
+								.getLastPathComponent()).getUserObject();
+						Pacijent karton = selektovan
+								.getKarton();
+						PacijentView pacijentView = new PacijentView(
+								karton);
+						showViewKarton1.removeAll();
+						showViewPacijent1.setVisible(false);
+						showViewPregled1.setVisible(false);
+						showViewKarton1.add(pacijentView);
+						showViewKarton1.setVisible(true);
+						showView.removeAll();
+						showView.add(showViewKarton1);
+						showView.revalidate();
+						showView.repaint();
+					} else if (((DefaultMutableTreeNode) arg0
+							.getNewLeadSelectionPath().getLastPathComponent())
+							.getUserObject() instanceof PregledCvor) {
+							//if(MainFrame.getInstance().getRezim() == rezim.RBR) {
+								PregledCvor selectedNode = (PregledCvor) ((DefaultMutableTreeNode) arg0
+										.getNewLeadSelectionPath()
+										.getLastPathComponent()).getUserObject();
+								PregledPacijenta product = selectedNode.getPregled();
+								PregledPacijentaView productView = new PregledPacijentaView(
+										product);
 		
-		modelTree.addTreeModelListener(new TreeModelListener()
-		{
-
-			@Override
-			public void treeNodesChanged(TreeModelEvent arg0) {
-				// TODO Auto-generated method stub
-				
+								showViewKarton1.setVisible(false);
+								showViewPregled1.setVisible(false);
+		
+								showViewPacijent1.removeAll();
+								showViewPacijent1.add(productView);
+								showViewPacijent1.setVisible(true);
+		
+								showView.add(showViewPacijent1);
+								showView.setVisible(true);
+								showView.revalidate();
+								showView.repaint();
+							}/*else {
+								PregledCvor selectedNode = (PregledCvor) ((DefaultMutableTreeNode) arg0
+										.getNewLeadSelectionPath()
+										.getLastPathComponent()).getUserObject();
+								PregledPacijenta product = selectedNode.getPregled();
+								PregledCasePacijentaView productView = new PregledCasePacijentaView(
+										product);
+		
+								showViewKarton1.setVisible(false);
+								showViewPregled1.setVisible(false);
+		
+								showViewPacijent1.removeAll();
+								showViewPacijent1.add(productView);
+								showViewPacijent1.setVisible(true);
+		
+								showView.add(showViewPacijent1);
+								showView.setVisible(true);
+								showView.revalidate();
+								showView.repaint();
+						}*/
+							
+					//}
+					
+				}
 			}
-
-			@Override
-			public void treeNodesInserted(TreeModelEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void treeNodesRemoved(TreeModelEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void treeStructureChanged(TreeModelEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
+			
 		});
 
-		//tree.addMouseListener(new PrikaziPacijenta());
-
-		DefaultMutableTreeNode element = (DefaultMutableTreeNode) getTreeModel().getRoot();
-		for (Pacijent temp : Karton.getInstance().getListaPacijenata())
-		{
-			getTreeModel().insertNodeInto(new DefaultMutableTreeNode(temp), element, element.getChildCount());
-
-		}
-		int brojPacijenata = element.getChildCount();
-
-		for (int i = 0; i < brojPacijenata; i++)
-		{
-			DefaultMutableTreeNode pacijent = (DefaultMutableTreeNode) element.getChildAt(i);
-			Pacijent neki = (Pacijent) pacijent.getUserObject();
-			for (PregledPacijenta pp : neki.getPregledi())
-			{
-				getTreeModel().insertNodeInto(new DefaultMutableTreeNode(pp), pacijent, pacijent.getChildCount());
-			}
-		}
-
-
-		
-		
-	
 		KeyStroke ks = KeyStroke.getKeyStroke("F2");
 		InputMap im = tree
 				.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
@@ -204,7 +239,6 @@ public class MainFrame extends JFrame{
 			
 			private static final long serialVersionUID = -6269711710164054911L;
 
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				tree.startEditingAtPath(tree.getSelectionPath());
 
@@ -213,25 +247,28 @@ public class MainFrame extends JFrame{
 
 	}
 
-	public void setNoviPacijent(NoviPacijent noviPacijent) {
-		// TODO Auto-generated method stub
-		this.noviPacijent = noviPacijent;
-		
+	public Rezim getRezim() {
+		return rezim;
 	}
 
-	public NoviPacijent getNoviPacijent() {
-		// TODO Auto-generated method stub
-		return noviPacijent;
+	public Rezim setRezim(Rezim rezim) {
+		return rezim;
 	}
 
-	public JPanel getPanel()
-	{
-		return panel;
+	public UcitajIzBaze getBaza() {
+		return baza;
 	}
 
-	public void setPanel(JPanel panel)
-	{
-		this.panel = panel;
+	public void setBaza(UcitajIzBaze baza) {
+		this.baza = baza;
+	}
+
+	public PregledPacijentaView getPacijentView() {
+		return pacijentView;
+	}
+
+	public void setPacijentView(PregledPacijentaView pacijentView) {
+		this.pacijentView = pacijentView;
 	}
 	
 	public JPanel getRightPanel()
@@ -244,19 +281,23 @@ public class MainFrame extends JFrame{
 		this.rightPanel = rightPanel;
 	}
 	
-	public void setTree(JTree tree)
+	public Pregled getBolest()
 	{
-		this.tree = tree;
+		return bolest;
 	}
 
-	public DefaultTreeModel getTreeModel()
+	public void setBolest(Pregled bolest)
 	{
-		return modelTree;
+		this.bolest = bolest;
 	}
 
-	
+	public DijalogZaBolesti getDijalog() {
+		return dijalog;
+	}
 
-	
+	public void setDijalog(DijalogZaBolesti dijalog) {
+		this.dijalog = dijalog;
+	}
 	
 	
 }

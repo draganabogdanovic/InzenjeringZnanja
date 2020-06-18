@@ -12,7 +12,6 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
-import view.NoviPacijent;
 
 
 
@@ -57,22 +56,8 @@ public class Karton implements Serializable {
 
 	public void dodajPacijenta(Pacijent noviPac)
 	{
-		// if(!(listaPacijenata.contains(p))) {
 		listaPacijenata.add(noviPac);
-		// MainFrame.getInstance().revalidate();
-		// }
-	}
-
-	public void dodajKarton(Pacijent p, PregledPacijenta pregled)
-	{
-
-		for (Pacijent x : this.listaPacijenata)
-		{
-			if (x.getBrLicneKarte() == p.getBrLicneKarte())
-			{
-				x.addPregled(pregled);
-			}
-		}
+		
 	}
 
 	public ArrayList<Pacijent> getListaPacijenata()
@@ -250,4 +235,5 @@ public class Karton implements Serializable {
 	{
 		listaPacijenata.trimToSize();
 	}
+
 }
