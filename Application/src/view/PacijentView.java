@@ -14,9 +14,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import com.toedter.calendar.JCalendar;
 
+import app.MainFrame;
 import controller.PacijentController;
 import controller.ResourceManager;
 import controller.SacuvajPacijenta;
@@ -83,15 +85,14 @@ public class PacijentView extends JPanel{
 		pnlOK = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		//btnDodaj = new JButton("Dodaj");
 		btnDodaj = new JButton("Sacuvaj");
-	/*	btnDodaj.addActionListener(new ActionListener() {
+		btnDodaj.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ok();
 			}
 		});
-
-	 */
+		
 	    sacuvaj=new JButton("UFajl");
 	    sacuvaj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent a){
@@ -113,13 +114,6 @@ public class PacijentView extends JPanel{
 	
 		
 		btnNE=new JButton("Odustani");
-		btnDodaj.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				ok();
-			}
-		});
 		
 		btnNE.addActionListener(new ActionListener(){
 			@Override
@@ -192,6 +186,7 @@ public class PacijentView extends JPanel{
 	}
 	
 	private void ok() {
+		
 		if (pacijentCon == null) {
 			pacijentCon = new PacijentController(pacijent,this);
 		}
@@ -201,6 +196,12 @@ public class PacijentView extends JPanel{
 		Date Datum = kal.getDate();
 		
 		pacijentCon.updatesPacijent(Ime, Prezime, JMBG, Datum);
+		/*DefaultMutableTreeNode element = (DefaultMutableTreeNode) MainFrame.getInstance().getModel()
+				.getRoot();
+		Pacijent pac = new Pacijent(Ime, Prezime);
+		MainFrame.getInstance().getModel().insertNodeInto(new DefaultMutableTreeNode(pac), element,
+				element.getChildCount());
+		*/
 		
 		
 	}

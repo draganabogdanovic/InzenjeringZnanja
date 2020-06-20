@@ -28,6 +28,7 @@ import javax.swing.tree.TreeSelectionModel;
 import controller.Close;
 import controller.DijalogZaBolesti;
 import controller.PostaviDijagnozu;
+import controller.PostaviTerapiju;
 import controller.UcitajIzBaze;
 import model.Pacijent;
 import model.PacijentCvor;
@@ -65,6 +66,7 @@ public class MainFrame extends JFrame{
 	private NoviPregled noviPregled;
 	private NoviCasePregled noviCasePregled;
 	private PostaviDijagnozu dijagnoza;
+	private PostaviTerapiju postaviTerapiju;
 	
 	private MainFrame() {
 		Toolkit kit = Toolkit.getDefaultToolkit();
@@ -340,6 +342,16 @@ public class MainFrame extends JFrame{
 
 	public void setDijagnoza(PostaviDijagnozu dijagnoza) {
 		this.dijagnoza = dijagnoza;
+	}
+
+	public void setTerapija(PostaviTerapiju postaviTerapiju) {
+		// TODO Auto-generated method stub
+		this.postaviTerapiju = postaviTerapiju;
+	}
+	
+	public PostaviTerapiju getTerapija() {
+		
+		return postaviTerapiju;
 	}
 	
 }
