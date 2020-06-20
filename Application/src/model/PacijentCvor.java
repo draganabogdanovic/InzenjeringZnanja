@@ -60,11 +60,11 @@ public class PacijentCvor {
 		return this.parent == null;
 	}
 
-	public void addChildren(PregledCvor newChild) {
+	public void addChildren(PregledCvor sloj2) {
 		// TODO: eventualne provere da li je dodavanja moguce
 		// dodavanje cvora
-		this.children.add(newChild);
-		newChild.setParent(this);
+		this.children.add(sloj2);
+		sloj2.setParent(this);
 	}
 
 	public void removeChild(PregledCvor child) {

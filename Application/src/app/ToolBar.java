@@ -1,23 +1,16 @@
 package app;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
-import controller.AddCaseAction;
 import controller.AddNodeAction;
-import controller.AddPregledAction;
-import controller.DodajPacijenta;
+import view.NoviCasePregled;
+import view.NoviPregled;
 
 
 
@@ -39,26 +32,43 @@ public class ToolBar extends JToolBar {
 				
 			}
 		});
-		add.setToolTipText("Dodajte pacijenta i pregled");
+		add.setToolTipText("Dodajte pacijenta");
 		add.setIcon(new ImageIcon("img/plus.png"));
 		add(add);
 		
 		addSeparator();
 		
-		JButton casePregled = new JButton( new AddCaseAction());
-		casePregled.addActionListener(new AddCaseAction() {
+		JButton noviPregled=new JButton();
+		noviPregled.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainFrame.getInstance().setNoviPregled(new NoviPregled());
+				MainFrame.getInstance().getNoviPregled().setVisible(true);
 			
+			}
+		});
+		noviPregled.setToolTipText("Dodajte pregled");
+		noviPregled.setIcon(new ImageIcon("img/new.png"));
+		add(noviPregled);
+		
+		addSeparator();
+		
+		JButton casePregled = new JButton();
+		casePregled.addActionListener(new ActionListener() {
+		
+
 			public void  actionPerformed(ActionEvent arg0) {
+				
+				MainFrame.getInstance().setNoviCasePregled(new NoviCasePregled());
+				MainFrame.getInstance().getNoviCasePregled().setVisible(true);
 				
 			}
 		});
 		
 		casePregled.setToolTipText("Dodajte novi case pregled");
-		casePregled.setIcon(new ImageIcon("img/add.png"));
+		casePregled.setIcon(new ImageIcon("img/movie.png"));
 		add(casePregled);
-		
-		
-	
 		
 	
 }

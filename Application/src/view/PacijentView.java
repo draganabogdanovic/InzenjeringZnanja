@@ -12,6 +12,7 @@ import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import com.toedter.calendar.JCalendar;
@@ -20,6 +21,7 @@ import controller.PacijentController;
 import controller.ResourceManager;
 import controller.SacuvajPacijenta;
 import model.Pacijent;
+
 
 public class PacijentView extends JPanel{
 
@@ -32,6 +34,7 @@ public class PacijentView extends JPanel{
 	private JPanel pnlContent;
 	private JLabel lblIme;
 	private JLabel lblPrezime;
+	private JLabel lblPol;
 	
 	private JTextField tfIme;
 	private JTextField tfPrezime;
@@ -46,6 +49,8 @@ public class PacijentView extends JPanel{
 	private JButton btnNE;
 	private JButton b;
 	private JButton sacuvaj;
+	private JRadioButton male;
+	private JRadioButton female;
 
 	
 	public PacijentView(Pacijent pacijent){
@@ -68,7 +73,10 @@ public class PacijentView extends JPanel{
 		lblJMBG = new JLabel("JMBG:");
 		tfJMBG = new JTextField(20);
 
-			
+		lblPol = new JLabel("Pol:");
+		male = new JRadioButton("M");
+		female = new JRadioButton("F");
+		
 		lblDatum = new JLabel("Datum rodjenja:");
 		kal = new JCalendar();
 	
@@ -92,7 +100,7 @@ public class PacijentView extends JPanel{
 				data.prezime=tfPrezime.getText();
 				data.JMBG=tfJMBG.getText();
 				try{
-					ResourceManager.save(data,  "pacijent");
+					ResourceManager.save(data,  "PACIJENTI.txt");
 				}catch(Exception e){
 					System.out.println("Nece da se sacuva"+e.getMessage());
 				}
@@ -138,9 +146,15 @@ public class PacijentView extends JPanel{
 				GridBagConstraints.BOTH, new Insets(15, 5, 5, 5), 0, 0));
 		pnlContent.add(tfJMBG,new GridBagConstraints(1, 2, 2, 1, 0, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-		pnlContent.add(lblDatum ,new GridBagConstraints(0,3,1,1,0,0,GridBagConstraints.WEST,
+		pnlContent.add(lblPol,new GridBagConstraints(0,3,1,1,0,0,GridBagConstraints.WEST,
 	    		GridBagConstraints.NONE,new Insets(5,5,5,5),0,0));
-		pnlContent.add(kal,new GridBagConstraints(1,3,2,2,126,85,GridBagConstraints.WEST,
+		pnlContent.add(male,new GridBagConstraints(0,4,1,1,0,0,GridBagConstraints.WEST,
+	    		GridBagConstraints.NONE,new Insets(-25,55,5,5),0,0));
+		pnlContent.add(female,new GridBagConstraints(0,4,1,1,0,0,GridBagConstraints.WEST,
+	    		GridBagConstraints.NONE,new Insets(-25,95,5,5),0,0));
+		pnlContent.add(lblDatum ,new GridBagConstraints(0,5,1,1,0,0,GridBagConstraints.WEST,
+	    		GridBagConstraints.NONE,new Insets(5,5,5,5),0,0));
+		pnlContent.add(kal,new GridBagConstraints(1,5,2,2,126,85,GridBagConstraints.WEST,
 	    		GridBagConstraints.BOTH,new Insets(5,5,5,5),0,0));
 
 

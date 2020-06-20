@@ -18,7 +18,7 @@ public class PregledPacijenta extends JPanel {
 	/**
 	 * 
 	 */
-	private ArrayList<String> listaSimptoma;
+	/*private ArrayList<String> listaSimptoma;
 	private Date datumPregleda;
 	private ArrayList<String> listaLekova;
 	private ArrayList<String> listaTerapija;
@@ -107,5 +107,5 @@ public class PregledPacijenta extends JPanel {
 	public void setNalaz(String nalaz)
 	{
 		this.nalaz = nalaz;
-	}
+	}*/
 }

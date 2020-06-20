@@ -19,7 +19,8 @@ import javax.swing.ListSelectionModel;
 import app.MainFrame;
 import model.Rezim;
 
-public class DijalogZaBolesti extends JDialog{
+public class PostaviDijagnozu extends JDialog{
+
 	/**
 	 * 
 	 */
@@ -47,7 +48,7 @@ public class DijalogZaBolesti extends JDialog{
 	private JButton btnIdi = new JButton("Dalje");
 	private JButton btnSacuvaj = new JButton("Sacuvaj");
 
-	public DijalogZaBolesti() {
+	public PostaviDijagnozu() {
 		
 		init();
 		constructGUI();
@@ -55,10 +56,10 @@ public class DijalogZaBolesti extends JDialog{
 	
 	private void init() {
 		
-		setTitle("Dijagnoza");
+		setTitle("Postavljanje dijagnoze");
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setSize(850, 450);
+		setSize(1000, 600);
 		setLocationRelativeTo(null);
 		
 		pnlContent.setLayout(new BorderLayout());

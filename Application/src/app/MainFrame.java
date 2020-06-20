@@ -18,8 +18,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTree;
 import javax.swing.KeyStroke;
-import javax.swing.event.TreeModelEvent;
-import javax.swing.event.TreeModelListener;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -29,20 +27,18 @@ import javax.swing.tree.TreeSelectionModel;
 
 import controller.Close;
 import controller.DijalogZaBolesti;
+import controller.PostaviDijagnozu;
 import controller.UcitajIzBaze;
-
-import model.Karton;
 import model.Pacijent;
 import model.PacijentCvor;
 import model.Pregled;
-import model.PregledCvor;
-import model.PregledPacijenta;
 import model.Rezim;
 import model.Workspace;
 import view.CellEditor;
 import view.NodeTreeCellRenderer;
+import view.NoviCasePregled;
+import view.NoviPregled;
 import view.PacijentView;
-import view.PregledPacijentaView;
 
 
 public class MainFrame extends JFrame{
@@ -63,11 +59,12 @@ public class MainFrame extends JFrame{
 	private JPanel showView = new JPanel();
 	private UcitajIzBaze baza;
 	private Rezim rezim;
-	private PregledPacijentaView pacijentView;
 	private JPanel rightPanel;
 	private DijalogZaBolesti dijalog;
 	private Pregled bolest;
-
+	private NoviPregled noviPregled;
+	private NoviCasePregled noviCasePregled;
+	private PostaviDijagnozu dijagnoza;
 	
 	private MainFrame() {
 		Toolkit kit = Toolkit.getDefaultToolkit();
@@ -180,7 +177,7 @@ public class MainFrame extends JFrame{
 						showView.add(showViewKarton1);
 						showView.revalidate();
 						showView.repaint();
-					} else if (((DefaultMutableTreeNode) arg0
+					} /*else if (((DefaultMutableTreeNode) arg0
 							.getNewLeadSelectionPath().getLastPathComponent())
 							.getUserObject() instanceof PregledCvor) {
 							//if(MainFrame.getInstance().getRezim() == rezim.RBR) {
@@ -202,8 +199,30 @@ public class MainFrame extends JFrame{
 								showView.setVisible(true);
 								showView.revalidate();
 								showView.repaint();
-							}/*else {
-								PregledCvor selectedNode = (PregledCvor) ((DefaultMutableTreeNode) arg0
+							} else if (((DefaultMutableTreeNode) arg0
+										.getNewLeadSelectionPath().getLastPathComponent())
+										.getUserObject() instanceof PacijentCaseCvor) {
+									PacijentCaseCvor selektovan = (PacijentCaseCvor) ((DefaultMutableTreeNode) arg0
+											.getNewLeadSelectionPath()
+											.getLastPathComponent()).getUserObject();
+									Pacijent karton = selektovan
+											.getKarton();
+									PacijentView pacijentView = new PacijentView(
+											karton);
+									showViewKarton1.removeAll();
+									showViewPacijent1.setVisible(false);
+									showViewPregled1.setVisible(false);
+									showViewKarton1.add(pacijentView);
+									showViewKarton1.setVisible(true);
+									showView.removeAll();
+									showView.add(showViewKarton1);
+									showView.revalidate();
+									showView.repaint();
+								}*
+								/*else if (((DefaultMutableTreeNode) arg0
+									.getNewLeadSelectionPath().getLastPathComponent())
+									.getUserObject() instanceof PregledCaseCvor){
+								PregledCaseCvor selectedNode = (PregledCaseCvor) ((DefaultMutableTreeNode) arg0
 										.getNewLeadSelectionPath()
 										.getLastPathComponent()).getUserObject();
 								PregledPacijenta product = selectedNode.getPregled();
@@ -263,13 +282,6 @@ public class MainFrame extends JFrame{
 		this.baza = baza;
 	}
 
-	public PregledPacijentaView getPacijentView() {
-		return pacijentView;
-	}
-
-	public void setPacijentView(PregledPacijentaView pacijentView) {
-		this.pacijentView = pacijentView;
-	}
 	
 	public JPanel getRightPanel()
 	{
@@ -298,7 +310,37 @@ public class MainFrame extends JFrame{
 	public void setDijalog(DijalogZaBolesti dijalog) {
 		this.dijalog = dijalog;
 	}
+
+	public void setNoviPregled(NoviPregled noviPregled) {
+		// TODO Auto-generated method stub
+		this.noviPregled = noviPregled;
+		
+	}
 	
+	public NoviPregled getNoviPregled() {
+		
+		return noviPregled;
+	}
+
+	public void setNoviCasePregled(NoviCasePregled noviCasePregled) {
+		// TODO Auto-generated method stub
+		this.noviCasePregled = noviCasePregled;
+		
+	}
+	
+	
+	public NoviCasePregled getNoviCasePregled() {
+		
+		return noviCasePregled;
+	}
+
+	public PostaviDijagnozu getDijagnoza() {
+		return dijagnoza;
+	}
+
+	public void setDijagnoza(PostaviDijagnozu dijagnoza) {
+		this.dijagnoza = dijagnoza;
+	}
 	
 }
 

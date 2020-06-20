@@ -2,6 +2,10 @@ package controller;
 
 import java.util.Date;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
+import app.MainFrame;
+import model.Karton;
 import model.Pacijent;
 import view.PacijentView;
 
@@ -52,6 +56,16 @@ public class PacijentController {
 		pacijent.setPrezime(Prezime);
 		pacijent.setJMBG(JMBG);
 		pacijent.setDatumRodjenja(Datum);
+		
+		DefaultMutableTreeNode element = (DefaultMutableTreeNode) MainFrame.getInstance().getModel()
+				.getRoot();
+
+		Pacijent noviPac = new Pacijent(pacijent.getIme(), pacijent.getPrezime());
+
+		MainFrame.getInstance().getModel().insertNodeInto(new DefaultMutableTreeNode(noviPac), element,
+				element.getChildCount());
+
+		Karton.getInstance().dodajPacijenta(noviPac);
 	
 
 		pacijentView.refreshView();
