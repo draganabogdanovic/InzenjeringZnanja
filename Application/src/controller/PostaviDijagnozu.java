@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -25,6 +24,14 @@ import model.Rezim;
 
 public class PostaviDijagnozu extends JDialog{	
 	
+	public JList<String> getIzabraneBolesti() {
+		return izabraneBolesti;
+	}
+
+	public void setIzabraneBolesti(JList<String> izabraneBolesti) {
+		this.izabraneBolesti = izabraneBolesti;
+	}
+
 	/**
 	 * 
 	 */

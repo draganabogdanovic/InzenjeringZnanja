@@ -146,3 +146,4 @@ public class DijalogZaBolesti extends JDialog{
 		return listaBolesti;
 	}
 }
+

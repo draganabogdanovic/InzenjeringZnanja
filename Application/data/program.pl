@@ -1,4 +1,14 @@
-%sve u jedan strpati
+simptomi(hunger, diabetes_type_1, 88).
+simptomi(hunger, diabetes_type_2, 86).
+simptomi(hunger, hyperglycemia, 51).
+
+simptomi(fatigue, diabetes_type_1, 52).
+simptomi(fatigue, diabetes_type_2, 52).
+simptomi(hyperglycemia, fatigue, 40).
+
+simptomi(dry_mouth, diabetes_type_1, 72).
+simptomi(hunger, diabetes_type_2, 86).
+
 
 symptoms(diabetes_type_1, hunger, 88).
 symptoms(diabetes_type_1, fatigue, 52).
@@ -346,6 +356,7 @@ disease(menopause,[irregular_periods, hot_flashes, chills, night_sweats, sleep_p
 disease(addisons_disease,[fatigue, weight_loss, hyperpigmentation, low_blood_pressure, salt_craving, hypoglycemia, nausea, diarrhea, vomiting, abdominal_pain, muscle_pain, irritability, body_hair_loss]).
 disease(cushing_syndrome,[weight_gain, striae, slow_healing_sores_or_cuts, ance, decreased_libido, erectile_dysfunction, congnitive_difficulties, headache]).
 
+
 additional_test(symptoms(X, S), hemoglobin_a1c) :-
     disease(diabetes_type_1, S2), contains(S2, S),  person__name(X).
 
@@ -547,44 +558,10 @@ treatment(menopause, [hormone_therapy, vaginal_estrogen, antidepressants, gabape
 treatment(addisons_disease, [hydrocortisone, prednisone, methylprednisolone, fludrocortisone_acetate, intravenous_injections]).
 treatment(cushing_syndrome, [surgery, reducing_corticosteroid_drug, radiation_therapy, mifepristone]).
 
-%terapije za adisonovu bolest, pisanje pravila za terapije
-hydrocortisone(X) :- addisons_disease(X).
-
-
-
-
-maxBolest(Simpt, Bol) :- symptoms(X, Simpt, Br), \+ (symptoms(_F, Simpt, Br1), Br1 > Br), Bol = X.
-
-
-daLiJeStrong(S, BOlest) :- symptoms_strong(X, S, B), not (symptoms_strong(_, S, Bb), Bb > B), BOlest = X.
-
 vratiBolesti(Simp, Bolest, No) :- disease(Bolest, Lista).
 
+vratiBol(S, L) :- findall([S], diseaseSym(B, S, V), L1), sort(L1, L).
 
-zadatiSipmtomi([hunger, vomiting, dry_skin]).
-/*ovaj deo sluzi za prebrojavanje navedenih simptoma u nekoj bolesti*/
-izbroji(Niz1, _Niz2, Br) :- length(Niz1, B), B < 1, Br = 0.
-izbroji([H|T], Niz, Br) :- member(H, Niz), izbroji(T, Niz, Br1), Br = 1 + Br1.
-izbroji([H|T], Niz, Br) :- not member(H, Niz), izbroji(T, Niz, Br1), Br = 0 + Br1.
-funkcija(Simpt, Bolest, No) :- disease(Bolest, Niz), izbroji(Simpt, Niz, Br), No is Br.
-/*ovaj deo sluzi za prebrojavanje navedenih simptoma u nekoj bolesti*/
+vratiBole(S, L) :- findall([B], simptomi(S, B, V), L1), sort(L1, L).
+vratiTerap(B, L2) :- findall([T], treatment(B, T), L1), sort(L1, L2).
 
-/*za neki simprom i bolest, vrati njegovu vrednost, ili 0 ako ta bolest nema taj simpt*/
-dajVrednostSimptoma(Simp, Bol, Vr) :- symptoms(Bol, Simp, X), Vr = X, !.
-dajVrednostSimptoma(_, _, 0).
-/*za neki simprom i bolest, vrati njegovu vrednost, ili 0 ako ta bolest nema taj simpt*/
-
-
-ff(Bol, [H|T], RetVal) :-  dajVrednostSimptoma(H, Bol, Br), ff(Bol, T, RetVal1), RetVal is (Br + RetVal1) .
-
-ff(_Bol, [], 0).
-
-/*za bolest i simptome, vrati srednju vrednost tih simptoma*/
-dajProsekZaBolest(Bol, [H|T], X) :- funkcija([H|T], Bol, BrS), BrS > 0,  ff(Bol, [H|T], RetVal), X is RetVal / BrS, !.
-
-
-
-
-
-%terapije za adisonovu bolest, pisanje pravila za terapije
-hydrocortisone(X) :- addisons_disease(X).

@@ -1,13 +1,10 @@
 package cbrApp;
 
 import java.util.Collection;
-import java.util.List;
 
 import cbr.Simptomi;
 import connector.CsvConnector;
-import model.Pregled;
 import similarity.ListTableSimilarity;
-import similarity.TableSimilarity;
 import ucm.gaia.jcolibri.casebase.LinealCaseBase;
 import ucm.gaia.jcolibri.cbraplications.StandardCBRApplication;
 import ucm.gaia.jcolibri.cbrcore.Attribute;
@@ -20,7 +17,6 @@ import ucm.gaia.jcolibri.method.retrieve.RetrievalResult;
 import ucm.gaia.jcolibri.method.retrieve.NNretrieval.NNConfig;
 import ucm.gaia.jcolibri.method.retrieve.NNretrieval.NNScoringMethod;
 import ucm.gaia.jcolibri.method.retrieve.NNretrieval.similarity.global.Average;
-import ucm.gaia.jcolibri.method.retrieve.NNretrieval.similarity.local.Equal;
 import ucm.gaia.jcolibri.method.retrieve.selection.SelectCases;
 
 public class CbrApp implements StandardCBRApplication {
@@ -37,86 +33,9 @@ public class CbrApp implements StandardCBRApplication {
 		
 		simConfig = new NNConfig(); // KNN configuration
 		simConfig.setDescriptionSimFunction(new Average());  // global similarity function = average
-		simConfig.addMapping(new Attribute("symptom", Simptomi.class), new TableSimilarity());
+		simConfig.addMapping(new Attribute("simptomi", Simptomi.class), new ListTableSimilarity());
 		
-	//	simConfig.addMapping(new Attribute("year", TransactionDescription.class), new Interval(1));
-		// simConfig.addMapping(new Attribute("price", TransactionDescription.class), new Interval(100));
-		//simConfig.addMapping(new Attribute("realEstateDescription", TransactionDescription.class), new Average());
-	/*	simConfig.addMapping(new Attribute("hunger", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("fatigue", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("peeing_more_often", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("dry_mouth", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("itchy_skin", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("blurred_vision", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("weight_loss", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("nausea", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("vomiting", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("yeast_infections", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("slow_healing_sores_or_cuts", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("pain_in_legs", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("fast_heartbeat", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("pale_skin", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("headache", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("nightmares", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("coordination_problems", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("seizures", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("sweating", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("heavy_thirst", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("tingling_feet", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("sugar_in_urine", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("vaginal_infection", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("skin_infection", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("dry_skin", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("high_fever", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("vision_loss", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("hallucinations", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("weakness", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("back_pain", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("a_stooped_posture", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("easily_broken_bones", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("a_lump_on_the_neck", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("changed_voice", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("difficulty_swallowing", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("throat_pain", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("kidney_stones", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("abdominal_pain", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("depression", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("cramps_in_legs", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("twitching_muscles", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("hair_loss", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("brittle_nails", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("low_sex_drive", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("erectile_dysfunction", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("low_semen_volume", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("loss_of_muscle_mass", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("increased_body_fat", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("mood_changes", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("affected_memory", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("low_blood_counts", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("irregular_periods", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("hot_flashes", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("chills", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("night_sweats", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("sleep_problems", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("weight_gain", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("thinning_hair", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("hyperpigmentation", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("low_blood_pressure", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("salt_craving", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("hypoglycemia", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("diarrhea", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("muscle_pain", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("irritability", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("body_hair_loss", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("striae", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("ance", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("decreased_libido", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("cognitive_difficulties", Pregled.class), new Equal());*/
-	//	TableSimilarity symptomSimilarity = new TableSimilarity((Arrays.asList(new String[] {"headache", "hunger", "dry_mouth"})));
-		//symptomSimilarity.setSimilarity("hunger", "dry_mouth", .3);
-		//simConfig.addMapping(new Attribute("hunger", Pregled.class), symptomSimilarity);
-		//simConfig.addMapping(new Attribute("localStores", RealEstateDescription.class), new Interval(2));
-
+	
 		// Equal - returns 1 if both individuals are equal, otherwise returns 0
 		// Interval - returns the similarity of two number inside an interval: sim(x,y) = 1-(|x-y|/interval)
 		// Threshold - returns 1 if the difference between two numbers is less than a threshold, 0 in the other case
@@ -254,3 +173,4 @@ public class CbrApp implements StandardCBRApplication {
 	}
 
 }
+

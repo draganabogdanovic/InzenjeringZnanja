@@ -17,6 +17,7 @@ public class UcitajIzBaze {
 	private ArrayList<String> lekovi;
 	private ArrayList<String> ispitivanja;
 
+
 	public UcitajIzBaze()
 	{
 		// TODO Auto-generated constructor stub
@@ -31,6 +32,7 @@ public class UcitajIzBaze {
 		JIPEngine engine = new JIPEngine();//poziva jipProlog 
 		engine.consultFile("data/program.pl");
 		JIPQuery query = engine.openSynchronousQuery("symptoms(B,S,P)");
+
 
 		JIPTerm solution;
 
@@ -50,6 +52,7 @@ public class UcitajIzBaze {
 	}
 	
 	public ArrayList<String> vratiBolesti() {
+
 		
 	/*	JIPEngine engine = new JIPEngine();//poziva jipProlog 
 		engine.consultFile("data/program.pl");
@@ -85,7 +88,9 @@ public class UcitajIzBaze {
 
 		JIPEngine engine = new JIPEngine();
 		engine.consultFile("data/program.pl");
-		JIPQuery query = engine.openSynchronousQuery("vratiBolesti(" + simptomi + ",B,P)");
+		//JIPQuery query = engine.openSynchronousQuery("vratiBolesti(" + simptomi + ",B,P)");
+		JIPQuery query = engine.openSynchronousQuery("vratiBole(S, B)");
+		
 		
 		JIPTerm solution;
 		
@@ -96,62 +101,58 @@ public class UcitajIzBaze {
 
 			String bolest;
 
-			bolest = vars[0].toString();
+		//	bolest = vars[0].toString();
+			bolest = vars[1].toString();
 			
 			this.bolesti.add(bolest);
 	
 		}
-			return bolesti;
-/*
-		HashMap<String, Double> mapaBolesti = new HashMap<>();
 
-		while ((solution = query.nextSolution()) != null)
-		{
-			JIPVariable[] vars = solution.getVariables();
-
-			mapaBolesti.put(vars[0].toString(), Double.parseDouble(vars[1].toString()));
-
-		}
-
-		query = engine.openSynchronousQuery("dajProsekZaBolest(B, " + simptomi + ", No)");
-		while ((solution = query.nextSolution()) != null)
-		{
-			JIPVariable[] vars = solution.getVariables();
-			mapaBolesti.put(vars[0].toString(),
-					Double.parseDouble(vars[1].toString()) / 100 + mapaBolesti.get(vars[0].toString()));
-		}
+	/*	Map<String,String> dupMap = new TreeMap<String, String>();
 		
-		ArrayList<Double> listaPPc = new ArrayList<>();
-		for (Map.Entry<String, Double> iterator : mapaBolesti.entrySet())
-		{
-			listaPPc.add(iterator.getValue());
+		ArrayList<String> parsed = new ArrayList<String>();
+		
+		String pattern = ",";
+
+		// I assume this holds all the values:
+	//	List<String> uniqueList = new ArrayList<String>(dupMap.values()); 
+		bolesti = new ArrayList<String>(dupMap.values()); 
+		
+		for (String src : bolesti) {
+		    String[] parts = src.split(pattern);
+		    if (parts.length == 3) {
+		        String firstValue = parts[1]; // value to left of :
+		        String secondValue = parts[2]; // value between : and -
+		        String thirdValue = parts[3]; // value after -
+		
+		    }
 		}
-
-		java.util.Collections.sort(listaPPc, java.util.Collections.reverseOrder());
-		//MainFrame.getInstance().getDijagnoza().getListaBolesti().clear();
-		int j = 0;
-
-		for (int i = 0; i < 3; i++)
-		{
-			for (Map.Entry<String, Double> iter : mapaBolesti.entrySet())
-			{
-				if (iter.getValue() == listaPPc.get(j))
-				{
-					MainFrame.getInstance().getDijagnoza().getListaBolesti().put(iter.getKey(), iter.getValue());
-					j++;
-					break;
-				}
-			}
-		}*/
+		*/
+		
+		return bolesti;
+	
 
 		
 	}
 	
 	public ArrayList<String> vratiLekove()
 	{
+		String bolesti = "[";
+
+		ListModel<String> lM = MainFrame.getInstance().getDijagnoza().getIzabraneBolesti().getModel();
+
+		for (int i = 0; i < lM.getSize();)
+		{
+			bolesti = bolesti.concat(lM.getElementAt(i++) + ", ");
+		}
+
+		bolesti = bolesti.substring(0, bolesti.length() - 2);
+
+		bolesti = bolesti.concat(" ]");
 		JIPEngine engine = new JIPEngine();//poziva jipProlog 
 		engine.consultFile("data/program.pl");
-		JIPQuery query = engine.openSynchronousQuery("therapy(B,T,P)");
+	//	JIPQuery query = engine.openSynchronousQuery("vratiTerap(B, T)");
+		JIPQuery query = engine.openSynchronousQuery("therapy(B, T, V)");
 
 		JIPTerm solution;
 

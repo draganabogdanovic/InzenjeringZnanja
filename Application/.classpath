@@ -6,10 +6,10 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Korisnik/Desktop/iz/InzenjeringZnanja/Application/lib/miglayout-3.7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Korisnik/Desktop/iz/InzenjeringZnanja/Application/lib/log4j-api-2.11.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Korisnik/Desktop/iz/InzenjeringZnanja/Application/lib/jiprolog-4.1.6.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Korisnik/Desktop/iz/InzenjeringZnanja/Application/lib/jCOLIBRI-3.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Korisnik/Desktop/iz/InzenjeringZnanja/Application/lib/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Korisnik/eclipse-workspace/InzenjeringZnanja/Application/lib/jCOLIBRI-3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Korisnik/eclipse-workspace/InzenjeringZnanja/Application/lib/jiprolog-4.1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Korisnik/eclipse-workspace/InzenjeringZnanja/Application/lib/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Korisnik/eclipse-workspace/InzenjeringZnanja/Application/lib/log4j-api-2.11.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Korisnik/eclipse-workspace/InzenjeringZnanja/Application/lib/miglayout-3.7.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
