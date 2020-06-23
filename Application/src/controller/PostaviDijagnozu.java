@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,13 +23,13 @@ import javax.swing.ListSelectionModel;
 import app.MainFrame;
 import model.Rezim;
 
-public class PostaviDijagnozu extends JDialog{
-
+public class PostaviDijagnozu extends JDialog{	
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private HashMap<String, Double> listaBolesti = new HashMap<String, Double>();
+	//private HashMap<String, Double> listaBolesti = new HashMap<String, Double>();
 	private JLabel lbl;
 	private JLabel lblIzabraneBolesti;
 	private DefaultListModel<String> dlmSveBolesti;
@@ -71,10 +73,15 @@ public class PostaviDijagnozu extends JDialog{
 		sveBolesti.setLayoutOrientation(JList.VERTICAL);
 		sveBolesti.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listScB = new JScrollPane();
-		listScB.setViewportView(sveBolesti);
+		
 		MainFrame.getInstance().setRezim(Rezim.RBR);
-		MainFrame.getInstance().getBaza().vratiBolesti();
-		//ubaciBolesti(listaBolesti);
+	//	ArrayList<String> listaBolesti =
+		
+		//MainFrame.getInstance().getBaza().vratiBolesti();
+		//MainFrame.getInstance().getDijagnoza().ubaciBolesti();
+		ArrayList<String> listaBolesti = MainFrame.getInstance().getBaza().vratiBolesti();
+		ubaciBolesti(listaBolesti);
+		listScB.setViewportView(sveBolesti);
 		
 		btnIdi = new JButton("Dalje");
 		btnIdi.addActionListener(new ActionListener() {
@@ -84,6 +91,45 @@ public class PostaviDijagnozu extends JDialog{
 				// TODO Auto-generated method stub
 				MainFrame.getInstance().setTerapija(new PostaviTerapiju());
 				MainFrame.getInstance().getTerapija().setVisible(true);
+				
+			}
+			
+			
+		});
+		
+		sveBolesti.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				if(arg0.getClickCount() == 1) {
+					
+					dodajBolest(getSveBolesti().getSelectedValue());
+					
+				}
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
 				
 			}
 			
@@ -119,14 +165,39 @@ public class PostaviDijagnozu extends JDialog{
 	
 	}
 	
-	public void ubaciBolesti(ArrayList<String> lista) {
+	public void ubaciBolesti(ArrayList<String> listaBolesti) {
 		
-		//for (String s : lista)
-			//dlmSveBolesti.addElement(s);
+		for (String s : listaBolesti)
+			dlmSveBolesti.addElement(s);
+		/*for (Map.Entry<String, Double> iter : listaBolesti.entrySet())
+		{
+			dlmSveBolesti.addElement(iter.getKey());
+		}*/
 	}
 	
-	public HashMap<String, Double> getListaBolesti()
+	/*public HashMap<String, Double> getListaBolesti()
 	{
 		return listaBolesti;
+	}*/
+	
+	public boolean dodajBolest(String s) {
+		if(dlmIzabraneBolesti.contains(s)) {
+			return false;
+			
+		}
+		
+		dlmIzabraneBolesti.addElement(s);
+		return true;
+		
+	}
+	
+	public JList<String> getSveBolesti()
+	{
+		return sveBolesti;
+	}
+
+	public void setSveBolesti(JList<String> sveBolesti)
+	{
+		this.sveBolesti = sveBolesti;
 	}
 }

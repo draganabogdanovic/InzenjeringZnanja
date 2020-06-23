@@ -4,8 +4,10 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
+import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 
 import app.MainFrame;
 //import gui.MainFrame;
@@ -44,7 +46,7 @@ public class AddNodeAction extends AbstractAction{
 			Workspace root = (Workspace)parentNode.getUserObject();
 			int count=incPacijent++;
 			Pacijent pacijentNovi = new Pacijent();
-			Pacijent pacijent = new Pacijent(pacijentNovi.getIme(), pacijentNovi.getPrezime());
+			Pacijent pacijent = new Pacijent(pacijentNovi.getIme(), pacijentNovi.getPrezime(), pacijentNovi.getJMBG());
 			PacijentCvor sledeciSloj= new PacijentCvor("Pacijent"+count, "",root);
 			sledeciSloj.setKarton(pacijent);
 			root.addChildren(sledeciSloj);
@@ -53,9 +55,9 @@ public class AddNodeAction extends AbstractAction{
 			DefaultTreeModel model = MainFrame.getInstance().getModel();
 			 model.insertNodeInto(dete,parentNode,parentNode.getChildCount());
 			
-			/*JTree tree=MainFrame.getInstance().getTree();
+			JTree tree=MainFrame.getInstance().getTree();
 			tree.setSelectionPath(new TreePath(dete.getPath()));
-			tree.scrollPathToVisible(new TreePath(dete.getPath()));*/
+			tree.scrollPathToVisible(new TreePath(dete.getPath()));
 		
 		}
 			

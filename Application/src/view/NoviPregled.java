@@ -53,6 +53,14 @@ public class NoviPregled extends JDialog{
 		constructGUI();
 	}
 	
+	public JList<String> getIzabraniSimptomi() {
+		return izabraniSimptomi;
+	}
+
+	public void setIzabraniSimptomi(JList<String> izabraniSimptomi) {
+		this.izabraniSimptomi = izabraniSimptomi;
+	}
+
 	private void init() {
 		
 		setTitle("Pregled simptoma");
@@ -81,7 +89,6 @@ public class NoviPregled extends JDialog{
 		ArrayList<String> listaSimp = MainFrame.getInstance().getBaza().vratiSimptome();
 		ubaciSimptome(listaSimp);
 		
-		//ubaciBolesti(listaBolesti);
 		
 		sviSimptomi.addMouseListener(new MouseListener() {
 

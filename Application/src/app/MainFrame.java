@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.util.Collection;
 
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
@@ -35,11 +36,13 @@ import model.PacijentCvor;
 import model.Pregled;
 import model.Rezim;
 import model.Workspace;
+import ucm.gaia.jcolibri.method.retrieve.RetrievalResult;
 import view.CellEditor;
 import view.NodeTreeCellRenderer;
 import view.NoviCasePregled;
 import view.NoviPregled;
 import view.PacijentView;
+import cbr.Baza;
 
 
 public class MainFrame extends JFrame{
@@ -67,6 +70,8 @@ public class MainFrame extends JFrame{
 	private NoviCasePregled noviCasePregled;
 	private PostaviDijagnozu dijagnoza;
 	private PostaviTerapiju postaviTerapiju;
+	private Baza bazaCase;
+	private Collection<RetrievalResult> ret;
 	
 	private MainFrame() {
 		Toolkit kit = Toolkit.getDefaultToolkit();
@@ -352,6 +357,22 @@ public class MainFrame extends JFrame{
 	public PostaviTerapiju getTerapija() {
 		
 		return postaviTerapiju;
+	}
+
+	public Baza getBazaCase() {
+		return bazaCase;
+	}
+
+	public void setBazaCase(Baza bazaCase) {
+		this.bazaCase = bazaCase;
+	}
+
+	public Collection<RetrievalResult> getRet() {
+		return ret;
+	}
+
+	public void setRet(Collection<RetrievalResult> ret) {
+		this.ret = ret;
 	}
 	
 }

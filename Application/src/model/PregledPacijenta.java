@@ -1,15 +1,13 @@
 package model;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import javax.swing.JPanel;
-//import com.toedter.calendar.JCalendar;
-
 //import net.miginfocom.swing.MigLayout;
 
-public class PregledPacijenta extends JPanel {
+public class PregledPacijenta implements Serializable {
 	
 	/**
 	 * 
@@ -18,7 +16,7 @@ public class PregledPacijenta extends JPanel {
 	/**
 	 * 
 	 */
-	/*private ArrayList<String> listaSimptoma;
+	private ArrayList<String> listaSimptoma;
 	private Date datumPregleda;
 	private ArrayList<String> listaLekova;
 	private ArrayList<String> listaTerapija;
@@ -107,5 +105,5 @@ public class PregledPacijenta extends JPanel {
 	public void setNalaz(String nalaz)
 	{
 		this.nalaz = nalaz;
-	}*/
+	}
 }

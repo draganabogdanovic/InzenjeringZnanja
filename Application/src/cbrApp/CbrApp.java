@@ -1,9 +1,13 @@
 package cbrApp;
 
 import java.util.Collection;
+import java.util.List;
 
+import cbr.Simptomi;
 import connector.CsvConnector;
 import model.Pregled;
+import similarity.ListTableSimilarity;
+import similarity.TableSimilarity;
 import ucm.gaia.jcolibri.casebase.LinealCaseBase;
 import ucm.gaia.jcolibri.cbraplications.StandardCBRApplication;
 import ucm.gaia.jcolibri.cbrcore.Attribute;
@@ -33,11 +37,12 @@ public class CbrApp implements StandardCBRApplication {
 		
 		simConfig = new NNConfig(); // KNN configuration
 		simConfig.setDescriptionSimFunction(new Average());  // global similarity function = average
+		simConfig.addMapping(new Attribute("symptom", Simptomi.class), new TableSimilarity());
 		
 	//	simConfig.addMapping(new Attribute("year", TransactionDescription.class), new Interval(1));
 		// simConfig.addMapping(new Attribute("price", TransactionDescription.class), new Interval(100));
 		//simConfig.addMapping(new Attribute("realEstateDescription", TransactionDescription.class), new Average());
-		simConfig.addMapping(new Attribute("hunger", Pregled.class), new Equal());
+	/*	simConfig.addMapping(new Attribute("hunger", Pregled.class), new Equal());
 		simConfig.addMapping(new Attribute("fatigue", Pregled.class), new Equal());
 		simConfig.addMapping(new Attribute("peeing_more_often", Pregled.class), new Equal());
 		simConfig.addMapping(new Attribute("dry_mouth", Pregled.class), new Equal());
@@ -106,7 +111,7 @@ public class CbrApp implements StandardCBRApplication {
 		simConfig.addMapping(new Attribute("striae", Pregled.class), new Equal());
 		simConfig.addMapping(new Attribute("ance", Pregled.class), new Equal());
 		simConfig.addMapping(new Attribute("decreased_libido", Pregled.class), new Equal());
-		simConfig.addMapping(new Attribute("cognitive_difficulties", Pregled.class), new Equal());
+		simConfig.addMapping(new Attribute("cognitive_difficulties", Pregled.class), new Equal());*/
 	//	TableSimilarity symptomSimilarity = new TableSimilarity((Arrays.asList(new String[] {"headache", "hunger", "dry_mouth"})));
 		//symptomSimilarity.setSimilarity("hunger", "dry_mouth", .3);
 		//simConfig.addMapping(new Attribute("hunger", Pregled.class), symptomSimilarity);
@@ -145,8 +150,8 @@ public class CbrApp implements StandardCBRApplication {
 		return _caseBase;
 	}
 
-	public static void main(String[] args) {
-		StandardCBRApplication recommender = new CbrApp();
+	public void run(String simptomi) {
+		CbrApp recommender = new CbrApp();
 		try {
 			recommender.configure();
 
@@ -158,7 +163,7 @@ public class CbrApp implements StandardCBRApplication {
 		//	RealEstateDescription reDescription = new RealEstateDescription();
 			
 			//List<String> izabrani = MainFrame.getInstance().getIzabrani;
-			Pregled pregled = new Pregled();
+		/*	Pregled pregled = new Pregled();
 			pregled.setHunger(1);
 			pregled.setFatigue(1);
 			pregled.setPeeing_more_often(0);
@@ -228,7 +233,7 @@ public class CbrApp implements StandardCBRApplication {
 			pregled.setStriae(0);
 			pregled.setAnce(0);
 			pregled.setDecreased_libido(0);
-			pregled.setCognitive_difficulties(0);
+			pregled.setCognitive_difficulties(0);*/
 			
 			/*reDescription.setAge(25);
 			reDescription.setDistanceToPublicTransportation(300);
@@ -236,35 +241,10 @@ public class CbrApp implements StandardCBRApplication {
 			txDescription.setRealEstateDescription(reDescription);
 			txDescription.setYear(2013);*/
 			
-		    query.setDescription(pregled);
-			//query.setDescription( txDescription );
-			/*List<String> is = MainFrame.getInstance().getIzabraniSimptom();
-			String izabraniSimptom = "";
-			for (int i = 0; i < is.size();)
-			{
-				
-				i++;
-			}*/
-			
-		/*	HashMap<String, Integer> map = new HashMap<>();
-			String symptoms = "hunger, fatigue, peeing_more_often, dry_mouth, itchy_skin";
-			
-			String[] vars = symptoms.split(",");
-			for (String s : vars)
-			{
-				if (!izabraniSimptom.contains(s))
-				{
-					map.put(s, 0);
-				}
-				else
-				{
-					map.put(s, 1);
-				}
-			}
-			
-			Pregled p = new Pregled(); //MAPA?????????? kao parametar*/
-
-			//query.setDescription(p);
+		   
+			Simptomi s = new Simptomi();
+			//s.setSimptomi(simptomi);
+			query.setDescription(s);
 			recommender.cycle(query);
 
 			recommender.postCycle();

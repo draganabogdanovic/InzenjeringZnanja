@@ -234,6 +234,41 @@ therapy(cushing_syndrome, reducing_corticosteroid_drug, 71).
 therapy(cushing_syndrome, radiation_therapy, 88).
 therapy(cushing_syndrome, mifepristone, 62).
 
+additional_tests(diabetes_type_1, hemoglobin_a1c).
+additional_tests(diabetes_type_1, random_blood_sugar_test).
+additional_tests(diabetes_type_1, autoantibodies).
+additional_tests(diabetes_type_1, fasting_blood_sugar_test).
+
+additional_tests(diabetes_type_2, random_blood_sugar_test).
+additional_tests(diabetes_type_2, fasting_blood_sugar_test).
+
+additional_tests(hypoglycemia, random_blood_sugar_test).
+additional_tests(hypoglycemia, fasting_blood_sugar_test).
+
+additional_tests(hyperglycemia, random_blood_sugar_test).
+additional_tests(hyperglycemia, fasting_blood_sugar_test).
+
+additional_tests(diabetic_coma, random_blood_sugar_test).
+
+additional_tests(osteoporosis, bone_density_test).
+
+additional_tests(thyroid_cancer, ultrasound).
+additional_tests(thyroid_cancer, biopsy).
+
+additional_tests(hyperparathyroidism, ultrasound).
+additional_tests(hyperparathyroidism, calcium_level).
+additional_tests(hyperparathyroidism, parathyroid_hormone_level).
+
+additional_tests(hyporparathyroidism, calcium_level).
+additional_tests(hyporparathyroidism, parathyroid_hormone_level).
+
+additional_tests(low_testosterone, testosterone_level).
+
+additional_tests(addisons_disease, thyroid_function_test).
+additional_tests(addisons_disease, ct).
+
+additional_tests(cushing_syndrome, ct).
+
 person_name(ana).
 person_name(ljubica).
 person_name(milisav).
@@ -522,6 +557,9 @@ maxBolest(Simpt, Bol) :- symptoms(X, Simpt, Br), \+ (symptoms(_F, Simpt, Br1), B
 
 
 daLiJeStrong(S, BOlest) :- symptoms_strong(X, S, B), not (symptoms_strong(_, S, Bb), Bb > B), BOlest = X.
+
+vratiBolesti(Simp, Bolest, No) :- disease(Bolest, Lista).
+
 
 zadatiSipmtomi([hunger, vomiting, dry_skin]).
 /*ovaj deo sluzi za prebrojavanje navedenih simptoma u nekoj bolesti*/

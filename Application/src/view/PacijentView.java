@@ -23,7 +23,7 @@ import controller.PacijentController;
 import controller.ResourceManager;
 import controller.SacuvajPacijenta;
 import model.Pacijent;
-
+import cbr.Baza;
 
 public class PacijentView extends JPanel{
 
@@ -190,20 +190,14 @@ public class PacijentView extends JPanel{
 		if (pacijentCon == null) {
 			pacijentCon = new PacijentController(pacijent,this);
 		}
-		String Ime = tfIme.getText();
-		String Prezime = tfPrezime.getText();
-		String JMBG = tfJMBG.getText();
+		String Ime = tfIme.getText().trim();
+		String Prezime = tfPrezime.getText().trim();
+		String JMBG = tfJMBG.getText().trim();
 		Date Datum = kal.getDate();
 		
 		pacijentCon.updatesPacijent(Ime, Prezime, JMBG, Datum);
-		/*DefaultMutableTreeNode element = (DefaultMutableTreeNode) MainFrame.getInstance().getModel()
-				.getRoot();
-		Pacijent pac = new Pacijent(Ime, Prezime);
-		MainFrame.getInstance().getModel().insertNodeInto(new DefaultMutableTreeNode(pac), element,
-				element.getChildCount());
-		*/
-		
-		
+
+	
 	}
 
 	

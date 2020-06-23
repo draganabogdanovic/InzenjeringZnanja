@@ -4,9 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.swing.JList;
+
 public class SacuvajPregled implements Serializable{
-	public ArrayList<String> listaSimptoma;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public JList<String> listaSimptoma;
 	public Date datumPregleda;
-	public ArrayList<String> listaLekova;
-	public ArrayList<String> listaTerapija;
+	public JList<String> listaLekova;
+	public JList<String> dodatnaIsp;
 }

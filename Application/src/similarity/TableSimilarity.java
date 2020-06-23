@@ -10,6 +10,11 @@ public class TableSimilarity implements LocalSimilarityFunction {
 	private double matrix[][];
 	List<String> categories;
 	
+	public TableSimilarity() {
+		
+		
+	}
+	
 	public TableSimilarity(List<String> categories) {
 		this.categories = categories;
 		int n = categories.size();

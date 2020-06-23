@@ -40,11 +40,12 @@ public class Pacijent implements Serializable {
 		this.children.add(pregled);
 	}
 	
-	public Pacijent(String ime, String prezime) {
+	public Pacijent(String ime, String prezime, String JMBG) {
 		// TODO Auto-generated constructor stub
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
+		this.JMBG = JMBG;
 	}
 	
 	public Pacijent() {

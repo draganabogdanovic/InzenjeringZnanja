@@ -6,7 +6,8 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import model.Pregled;
+import cbr.Simptomi;
+import cbr.StringListMapper;
 import ucm.gaia.jcolibri.cbrcore.CBRCase;
 import ucm.gaia.jcolibri.cbrcore.CaseBaseFilter;
 import ucm.gaia.jcolibri.cbrcore.Connector;
@@ -20,7 +21,7 @@ public class CsvConnector implements Connector {
 		LinkedList<CBRCase> cases = new LinkedList<CBRCase>();
 		
 		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(FileIO.openFile("data/cases_symptoms1.csv")));
+			BufferedReader br = new BufferedReader(new InputStreamReader(FileIO.openFile("data/simptomii.csv")));
 			if (br == null)
 				throw new Exception("Error opening file");
 
@@ -32,7 +33,7 @@ public class CsvConnector implements Connector {
 
 				CBRCase cbrCase = new CBRCase();
 
-				Pregled pregled = new Pregled();
+				/*Pregled pregled = new Pregled();
 				pregled.setDisease(values[0]);
 				pregled.setHunger(Integer.parseInt(values[1]));
 				pregled.setFatigue(Integer.parseInt(values[2]));
@@ -104,8 +105,12 @@ public class CsvConnector implements Connector {
 				pregled.setAnce(Integer.parseInt(values[68]));
 				pregled.setDecreased_libido(Integer.parseInt(values[69]));
 				pregled.setCognitive_difficulties(Integer.parseInt(values[70]));
+				*/
 				
-				cbrCase.setDescription(pregled);
+				Simptomi symptoms = new Simptomi();
+				symptoms.setSimptomi(StringListMapper.toList(values[0]));
+				
+				cbrCase.setDescription(symptoms);
 				cases.add(cbrCase);
 			}
 			br.close();
