@@ -34,7 +34,6 @@ public class Baza implements Serializable{
 	
 	private Baza() {
 		init();
-		//initSimptomi();
 		initBolesti();
 	}
 	
@@ -43,36 +42,7 @@ public class Baza implements Serializable{
 		this.listaSimptoma = new ArrayList<String>();
 		this.listaBolesti = new ArrayList<Dijagnoza>();
 	}
-	
-	private void initSimptomi() {
-		/*try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(FileIO.openFile("data/simptomii.csv")));
-			if(br == null) {
-				throw new Exception("error");
-			}
-			
-			String line = "";
-			while((line = br.readLine()) != null) {
-				if((line.startsWith("#")) || (line.length()==0)) {
-					continue;
-				}
-				
-				String [] values = line.split(";");
-				Simptomi s = new Simptomi();
-			//	Simptomi.setSimptomi(value[0]);
-				//s.setSimptomi(StringListMapper.toList(values[0]));
-				this.listaSimptoma.add(s);
-			}
-			
-			br.close();
-			
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}*/
-	}
-	
+
 	private void initBolesti() {
 		
 		try {

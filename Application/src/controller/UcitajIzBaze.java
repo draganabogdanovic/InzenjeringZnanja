@@ -68,8 +68,6 @@ public class UcitajIzBaze {
 	
 		JIPEngine engine = new JIPEngine();
 		engine.consultFile("data/program.pl");
-		//JIPQuery query = engine.openSynchronousQuery("vratiBole("+simptomi+",B)");
-		//JIPQuery query = engine.openSynchronousQuery("vratiBol(S,B)");
 		JIPQuery query = engine.openSynchronousQuery("pronadji("+simptomi+",B)");
 		JIPTerm solution;
 	
@@ -86,32 +84,7 @@ public class UcitajIzBaze {
 			this.bolesti.add(bolest);
 	
 		}
-		
 
-	//	Map<String,String> dupMap = new TreeMap<String, String>();
-		
-		//ArrayList<String> parsed = new ArrayList<String>(dupMap.values());
-		
-		//String pattern = "'.'";
-
-		// I assume this holds all the values:
-	//	List<String> uniqueList = new ArrayList<String>(dupMap.values()); 
-	/*	bolesti = new ArrayList<String>(dupMap.values()); 
-		
-		for (String src : bolesti) {
-		    String[] parts = src.split(pattern);
-		    if (parts.length == 3) {
-		        String firstValue = parts[1]; // value to left of :
-		        String secondValue = parts[2]; // value between : and -
-		        String thirdValue = parts[3]; // value after -
-		        
-		        bolesti.add(firstValue);
-		        bolesti.add(secondValue);
-		        bolesti.add(thirdValue);
-		   
-		    }
-		}*/
-	
 		
 		return bolesti;
 	
@@ -131,14 +104,12 @@ public class UcitajIzBaze {
 			bolesti = bolesti.concat(lM.getElementAt(i++) + ", ");
 		}
 
-		bolesti = bolesti.substring(0, bolesti.length() - 2);
 
+		bolesti = bolesti.substring(0, bolesti.length() - 2);
 		bolesti = bolesti.concat(" ]");
 		JIPEngine engine = new JIPEngine();//poziva jipProlog 
 		engine.consultFile("data/program.pl");
-	//	JIPQuery query = engine.openSynchronousQuery("vratiTerap(B, T)");
-		//JIPQuery query = engine.openSynchronousQuery("vratiTerapiju(B,T)");
-		JIPQuery query = engine.openSynchronousQuery("vratiTee(B,T,P)");
+		JIPQuery query = engine.openSynchronousQuery("pronadjiLekove("+bolesti+",T)");
 
 		JIPTerm solution;
 
@@ -149,13 +120,14 @@ public class UcitajIzBaze {
 
 			String lek;
 
-			lek = vars[1].toString();
+			lek = vars[0].toString();
 			
 			this.lekovi.add(lek);
 	
 		}
 			return lekovi;
 	}
+
 	
 	public ArrayList<String> vratiDodatnaIspitivanja()
 	{

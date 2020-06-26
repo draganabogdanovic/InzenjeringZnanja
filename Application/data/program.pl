@@ -119,9 +119,6 @@ disease1(cushing_syndrome, [erectile_dysfunction]).
 disease1(cushing_syndrome, [congnitive_difficulties]).
 disease1(cushing_syndrome, [headache]).
 
-
-
-
 pronadji(S,B) :- disease1(B,S).
 
 symptoms(diabetes_type_1, hunger, 88).
@@ -657,33 +654,68 @@ diagnosis(X, cushings_syndrome) :- ufc(X, M), M > 200;
                                    ct(X, high);
                                    mri(X, medium).
 
-%moze ovako iz liste 
-treatment(diabetes_type_1, [insulin_therapy, diet, exercise]).
-treatment(diabetes_type_2, [insulin_therapy, metformin, sulfonylureas, meglitinides, thiayolidinediones, diet, exercise]).
-treatment(hypoglycemia, [pure_glucose_tablets, pure_glucose_food, glucagon]).
-treatment(hyperglycemia, [diet, exercise, insulin_therapy, fluid_replacement, electrolyte_replacment]).
-treatment(diabetic_coma, [intravenous_fluids, insulin_threapy, potassium, sodium, phosphate, glucagon_injection]).
-treatment(osteporosis, [alendronate, risedronate, ibandronate, zoledronic_acid]).
-treatment(thyroid_cancer, [surgery, thyroid_hormone_drug, radioactive_iodine,radiation_therapy, chemotherapy, injecting_alcohol]).
-treatment(hyperparathyroidism, [surgery,  calcimemetics, hormone_replacement, bisphosphonates]).
-treatment(hypoparathyroidism, [calcium, vitamin_d, magnesium, thiayide_diuretics, parathyroid_hormone, diet, intravenous_infusion]).
-treatment(low_testosterone, [diet, testosterone_replacement_drug, testosterone_replacement_gel, testosterone_injections]).
-treatment(menopause, [hormone_therapy, vaginal_estrogen, antidepressants, gabapentin,clonidine]).
-treatment(addisons_disease, [hydrocortisone, prednisone, methylprednisolone, fludrocortisone_acetate, intravenous_injections]).
-treatment(cushing_syndrome, [surgery, reducing_corticosteroid_drug, radiation_therapy, mifepristone]).
+treatment1(insulin_therapy, [diabetes_type_1]).
+treatment1(insulin_therapy, [diabetes_type_2]).
+treatment1(insulin_therapy, [hyperglycemia]).
+treatment1(insulin_therapy, [diabetic_coma]).
+treatment1(diet, [diabetes_type_1]).
+treatment1(diet, [diabetes_type_2]).
+treatment1(diet, [hyperglycemia]).
+treatment1(diet, [hypoparathyroidism]).
+treatment1(diet, [low_testosterone]).
+treatment1(exercise, [diabetes_type_1]).
+treatment1(exercise, [diabetes_type_2]).
+treatment1(exercise, [hyperglycemia]).
+treatment1(metformin, [diabetes_type_2]).
+treatment1(sulfonylureas, [diabetes_type_2]).
+treatment1(meglitinides, [diabetes_type_2]).
+treatment1(thiayolidinediones, [diabetes_type_2]).
+treatment1(pure_glucose_tablets, [hypoglycemia]).
+treatment1(pure_glucose_food, [hypoglycemia]).
+treatment1(glucagon, [hypoglycemia]).
+treatment1(glucagon, [diabetic_coma]).
+treatment1(fluid_replacement, [hyperglycemia]).
+treatment1(electrolyte_replacement, [hyperglycemia]).
+treatment1(intravenous_fluids, [diabetic_coma]).
+treatment1(intravenous_fluids, [hypoparathyroidism]).
+treatment1(intravenous_fluids, [addisons_disease]).
+treatment1(potassium, [diabetic_coma]).
+treatment1(sodium, [diabetic_coma]).
+treatment1(phosphate, [diabetic_coma]).
+treatment1(alendronate, [osteporosis]).
+treatment1(risedronate, [osteporosis]).
+treatment1(ibandronate, [osteporosis]).
+treatment1(zoledronic_acid, [osteporosis]).
+treatment1(surgery, [thyroid_cancer]).
+treatment1(surgery, [hyperparathyroidism]).
+treatment1(surgery, [cushing_syndrome]).
+treatment1(thyroid_hormone_drug, [thyroid_cancer]).
+treatment1(radioactive_iodine, [thyroid_cancer]).
+treatment1(radiation_therapy, [thyroid_cancer]).
+treatment1(chemotherapy, [thyroid_cancer]).
+treatment1(injecting_alcohol, [thyroid_cancer]).
+treatment1(calcimemetics, [hyperparathyroidism]).
+treatment1(hormone_replacement, [hyperparathyroidism]).
+treatment1(bisphosphonates, [hyperparathyroidism]).
+treatment1(calcium, [hypoparathyroidism]).
+treatment1(vitamin_d, [hypoparathyroidism]).
+treatment1(magnesium, [hypoparathyroidism]).
+treatment1(thiayide_diuretics, [hypoparathyroidism]).
+treatment1(parathyroid_hormone, [hypoparathyroidism]).
+treatment1(testosterone_replacement_drug, [low_testosterone]).
+treatment1(testosterone_replacement_gel, [low_testosterone]).
+treatment1(testosterone_injections, [low_testosterone]).
+treatment1(hormone_therapy, [menopause]).
+treatment1(vaginal_estrogen, [menopause]).
+treatment1(antidepressants, [menopause]).
+treatment1(gabapentin, [menopause]).
+treatment1(clonidine, [menopause]).
+treatment1(hydrocortisone, [addisons_disease]).
+treatment1(prednisone, [addisons_disease]).
+treatment1(methylprednisolone, [addisons_disease]).
+treatment1(fludrocortisone_acetate, [addisons_disease]).
+treatment1(reducing_corticosteroid_drug, [cushing_syndrome]).
+treatment1(radiation_therapy, [cushing_syndrome]).
+treatment1(mifepristone, [cushing_syndrome]).
 
-treatment1(insulin_therapy, [diabetes_type_1, diabetes_type_2, hyperglycemia, diabetic_coma]).
-treatment1(diet, [diabetes_type_1, diabetes_type_2, hyperglycemia, hypoparathyroidism, low_testosterone]).
-treatment1(exercise, [diabetes_type_1, diabetes_type_2, hyperglycemia]).
-
-vratiBolesti(Simp, Bolest, N) :- disease(Bolest, Lista).
-
-vrati(S,L) :- findall([S], disease(B,S),L1), sort(L1,L).
-
-vratiBol(S,L) :- findall([B], simptomi(S,B,V),L1), sort(L1, L).
-
-vratiBolest(S,B,V) :- disease(B,V).
-vratiTerapiju(B,L2) :- findall([T], therapy(B,T,P), L1), sort(L1, L2).
-vratiT(B,L) :- findall([T], treatment(B,T),L1), sort(L1,L).
-
-vratiTee(B,T,P) :- treatment1(T,L).
+pronadjiLekove(B,T) :- treatment1(T,B).

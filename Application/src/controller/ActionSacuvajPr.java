@@ -8,8 +8,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 import app.MainFrame;
 import model.Karton;
-import model.Pacijent;
-import model.PacijentCvor;
 import model.PregledPacijenta;
 
 public class ActionSacuvajPr implements ActionListener {

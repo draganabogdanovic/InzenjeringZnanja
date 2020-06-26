@@ -92,7 +92,8 @@ public class PostaviDijagnozuCase extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				
+				MainFrame.getInstance().setTerapijaCase(new PostaviTerapijuCase());
+				MainFrame.getInstance().getTerapijaCase().setVisible(true);
 			}
 			
 			

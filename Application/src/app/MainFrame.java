@@ -26,11 +26,13 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
+import cbr.Baza;
 import controller.Close;
 import controller.DijalogZaBolesti;
 import controller.PostaviDijagnozu;
 import controller.PostaviDijagnozuCase;
 import controller.PostaviTerapiju;
+import controller.PostaviTerapijuCase;
 import controller.UcitajIzBaze;
 import model.Pacijent;
 import model.PacijentCvor;
@@ -43,7 +45,6 @@ import view.NodeTreeCellRenderer;
 import view.NoviCasePregled;
 import view.NoviPregled;
 import view.PacijentView;
-import cbr.Baza;
 
 
 public class MainFrame extends JFrame{
@@ -74,6 +75,7 @@ public class MainFrame extends JFrame{
 	private PostaviTerapiju postaviTerapiju;
 	private Baza bazaCase;
 	private Collection<RetrievalResult> ret;
+	private PostaviTerapijuCase terapijaCase;
 	
 	public MainFrame() {
 		Toolkit kit = Toolkit.getDefaultToolkit();
@@ -383,6 +385,14 @@ public class MainFrame extends JFrame{
 
 	public void setDijagnozaCase(PostaviDijagnozuCase dijagnozaCase) {
 		this.dijagnozaCase = dijagnozaCase;
+	}
+
+	public PostaviTerapijuCase getTerapijaCase() {
+		return terapijaCase;
+	}
+
+	public void setTerapijaCase(PostaviTerapijuCase terapijaCase) {
+		this.terapijaCase = terapijaCase;
 	}
 	
 }

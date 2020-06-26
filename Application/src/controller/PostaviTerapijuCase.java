@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -23,26 +21,7 @@ import javax.swing.ListSelectionModel;
 import app.MainFrame;
 import model.Rezim;
 
-public class PostaviTerapiju extends JDialog{
-
-	public DefaultListModel<String> getDlmIzabranaIsp() {
-		return dlmIzabranaIsp;
-	}
-
-
-	public void setDlmIzabranaIsp(DefaultListModel<String> dlmIzabranaIsp) {
-		this.dlmIzabranaIsp = dlmIzabranaIsp;
-	}
-
-
-	public DefaultListModel<String> getDlmIzabraniLekovi() {
-		return dlmIzabraniLekovi;
-	}
-
-
-	public void setDlmIzabraniLekovi(DefaultListModel<String> dlmIzabraniLekovi) {
-		this.dlmIzabraniLekovi = dlmIzabraniLekovi;
-	}
+public class PostaviTerapijuCase extends JDialog {
 
 	/**
 	 * 
@@ -72,7 +51,7 @@ public class PostaviTerapiju extends JDialog{
 	private JPanel pane2 = new JPanel();
 	private JButton btnSacuvaj;
 	
-	public PostaviTerapiju() {
+	public PostaviTerapijuCase() {
 		
 		init();
 		constructGUI();
@@ -108,20 +87,19 @@ public class PostaviTerapiju extends JDialog{
 		lekovi.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listScL = new JScrollPane();
 		listScL.setViewportView(lekovi);
-		MainFrame.getInstance().setRezim(Rezim.RBR);
-		ArrayList<String> listaLekova = MainFrame.getInstance().getBaza().vratiLekove();
-		ubaciLekove(listaLekova);
+		MainFrame.getInstance().setRezim(Rezim.CBR);
+		
 		
 		lekovi.addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				if(arg0.getClickCount() == 1) {
+				/*if(arg0.getClickCount() == 1) {
 					
 					dodajLekove(getSviLekovi().getSelectedValue());
 					
-				}
+				}*/
 			}
 
 			@Override
@@ -156,9 +134,7 @@ public class PostaviTerapiju extends JDialog{
 		dodatnaIspitivanja.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listScDI = new JScrollPane();
 		listScDI.setViewportView(dodatnaIspitivanja);
-		MainFrame.getInstance().setRezim(Rezim.RBR);
-		ArrayList<String> dodatnaIsp = MainFrame.getInstance().getBaza().vratiDodatnaIspitivanja();
-		ubaciDodatnaIsp(dodatnaIsp);
+		MainFrame.getInstance().setRezim(Rezim.CBR);
 		
 		izabraniLekovi = new JList<String>(dlmIzabraniLekovi);
 		izabraniLekovi.setLayoutOrientation(JList.VERTICAL);
@@ -177,11 +153,11 @@ public class PostaviTerapiju extends JDialog{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				if(e.getClickCount() == 1) {
+			/*	if(e.getClickCount() == 1) {
 					
 					dodajIspitivanja(getIspitivanja().getSelectedValue());
 					
-				}
+				}*/
 			}
 
 			@Override
@@ -214,25 +190,6 @@ public class PostaviTerapiju extends JDialog{
 		btnSacuvaj = new JButton("Sacuvaj");
 		btnSacuvaj.addActionListener(new ActionSacuvajPr());
 
-			/*@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				SacuvajPregled dataP=new SacuvajPregled();
-				dataP.listaSimptoma=izabraniSimptomi;
-				dataP.datumPregleda=datumPregleda;
-				dataP.listaLekova= lekovi;
-				dataP.dodatnaIsp= dodatnaIspitivanja;
-				try{
-					ResourceManager.save(dataP,  "PREGLEDI.txt");
-				}catch(Exception ex){
-					System.out.println("Nece da se sacuva"+ex.getMessage());
-				}
-				
-				System.out.println("Uspesno sacuvan pregled!");
-			}
-			*/
-			
-		//});
 		
 	}
 	
@@ -319,4 +276,5 @@ public class PostaviTerapiju extends JDialog{
 	}
 	
 }
+
 
