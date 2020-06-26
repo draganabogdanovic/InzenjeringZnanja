@@ -6,7 +6,8 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import model.Terapija;
+import cbr.Lekovi;
+import cbr.StringListMapper;
 import ucm.gaia.jcolibri.cbrcore.CBRCase;
 import ucm.gaia.jcolibri.cbrcore.CaseBaseFilter;
 import ucm.gaia.jcolibri.cbrcore.Connector;
@@ -26,7 +27,7 @@ public class CsvConnectorTerapija implements Connector
 		{
 			//BufferedReader br = new BufferedReader(new InputStreamReader(FileIO.openFile("data/cases_therapy.csv")));
 			
-			BufferedReader br = new BufferedReader(new InputStreamReader(FileIO.openFile("data/cases_therapy_1.csv")));
+			BufferedReader br = new BufferedReader(new InputStreamReader(FileIO.openFile("data/terapija.csv")));
 			
 			if (br == null)
 				throw new Exception("Error opening file");
@@ -40,11 +41,12 @@ public class CsvConnectorTerapija implements Connector
 
 				CBRCase cbrCase = new CBRCase();
 
-				Terapija t = new Terapija(line);
-
+				//Terapija t = new Terapija(line);
+				Lekovi l = new Lekovi();
+				l.setLek(values[0]);
+				l.setBolesti(StringListMapper.toList(values[1]));
 				
-				
-				cbrCase.setDescription(t);
+				cbrCase.setDescription(l);
 				cases.add(cbrCase);
 			}
 			br.close();

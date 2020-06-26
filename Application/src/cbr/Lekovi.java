@@ -53,7 +53,7 @@ public class Lekovi implements CaseComponent, Serializable{
 	    public String toString() {
 	        String retVal = StringListMapper.toString(bolesti);
 	        if (lek != null)
-	            retVal += "->" + bolesti;
+	            retVal += "->" + lek;
 	        return retVal;
 	    }
 

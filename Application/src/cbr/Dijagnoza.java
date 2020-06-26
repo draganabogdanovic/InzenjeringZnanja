@@ -8,6 +8,10 @@ import ucm.gaia.jcolibri.cbrcore.CaseComponent;
 
 public class Dijagnoza implements CaseComponent, Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String dij;
 	private List<String> simptomi;
 	

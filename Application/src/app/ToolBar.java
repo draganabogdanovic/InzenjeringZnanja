@@ -5,8 +5,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import controller.AddNodeAction;
 import view.NoviCasePregled;
@@ -43,8 +45,19 @@ public class ToolBar extends JToolBar {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.getInstance().setNoviPregled(new NoviPregled());
-				MainFrame.getInstance().getNoviPregled().setVisible(true);
+				
+				DefaultMutableTreeNode selektovan = (DefaultMutableTreeNode) MainFrame.getInstance().getTree().getLastSelectedPathComponent();
+
+				if (selektovan == null)
+				{
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Dodajte pacijenta!","",
+							JOptionPane.WARNING_MESSAGE);
+					return;
+				} else {
+				
+					MainFrame.getInstance().setNoviPregled(new NoviPregled());
+					MainFrame.getInstance().getNoviPregled().setVisible(true);
+				}
 			
 			}
 		});
@@ -60,8 +73,18 @@ public class ToolBar extends JToolBar {
 
 			public void  actionPerformed(ActionEvent arg0) {
 				
-				MainFrame.getInstance().setNoviCasePregled(new NoviCasePregled());
-				MainFrame.getInstance().getNoviCasePregled().setVisible(true);
+				DefaultMutableTreeNode selektovan = (DefaultMutableTreeNode) MainFrame.getInstance().getTree().getLastSelectedPathComponent();
+
+				if (selektovan == null)
+				{
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Dodajte pacijenta!","",
+							JOptionPane.WARNING_MESSAGE);
+					return;
+				} else {
+				
+					MainFrame.getInstance().setNoviCasePregled(new NoviCasePregled());
+					MainFrame.getInstance().getNoviCasePregled().setVisible(true);
+				}
 				
 			}
 		});

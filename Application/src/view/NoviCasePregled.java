@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 import javax.swing.DefaultListModel;
@@ -21,8 +22,10 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
 import app.MainFrame;
+import cbrApp.CbrApp;
 import controller.PostaviDijagnozuCase;
 import model.Rezim;
+import ucm.gaia.jcolibri.method.retrieve.RetrievalResult;
 
 public class NoviCasePregled extends JDialog{
 
@@ -43,6 +46,9 @@ public class NoviCasePregled extends JDialog{
 	private JPanel pane = new JPanel();
 	private JPanel pane1 = new JPanel();
 	private JButton btnDalje;
+	private ArrayList<String> listaSim = new ArrayList<>();
+	private Collection<RetrievalResult> listaSimp = new ArrayList<RetrievalResult>();
+
 
 	
 	public NoviCasePregled() {
@@ -75,10 +81,15 @@ public class NoviCasePregled extends JDialog{
 		sviSimptomi.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listSc = new JScrollPane();
 		MainFrame.getInstance().setRezim(Rezim.CBR);
+		
 		ArrayList<String> listaSimp = MainFrame.getInstance().getBaza().vratiSimptome();
 		ubaciSimptome(listaSimp);
-
 		listSc.setViewportView(sviSimptomi);
+		
+		CbrApp app = new CbrApp();
+		app.run(listaSim);
+		vratiSimptome();
+
 
 	
 		
@@ -194,6 +205,15 @@ public class NoviCasePregled extends JDialog{
 		dlmIzabraniSimptomi.addElement(s);
 		return true;
 		
+	}
+	
+	public void vratiSimptome() {
+		dlmSviSimptomi = new DefaultListModel<String>();
+		
+		for (RetrievalResult nse : listaSimp)
+			dlmSviSimptomi.addElement(nse.get_case().getDescription() + "=>" + nse.getEval());
+	
+		sviSimptomi = new JList<String>(dlmSviSimptomi);
 	}
 }
 

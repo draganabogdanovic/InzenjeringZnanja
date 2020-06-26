@@ -11,6 +11,7 @@ import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -19,19 +20,17 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import com.toedter.calendar.JCalendar;
 
 import app.MainFrame;
-import controller.PacijentController;
 import controller.ResourceManager;
 import controller.SacuvajPacijenta;
 import model.Karton;
 import model.Pacijent;
+import model.Pol;
 
 public class PacijentView extends JPanel{
 
 	private static final long serialVersionUID = 1884063759494311563L;
 	
 	private Pacijent pacijent;
-	private PacijentController pacijentCon;
-	
 	
 	private JPanel pnlContent;
 	private JLabel lblIme;
@@ -52,6 +51,7 @@ public class PacijentView extends JPanel{
 	private JButton sacuvaj;
 	private JRadioButton male;
 	private JRadioButton female;
+	private Pol p;
 
 	
 	public PacijentView(Pacijent pacijent){
@@ -172,43 +172,40 @@ public class PacijentView extends JPanel{
 	
 	public void setPacijent(Pacijent pacijent) {
 		this.pacijent = pacijent;
-
-		pacijentCon = null;
-		refreshView();
-	}
-	
-	public void refreshView() {
-		tfIme.setText(pacijent.getIme());
-		tfPrezime.setText(pacijent.getPrezime());
-		tfJMBG.setText(pacijent.getJMBG());
-	
 	}
 	
 	private void ok() {
-		
-		/*if (pacijentCon == null) {
-			pacijentCon = new PacijentController(pacijent,this);
-		}
-		String Ime = tfIme.getText().trim();
-		String Prezime = tfPrezime.getText().trim();
-		String JMBG = tfJMBG.getText().trim();
-		Date Datum = kal.getDate();
-		
-		pacijentCon.updatesPacijent(Ime, Prezime, JMBG, Datum);
-	*/
-	
+
 		String Ime = tfIme.getText().trim();
 		String Prezime = tfPrezime.getText().trim();
 		String JMBG = tfJMBG.getText().trim();
 		Date Datum = kal.getDate();
 		
 		Pacijent pac = new Pacijent(Ime, Prezime, JMBG, Datum);
-		DefaultMutableTreeNode element = (DefaultMutableTreeNode) MainFrame.getInstance().getModel().getRoot();
+		
+		if(Ime.equals("") || Prezime.equals("") || JMBG.equals("")) {
+			
+			JOptionPane.showMessageDialog(MainFrame.getInstance(), "Popunite polja!", "",
+					JOptionPane.WARNING_MESSAGE);
+		} else {
+			
+			if(male.isSelected()) {
+				
+				p = Pol.MUSKO;
+				
+			} else {
+				
+				p = Pol.ZENSKO;
+			}
+			
+			DefaultMutableTreeNode element = (DefaultMutableTreeNode) MainFrame.getInstance().getModel().getRoot();
 
-		MainFrame.getInstance().getModel().insertNodeInto(new DefaultMutableTreeNode(pac), element,
-				element.getChildCount());
+			MainFrame.getInstance().getModel().insertNodeInto(new DefaultMutableTreeNode(pac), element,
+					element.getChildCount());
 
-		Karton.getInstance().dodajPacijenta(pac);
+			Karton.getInstance().dodajPacijenta(pac);
+		}
+		
 	}
 
 	

@@ -7,6 +7,7 @@ import java.awt.Insets;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -18,7 +19,10 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
 import app.MainFrame;
+import cbrApp.CbrTerapija;
+import cbrApp.CbrTestiranje;
 import model.Rezim;
+import ucm.gaia.jcolibri.method.retrieve.RetrievalResult;
 
 public class PostaviTerapijuCase extends JDialog {
 
@@ -47,6 +51,8 @@ public class PostaviTerapijuCase extends JDialog {
 	private JPanel pane1 = new JPanel();
 	private JPanel pane2 = new JPanel();
 	private JButton btnSacuvaj;
+	private ArrayList<String> bolesti = new ArrayList<String>();
+	private Collection<RetrievalResult> listaL = new ArrayList<RetrievalResult>();
 	
 	public PostaviTerapijuCase() {
 		
@@ -86,7 +92,9 @@ public class PostaviTerapijuCase extends JDialog {
 		listScL.setViewportView(lekovi);
 		MainFrame.getInstance().setRezim(Rezim.CBR);
 		
-		
+		CbrTerapija appT = new CbrTerapija();
+		appT.main(bolesti);
+		ubaciTerapiju();
 		lekovi.addMouseListener(new MouseListener() {
 
 			@Override
@@ -132,6 +140,7 @@ public class PostaviTerapijuCase extends JDialog {
 		listScDI = new JScrollPane();
 		listScDI.setViewportView(dodatnaIspitivanja);
 		MainFrame.getInstance().setRezim(Rezim.CBR);
+		
 		
 		izabraniLekovi = new JList<String>(dlmIzabraniLekovi);
 		izabraniLekovi.setLayoutOrientation(JList.VERTICAL);
@@ -272,6 +281,15 @@ public class PostaviTerapijuCase extends JDialog {
 		this.dodatnaIspitivanja = dodatnaIspitivanja;
 	}
 	
+	public void ubaciTerapiju() {
+		
+		dlmLekovi = new DefaultListModel<String>();
+		
+		for (RetrievalResult nse : listaL)
+			dlmLekovi.addElement(nse.get_case().getDescription() + "->" + nse.getEval());
+		
+		lekovi = new JList<String>(dlmLekovi);
+	}
 }
 
 
