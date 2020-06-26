@@ -80,25 +80,19 @@ public class NoviCasePregled extends JDialog{
 		sviSimptomi.setLayoutOrientation(JList.VERTICAL);
 		sviSimptomi.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listSc = new JScrollPane();
+		listSc.setViewportView(sviSimptomi);
 		MainFrame.getInstance().setRezim(Rezim.CBR);
 		
 		ArrayList<String> listaSimp = MainFrame.getInstance().getBaza().vratiSimptome();
 		ubaciSimptome(listaSimp);
-		listSc.setViewportView(sviSimptomi);
-		
-		CbrApp app = new CbrApp();
-		app.run(listaSim);
-		vratiSimptome();
 
-
-	
 		
 		sviSimptomi.addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				if(arg0.getClickCount() == 1) {
+				if(arg0.getClickCount() == 1){
 					
 					dodajSimptom(getSviSimptomi().getSelectedValue());
 					
@@ -132,6 +126,8 @@ public class NoviCasePregled extends JDialog{
 
 			
 		});
+		
+		
 
 		izabraniSimptomi = new JList<String>(dlmIzabraniSimptomi);
 		izabraniSimptomi.setLayoutOrientation(JList.VERTICAL);
@@ -150,6 +146,10 @@ public class NoviCasePregled extends JDialog{
 			}
 			
 		});
+		
+		CbrApp app = new CbrApp();
+		app.run(listaSim);
+		vratiSimptome();
 	}
 	
 	private void constructGUI() {
@@ -208,12 +208,10 @@ public class NoviCasePregled extends JDialog{
 	}
 	
 	public void vratiSimptome() {
-		dlmSviSimptomi = new DefaultListModel<String>();
-		
+	
 		for (RetrievalResult nse : listaSimp)
 			dlmSviSimptomi.addElement(nse.get_case().getDescription() + "=>" + nse.getEval());
-	
-		sviSimptomi = new JList<String>(dlmSviSimptomi);
+
 	}
 }
 
