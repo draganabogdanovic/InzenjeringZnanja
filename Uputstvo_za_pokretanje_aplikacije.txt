@@ -1,0 +1,2 @@
+Dodati projekat u eclipse i run-ovati aplikaciju preko MainClass.java klase, koja se nalazi u src->app paketu.
+
