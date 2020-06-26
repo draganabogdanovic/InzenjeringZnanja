@@ -1,11 +1,12 @@
 package cbr;
 
+import java.io.Serializable;
 import java.util.List;
 
 import ucm.gaia.jcolibri.cbrcore.Attribute;
 import ucm.gaia.jcolibri.cbrcore.CaseComponent;
 
-public class Dijagnoza implements CaseComponent{
+public class Dijagnoza implements CaseComponent, Serializable{
 
 	private String dij;
 	private List<String> simptomi;
@@ -44,10 +45,10 @@ public class Dijagnoza implements CaseComponent{
 	}
 
 	 @Override
-	    public String toString() {
-	        String retVal = StringListMapper.toString(simptomi);
-	        if (dij != null && dij.length() > 0)
-	            retVal += "=>" + dij;
-	        return retVal;
-	    }
+	 public String toString() {
+		 String retVal = StringListMapper.toString(simptomi);
+	       if (dij != null)
+	           retVal += "->" + dij;
+	       return retVal;
+     }
 }

@@ -50,7 +50,6 @@ public class CbrApp implements StandardCBRApplication {
 
 	public void cycle(CBRQuery query) throws ExecutionException {
 		
-		//MainFrame.getInstance().getMapaBolesti();
 		Collection<RetrievalResult> eval = NNScoringMethod.evaluateSimilarity(_caseBase.getCases(), query, simConfig);
 		eval = SelectCases.selectTopKRR(eval, 70);
 		//System.out.println("Retrieved cases:");

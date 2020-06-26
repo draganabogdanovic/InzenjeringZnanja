@@ -24,7 +24,6 @@ import controller.ResourceManager;
 import controller.SacuvajPacijenta;
 import model.Karton;
 import model.Pacijent;
-import cbr.Baza;
 
 public class PacijentView extends JPanel{
 
@@ -50,7 +49,6 @@ public class PacijentView extends JPanel{
 	private JPanel pnlOK;
 	private JButton btnDodaj;
 	private JButton btnNE;
-	private JButton b;
 	private JButton sacuvaj;
 	private JRadioButton male;
 	private JRadioButton female;
@@ -204,7 +202,7 @@ public class PacijentView extends JPanel{
 		String JMBG = tfJMBG.getText().trim();
 		Date Datum = kal.getDate();
 		
-		Pacijent pac = new Pacijent(Ime, Prezime, JMBG);
+		Pacijent pac = new Pacijent(Ime, Prezime, JMBG, Datum);
 		DefaultMutableTreeNode element = (DefaultMutableTreeNode) MainFrame.getInstance().getModel().getRoot();
 
 		MainFrame.getInstance().getModel().insertNodeInto(new DefaultMutableTreeNode(pac), element,

@@ -4,12 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -56,7 +53,6 @@ public class PostaviTerapiju extends JDialog{
 	private JList<String> izabraniLekovi;
 	private JList<String> dodatnaIspitivanja;
 	private JList<String> izabranaIspitivanja;
-	private JList<String> izabraniSimptomi;
 	private DefaultListModel<String> dlmLekovi;
 	private DefaultListModel<String> dlmIzabraniLekovi;
 	private DefaultListModel<String> dlmDodatnaIsp;
@@ -65,7 +61,6 @@ public class PostaviTerapiju extends JDialog{
 	private JScrollPane listScDI;
 	private JScrollPane listScIL;
 	private JScrollPane listScIDI;
-	private Date datumPregleda = new Date();
 	private JPanel pnlContent = new JPanel();
 	private JPanel pane = new JPanel();
 	private JPanel pane1 = new JPanel();

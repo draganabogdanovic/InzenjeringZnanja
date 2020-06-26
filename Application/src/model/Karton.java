@@ -76,7 +76,7 @@ public class Karton implements Serializable {
 		this.listaPacijenata = listaPacijenata;
 	}
 
-	public boolean add(Pacijent arg0)
+/*	public boolean add(Pacijent arg0)
 	{
 		return listaPacijenata.add(arg0);
 	}
@@ -242,7 +242,7 @@ public class Karton implements Serializable {
 	{
 		listaPacijenata.trimToSize();
 	}
-
+*/
 	public ArrayList<PregledPacijenta> getListaPregleda() {
 		return listaPregleda;
 	}

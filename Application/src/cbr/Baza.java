@@ -22,7 +22,7 @@ public class Baza implements Serializable{
 	private ArrayList<Pacijent> pacijenti;
 	private ArrayList<String> listaSimptoma;
 	private ArrayList<Dijagnoza> listaBolesti;
-	private Simptomi simptomi;
+	private ArrayList<Lekovi> listaLekova;
 	private Pacijent pacijent;
 	
 	public static Baza getInstance() {
@@ -35,12 +35,14 @@ public class Baza implements Serializable{
 	private Baza() {
 		init();
 		initBolesti();
+		initLekovi();
 	}
 	
 	private void init() {
 		this.pacijenti = new ArrayList<Pacijent>();
 		this.listaSimptoma = new ArrayList<String>();
 		this.listaBolesti = new ArrayList<Dijagnoza>();
+		this.listaLekova = new ArrayList<Lekovi>();
 	}
 
 	private void initBolesti() {
@@ -71,6 +73,10 @@ public class Baza implements Serializable{
 			e.printStackTrace();
 		}
 	}
+	
+	private void initLekovi() {
+		
+	}
 
 	public ArrayList<String> getListaSimptoma() {
 		return listaSimptoma;
@@ -93,13 +99,21 @@ public class Baza implements Serializable{
 		DefaultMutableTreeNode element = (DefaultMutableTreeNode) MainFrame.getInstance().getModel()
 				.getRoot();
 
-		Pacijent noviPac = new Pacijent(pacijent.getIme(), pacijent.getPrezime(), pacijent.getJMBG());
+		Pacijent noviPac = new Pacijent(pacijent.getIme(), pacijent.getPrezime(), pacijent.getJMBG(), pacijent.getDatumRodjenja());
 
 		MainFrame.getInstance().getModel().insertNodeInto(new DefaultMutableTreeNode(noviPac), element,
 				element.getChildCount());
 
 		Karton.getInstance().dodajPacijenta(noviPac);
 		
+	}
+
+	public ArrayList<Lekovi> getListaLekova() {
+		return listaLekova;
+	}
+
+	public void setListaLekova(ArrayList<Lekovi> listaLekova) {
+		this.listaLekova = listaLekova;
 	}
 }
 

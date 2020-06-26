@@ -74,7 +74,6 @@ public class MainFrame extends JFrame{
 	private PostaviDijagnozuCase dijagnozaCase;
 	private PostaviTerapiju postaviTerapiju;
 	private Baza bazaCase;
-	private Collection<RetrievalResult> ret;
 	private PostaviTerapijuCase terapijaCase;
 	
 	public MainFrame() {
@@ -188,72 +187,7 @@ public class MainFrame extends JFrame{
 						showView.add(showViewKarton1);
 						showView.revalidate();
 						showView.repaint();
-					} /*else if (((DefaultMutableTreeNode) arg0
-							.getNewLeadSelectionPath().getLastPathComponent())
-							.getUserObject() instanceof PregledCvor) {
-							//if(MainFrame.getInstance().getRezim() == rezim.RBR) {
-								PregledCvor selectedNode = (PregledCvor) ((DefaultMutableTreeNode) arg0
-										.getNewLeadSelectionPath()
-										.getLastPathComponent()).getUserObject();
-								PregledPacijenta product = selectedNode.getPregled();
-								PregledPacijentaView productView = new PregledPacijentaView(
-										product);
-		
-								showViewKarton1.setVisible(false);
-								showViewPregled1.setVisible(false);
-		
-								showViewPacijent1.removeAll();
-								showViewPacijent1.add(productView);
-								showViewPacijent1.setVisible(true);
-		
-								showView.add(showViewPacijent1);
-								showView.setVisible(true);
-								showView.revalidate();
-								showView.repaint();
-							} else if (((DefaultMutableTreeNode) arg0
-										.getNewLeadSelectionPath().getLastPathComponent())
-										.getUserObject() instanceof PacijentCaseCvor) {
-									PacijentCaseCvor selektovan = (PacijentCaseCvor) ((DefaultMutableTreeNode) arg0
-											.getNewLeadSelectionPath()
-											.getLastPathComponent()).getUserObject();
-									Pacijent karton = selektovan
-											.getKarton();
-									PacijentView pacijentView = new PacijentView(
-											karton);
-									showViewKarton1.removeAll();
-									showViewPacijent1.setVisible(false);
-									showViewPregled1.setVisible(false);
-									showViewKarton1.add(pacijentView);
-									showViewKarton1.setVisible(true);
-									showView.removeAll();
-									showView.add(showViewKarton1);
-									showView.revalidate();
-									showView.repaint();
-								}*
-								/*else if (((DefaultMutableTreeNode) arg0
-									.getNewLeadSelectionPath().getLastPathComponent())
-									.getUserObject() instanceof PregledCaseCvor){
-								PregledCaseCvor selectedNode = (PregledCaseCvor) ((DefaultMutableTreeNode) arg0
-										.getNewLeadSelectionPath()
-										.getLastPathComponent()).getUserObject();
-								PregledPacijenta product = selectedNode.getPregled();
-								PregledCasePacijentaView productView = new PregledCasePacijentaView(
-										product);
-		
-								showViewKarton1.setVisible(false);
-								showViewPregled1.setVisible(false);
-		
-								showViewPacijent1.removeAll();
-								showViewPacijent1.add(productView);
-								showViewPacijent1.setVisible(true);
-		
-								showView.add(showViewPacijent1);
-								showView.setVisible(true);
-								showView.revalidate();
-								showView.repaint();
-						}*/
-							
-					//}
+					}
 					
 				}
 			}
@@ -294,7 +228,7 @@ public class MainFrame extends JFrame{
 	}
 
 	
-	public JPanel getRightPanel()
+	/*public JPanel getRightPanel()
 	{
 		return rightPanel;
 	}
@@ -302,7 +236,7 @@ public class MainFrame extends JFrame{
 	public void setRightPanel(JPanel rightPanel)
 	{
 		this.rightPanel = rightPanel;
-	}
+	}*/
 	
 	public Pregled getBolest()
 	{
@@ -371,13 +305,6 @@ public class MainFrame extends JFrame{
 		this.bazaCase = bazaCase;
 	}
 
-	public Collection<RetrievalResult> getRet() {
-		return ret;
-	}
-
-	public void setRet(Collection<RetrievalResult> ret) {
-		this.ret = ret;
-	}
 
 	public PostaviDijagnozuCase getDijagnozaCase() {
 		return dijagnozaCase;

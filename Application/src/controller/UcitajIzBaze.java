@@ -132,9 +132,22 @@ public class UcitajIzBaze {
 	public ArrayList<String> vratiDodatnaIspitivanja()
 	{
 		
+		String bolesti = "[";
+
+		ListModel<String> lM = MainFrame.getInstance().getDijagnoza().getIzabraneBolesti().getModel();
+
+		for (int i = 0; i < lM.getSize();)
+		{
+			bolesti = bolesti.concat(lM.getElementAt(i++) + ", ");
+		}
+
+
+		bolesti = bolesti.substring(0, bolesti.length() - 2);
+		bolesti = bolesti.concat(" ]");
+		
 		JIPEngine engine = new JIPEngine();//poziva jipProlog 
 		engine.consultFile("data/program.pl");
-		JIPQuery query = engine.openSynchronousQuery("test(B, T, P)");
+		JIPQuery query = engine.openSynchronousQuery("pronadjiIspitivanja("+bolesti+",D)");
 
 		JIPTerm solution;
 
@@ -145,7 +158,7 @@ public class UcitajIzBaze {
 
 			String dodatnaIsp;
 
-			dodatnaIsp = vars[1].toString();
+			dodatnaIsp = vars[0].toString();
 			
 			this.ispitivanja.add(dodatnaIsp);
 	
@@ -165,26 +178,5 @@ public class UcitajIzBaze {
 	}
 
 	
-	public ArrayList<String> dajSimptome(String izabBol)
-	{
-		// TODO Auto-generated method stub
-		
-		ArrayList<String> lista = new ArrayList<>();
-		JIPEngine engine = new JIPEngine();
-		engine.consultFile("data/program.pl");
-		JIPQuery query = engine.openSynchronousQuery("symptom_disease(" + izabBol + ", X).");
-
-		JIPTerm solution;
-
-		while ((solution = query.nextSolution()) != null)
-		{
-			JIPVariable[] vars = solution.getVariables();
-			lista.add(vars[0].toString());
-
-		}
-
-		return lista;
-
-	}
 }
 

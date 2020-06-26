@@ -3,12 +3,9 @@ package cbrApp;
 import java.util.Collection;
 import java.util.List;
 
-import app.MainFrame;
 import cbr.Dijagnoza;
-import connector.CsvConnectoreTestiranje;
-import model.Testiranje;
+import connector.CsvConnectorTestiranje;
 import similarity.ListTableSimilarity;
-import similarity.TableSimilarity;
 import ucm.gaia.jcolibri.casebase.LinealCaseBase;
 import ucm.gaia.jcolibri.cbraplications.StandardCBRApplication;
 import ucm.gaia.jcolibri.cbrcore.Attribute;
@@ -21,7 +18,6 @@ import ucm.gaia.jcolibri.method.retrieve.RetrievalResult;
 import ucm.gaia.jcolibri.method.retrieve.NNretrieval.NNConfig;
 import ucm.gaia.jcolibri.method.retrieve.NNretrieval.NNScoringMethod;
 import ucm.gaia.jcolibri.method.retrieve.NNretrieval.similarity.global.Average;
-import ucm.gaia.jcolibri.method.retrieve.NNretrieval.similarity.local.Equal;
 import ucm.gaia.jcolibri.method.retrieve.selection.SelectCases;
 
 public class CbrTestiranje implements StandardCBRApplication{
@@ -35,7 +31,7 @@ public class CbrTestiranje implements StandardCBRApplication{
 	public void configure() throws ExecutionException {
 		// TODO Auto-generated method stub
 		
-		_connector = new CsvConnectoreTestiranje();
+		_connector = new CsvConnectorTestiranje();
 
 		_caseBase = new LinealCaseBase(); // Create a Lineal case base for in-memory organization
 
@@ -52,7 +48,6 @@ public class CbrTestiranje implements StandardCBRApplication{
 		
 		Collection<RetrievalResult> eval = NNScoringMethod.evaluateSimilarity(_caseBase.getCases(), query, simConfig);
 		eval = SelectCases.selectTopKRR(eval, 4);
-		MainFrame.getInstance().setRet(eval);
 		System.out.print("\nVracene bolesti za odredjene simptome:\n\n");
 		for (RetrievalResult nse : eval)
 			System.out.println(nse.get_case().getDescription());

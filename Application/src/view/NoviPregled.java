@@ -27,14 +27,6 @@ import model.Rezim;
 
 public class NoviPregled extends JDialog{
 
-	public DefaultListModel<String> getDlmIzabraniSimptomi() {
-		return dlmIzabraniSimptomi;
-	}
-
-	public void setDlmIzabraniSimptomi(DefaultListModel<String> dlmIzabraniSimptomi) {
-		this.dlmIzabraniSimptomi = dlmIzabraniSimptomi;
-	}
-
 	/**
 	 * 
 	 */
@@ -61,14 +53,6 @@ public class NoviPregled extends JDialog{
 		
 		init();
 		constructGUI();
-	}
-	
-	public JList<String> getIzabraniSimptomi() {
-		return izabraniSimptomi;
-	}
-
-	public void setIzabraniSimptomi(JList<String> izabraniSimptomi) {
-		this.izabraniSimptomi = izabraniSimptomi;
 	}
 
 	private void init() {
@@ -209,6 +193,14 @@ public class NoviPregled extends JDialog{
 	{
 		this.sviSimptomi = sviSimptomi;
 	}
+	
+	public JList<String> getIzabraniSimptomi() {
+		return izabraniSimptomi;
+	}
+
+	public void setIzabraniSimptomi(JList<String> izabraniSimptomi) {
+		this.izabraniSimptomi = izabraniSimptomi;
+	}
 
 	public Pacijent getPacijent() {
 		return pacijent;
@@ -216,6 +208,14 @@ public class NoviPregled extends JDialog{
 
 	public void setPacijent(Pacijent pacijent) {
 		this.pacijent = pacijent;
+	}
+	
+	public DefaultListModel<String> getDlmIzabraniSimptomi() {
+		return dlmIzabraniSimptomi;
+	}
+
+	public void setDlmIzabraniSimptomi(DefaultListModel<String> dlmIzabraniSimptomi) {
+		this.dlmIzabraniSimptomi = dlmIzabraniSimptomi;
 	}
 }
 

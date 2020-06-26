@@ -21,7 +21,6 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
 import app.MainFrame;
-import cbr.Simptomi;
 import cbrApp.CbrTestiranje;
 import model.Rezim;
 import ucm.gaia.jcolibri.method.retrieve.RetrievalResult;
@@ -172,7 +171,7 @@ public class PostaviDijagnozuCase extends JDialog{
 		dlmSveBolesti = new DefaultListModel<String>();
 		
 		for (RetrievalResult nse : listaB)
-			dlmSveBolesti.addElement(nse.get_case().getDescription() + "=>" + nse.getEval());	
+			dlmSveBolesti.addElement(nse.get_case().getDescription() + "->" + nse.getEval());	
 		sveBolesti = new JList<String>(dlmSveBolesti);
 	}
 

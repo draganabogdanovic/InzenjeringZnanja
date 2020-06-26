@@ -40,12 +40,13 @@ public class Pacijent implements Serializable {
 		this.children.add(pregled);
 	}
 	
-	public Pacijent(String ime, String prezime, String JMBG) {
+	public Pacijent(String ime, String prezime, String JMBG, Date datumRodjenja) {
 		// TODO Auto-generated constructor stub
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
 		this.JMBG = JMBG;
+		this.datumRodjenja = datumRodjenja;
 	}
 	
 	public Pacijent() {
@@ -82,7 +83,7 @@ public class Pacijent implements Serializable {
 	public String toString()
 	{
 		return ""+ime
-				+","+ prezime+"";
+				+" "+ prezime+"";
 	}
 	
 }

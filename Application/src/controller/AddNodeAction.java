@@ -46,7 +46,7 @@ public class AddNodeAction extends AbstractAction{
 			Workspace root = (Workspace)parentNode.getUserObject();
 			int count=incPacijent++;
 			Pacijent pacijentNovi = new Pacijent();
-			Pacijent pacijent = new Pacijent(pacijentNovi.getIme(), pacijentNovi.getPrezime(), pacijentNovi.getJMBG());
+			Pacijent pacijent = new Pacijent(pacijentNovi.getIme(), pacijentNovi.getPrezime(), pacijentNovi.getJMBG(), pacijentNovi.getDatumRodjenja());
 			PacijentCvor sledeciSloj= new PacijentCvor("Pacijent"+count, "",root);
 			sledeciSloj.setKarton(pacijent);
 			root.addChildren(sledeciSloj);

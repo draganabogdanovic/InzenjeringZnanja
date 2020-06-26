@@ -20,7 +20,7 @@ public class PregledPacijenta implements Serializable {
 	private Date datumPregleda;
 	private ArrayList<String> listaLekova;
 	private ArrayList<String> listaTerapija;
-	private String bolest, nalaz;
+	private String bolest;
 
 	public PregledPacijenta(ArrayList<String> listaSimptoma, ArrayList<String> listaLekova,
 			ArrayList<String> listaTerapija, String bolest)
@@ -96,13 +96,4 @@ public class PregledPacijenta implements Serializable {
 				+ "";
 	}
 
-	public String getNalaz()
-	{
-		return nalaz;
-	}
-
-	public void setNalaz(String nalaz)
-	{
-		this.nalaz = nalaz;
-	}
 }

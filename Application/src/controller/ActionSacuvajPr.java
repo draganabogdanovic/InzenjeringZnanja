@@ -16,33 +16,32 @@ public class ActionSacuvajPr implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		
-		MainFrame mf = new MainFrame().getInstance();
 		ArrayList<String> simptomi = new ArrayList<String>();
+		String bolest;
 		ArrayList<String> lekovi = new ArrayList<String>();
 		ArrayList<String> ispitivanja = new ArrayList<String>();
-		String bolest;
 		
-		for(int i=0; i < mf.getNoviPregled().getDlmIzabraniSimptomi().getSize(); i++) {
+		for(int i=0; i < MainFrame.getInstance().getNoviPregled().getDlmIzabraniSimptomi().getSize(); i++) {
 			
-			simptomi.add(mf.getNoviPregled().getDlmIzabraniSimptomi().get(i));
+			simptomi.add(MainFrame.getInstance().getNoviPregled().getDlmIzabraniSimptomi().get(i));
 		}
 		
-		bolest = mf.getDijagnoza().getIzabraneBolesti().getSelectedValue();
+		bolest = MainFrame.getInstance().getDijagnoza().getIzabraneBolesti().getSelectedValue();
 		
-		for(int i=0; i < mf.getTerapija().getDlmIzabraniLekovi().getSize(); i++) {
+		for(int i=0; i < MainFrame.getInstance().getTerapija().getDlmIzabraniLekovi().getSize(); i++) {
 			
-			lekovi.add(mf.getTerapija().getDlmIzabraniLekovi().get(i));
+			lekovi.add(MainFrame.getInstance().getTerapija().getDlmIzabraniLekovi().get(i));
 		}
 		
-		for(int i=0; i < mf.getTerapija().getDlmIzabranaIsp().getSize(); i++) {
+		for(int i=0; i < MainFrame.getInstance().getTerapija().getDlmIzabranaIsp().getSize(); i++) {
 			
-			ispitivanja.add(mf.getTerapija().getDlmIzabranaIsp().get(i));
+			ispitivanja.add(MainFrame.getInstance().getTerapija().getDlmIzabranaIsp().get(i));
 		}
 		
 		
 		PregledPacijenta pp = new PregledPacijenta(simptomi, lekovi, ispitivanja, bolest);
 	
-		DefaultMutableTreeNode element = (DefaultMutableTreeNode) mf.getModel().getRoot();
+		DefaultMutableTreeNode element = (DefaultMutableTreeNode) MainFrame.getInstance().getModel().getRoot();
 
 		MainFrame.getInstance().getModel().insertNodeInto(new DefaultMutableTreeNode(pp), element,
 				element.getChildCount());

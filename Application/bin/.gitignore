@@ -1,4 +1,6 @@
+/connector/
+/cbrApp/
 /controller/
-/cbr/
+/model/
 /view/
-/app/
+/cbr/

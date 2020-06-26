@@ -1,4 +1,3 @@
-
 disease1(diabetes_type_1, [weight_gain]).
 disease1(diabetes_type_1, [itchy_skin]).
 disease1(diabetes_type_1, [nausea]).
@@ -355,40 +354,42 @@ therapy(cushing_syndrome, reducing_corticosteroid_drug, 71).
 therapy(cushing_syndrome, radiation_therapy, 88).
 therapy(cushing_syndrome, mifepristone, 62).
 
-additional_tests(diabetes_type_1, hemoglobin_a1c).
-additional_tests(diabetes_type_1, random_blood_sugar_test).
-additional_tests(diabetes_type_1, autoantibodies).
-additional_tests(diabetes_type_1, fasting_blood_sugar_test).
+additional_tests(hemoglobin_a1c, [diabetes_type_1]).
+additional_tests(random_blood_sugar_test, [diabetes_type_1]).
+additional_tests(autoantibodies, [diabetes_type_1]).
+additional_tests(fasting_blood_sugar_test, [diabetes_type_1]).
 
-additional_tests(diabetes_type_2, random_blood_sugar_test).
-additional_tests(diabetes_type_2, fasting_blood_sugar_test).
+additional_tests(random_blood_sugar_test, [diabetes_type_2]).
+additional_tests(fasting_blood_sugar_test, [diabetes_type_2]).
 
-additional_tests(hypoglycemia, random_blood_sugar_test).
-additional_tests(hypoglycemia, fasting_blood_sugar_test).
+additional_tests(random_blood_sugar_test, [hypoglycemia]).
+additional_tests(fasting_blood_sugar_test, [hypoglycemia]).
 
-additional_tests(hyperglycemia, random_blood_sugar_test).
-additional_tests(hyperglycemia, fasting_blood_sugar_test).
+additional_tests(random_blood_sugar_test, [hyperglycemia]).
+additional_tests(fasting_blood_sugar_test, [hyperglycemia]).
 
-additional_tests(diabetic_coma, random_blood_sugar_test).
+additional_tests(random_blood_sugar_test, [diabetic_coma]).
 
-additional_tests(osteoporosis, bone_density_test).
+additional_tests(bone_density_test, [osteoporosis]).
 
-additional_tests(thyroid_cancer, ultrasound).
-additional_tests(thyroid_cancer, biopsy).
+additional_tests(ultrasound, [thyroid_cancer]).
+additional_tests(biopsy, [thyroid_cancer]).
 
-additional_tests(hyperparathyroidism, ultrasound).
-additional_tests(hyperparathyroidism, calcium_level).
-additional_tests(hyperparathyroidism, parathyroid_hormone_level).
+additional_tests(ultrasound, [hyperparathyroidism]).
+additional_tests(calcium_level, [hyperparathyroidism]).
+additional_tests(parathyroid_hormone_level, [hyperparathyroidism]).
 
-additional_tests(hyporparathyroidism, calcium_level).
-additional_tests(hyporparathyroidism, parathyroid_hormone_level).
+additional_tests(calcium_level, [hyporparathyroidism]).
+additional_tests(parathyroid_hormone_level, [hyporparathyroidism]).
 
-additional_tests(low_testosterone, testosterone_level).
+additional_tests(testosterone_level, [low_testosterone]).
 
-additional_tests(addisons_disease, thyroid_function_test).
-additional_tests(addisons_disease, ct).
+additional_tests(thyroid_function_test, [addisons_disease]).
+additional_tests(ct, [addisons_disease]).
 
-additional_tests(cushing_syndrome, ct).
+additional_tests(ct, [cushing_syndrome]).
+
+pronadjiIspitivanja(B,D) :- additional_tests(D,B).
 
 person_name(ana).
 person_name(ljubica).
@@ -468,74 +469,6 @@ disease(addisons_disease,[fatigue, weight_loss, hyperpigmentation, low_blood_pre
 disease(cushing_syndrome,[weight_gain, striae, slow_healing_sores_or_cuts, ance, decreased_libido, erectile_dysfunction, congnitive_difficulties, headache]).
 
 
-additional_test(symptoms(X, S), hemoglobin_a1c) :-
-    disease(diabetes_type_1, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, random_blood_sugar_test) :- 
-   disease(diabetes_type_1, S2), contains(S2, S),  person__name(X).
-   
-additional_testing(X, autoantibodies) :- 
-   disease(diabetes_type_1, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, fasting_blood_sugar_test) :- 
-   disease(diabetes_type_1, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, random_blood_sugar_test) :- 
-   disease(diabetes_type_2, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, fasting_blood_sugar_test) :- 
-   disease(diabetes_type_2, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, random_blood_sugar_test) :- 
-   disease(hypoglycemia, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, fasting_blood_sugar_test) :- 
-   disease(hyperglycemia, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, random_blood_sugar_test) :- 
-   disease(diabetic_coma, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, bone_density_test) :- 
-   disease(osteoporosis, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, ultrasound) :- 
-   disease(thyroid_cancer, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, biopsy) :- 
-   disease(thyroid_cancer, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, ultrasound) :- 
-   disease(hyperparathyroidism, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, calcium_level) :- 
-   disease(hyperparathyroidism, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, parathyroid_hormone_level) :- 
-   disease(hyperparathyroidism, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, calcium_level) :- 
-   disease(hypoparathyroidism, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, parathyroid_hormone_level) :- 
-   disease(hypoparathyroidism, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, testosterone_level) :- 
-   disease(low_testosterone, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, thyroid_function_test) :- 
-   disease(addisons_disease, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, ct) :- 
-   disease(addisons_disease, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, ct) :- 
-   disease(cushing_syndrome, S2), contains(S2, S),  person__name(X).
-
-additional_testing(X, oral_glucose_tolerance_test) :-  
-   person_symptom(X, vomiting),
-   person_symptom(X, hunger).
-
-
 %fasting test se radi kad se za osobu sumnja da ima dijabetes tipa 1
 additional_testing(X, fasting_blood_sugar_test) :-  
    person_symptom(X, hunger),
@@ -557,12 +490,7 @@ additional_testing(X, HbA1c_test) :-
    person_symptom(X, fatigue).
 
 
-%additional_testing(X, OGTT) :- 
-%   person_symptom(Y),
-%   member(Y, X).
-
 %za osobu x je uradjen test OGTT i utvrdjeno je da je njegova vrednost 210 sto nas dovodi do cinjenice da pacijent x ima dijabetes tipa 1
-%vrednosti nisu tacne ovo je primer
 
 %diagnosis(X, diabetes_type_1) :- hemoglobin_a1c(X, Y), Y > 6.5;
 %                               random_blood_sugar_test(X, Y2), Y2 >200;

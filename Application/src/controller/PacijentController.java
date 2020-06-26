@@ -60,7 +60,7 @@ public class PacijentController {
 		DefaultMutableTreeNode element = (DefaultMutableTreeNode) MainFrame.getInstance().getModel()
 				.getRoot();
 
-		Pacijent noviPac = new Pacijent(pacijent.getIme(), pacijent.getPrezime(), pacijent.getJMBG());
+		Pacijent noviPac = new Pacijent(pacijent.getIme(), pacijent.getPrezime(), pacijent.getJMBG(), pacijent.getDatumRodjenja());
 
 		MainFrame.getInstance().getModel().insertNodeInto(new DefaultMutableTreeNode(noviPac), element,
 				element.getChildCount());
@@ -69,7 +69,7 @@ public class PacijentController {
 	
 		pacijentView.refreshView();
 
-		return "Model uspesno azuriran";
+		return "";
 	}
 	
 	public Pacijent getPacijent(){
