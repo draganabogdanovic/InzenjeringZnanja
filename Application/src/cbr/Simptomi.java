@@ -11,32 +11,33 @@ public class Simptomi implements CaseComponent, Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private List<String> simptomi;
-	private String mogucaBolest;
+	private String simptomi;
+	private List<String> disease;
 	
 	public Simptomi() {
 		super();
 	}
 	
-	public Simptomi(List<String> simptomi, String mogucaBolest) {
+	public Simptomi(String simptomi, List<String> disease) {
 		super();
 		this.simptomi = simptomi;
-		this.setMogucaBolest(mogucaBolest);
+		this.setDisease(disease);
 	}
 	
 	
-	public List<String> getSimptomi() {
+	public String getSimptomi() {
 		return simptomi;
 	}
 
-	public void setSimptomi(List<String> simptomi) {
+	public void setSimptomi(String simptomi) {
 		this.simptomi = simptomi;
 	}
 	
 
+	
 	@Override
 	public String toString() {
-		String value = StringListMapper.toString(simptomi);
+		String value = simptomi;
 		return value;
 	}
 
@@ -46,12 +47,12 @@ public class Simptomi implements CaseComponent, Serializable{
 		return null;
 	}
 
-	public String getMogucaBolest() {
-		return mogucaBolest;
+	public List<String> getDisease() {
+		return disease;
 	}
 
-	public void setMogucaBolest(String mogucaBolest) {
-		this.mogucaBolest = mogucaBolest;
+	public void setDisease(List<String> disease) {
+		this.disease = disease;
 	}
 
 }

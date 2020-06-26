@@ -14,7 +14,6 @@ import java.util.function.UnaryOperator;
 
 
 
-
 public class Karton implements Serializable {
 
 	/**
@@ -22,11 +21,13 @@ public class Karton implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Pacijent> listaPacijenata;
+	private ArrayList<PregledPacijenta> listaPregleda;
 	private static Karton instance;
 
 	public Karton()
 	{
 		listaPacijenata = new ArrayList<Pacijent>();
+		setListaPregleda(new ArrayList<PregledPacijenta>());
 	}
 
 	public ArrayList<Pacijent> getListaPacijenta()
@@ -58,6 +59,11 @@ public class Karton implements Serializable {
 	{
 		listaPacijenata.add(noviPac);
 		
+	}
+	
+	public void dodajPregled(PregledPacijenta pp) {
+		
+		listaPregleda.add(pp);
 	}
 
 	public ArrayList<Pacijent> getListaPacijenata()
@@ -220,6 +226,7 @@ public class Karton implements Serializable {
 	{
 		return listaPacijenata.subList(arg0, arg1);
 	}
+	
 
 	public Object[] toArray()
 	{
@@ -234,6 +241,14 @@ public class Karton implements Serializable {
 	public void trimToSize()
 	{
 		listaPacijenata.trimToSize();
+	}
+
+	public ArrayList<PregledPacijenta> getListaPregleda() {
+		return listaPregleda;
+	}
+
+	public void setListaPregleda(ArrayList<PregledPacijenta> listaPregleda) {
+		this.listaPregleda = listaPregleda;
 	}
 
 }

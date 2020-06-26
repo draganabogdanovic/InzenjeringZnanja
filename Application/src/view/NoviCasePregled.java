@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 import javax.swing.DefaultListModel;
@@ -22,7 +23,9 @@ import javax.swing.ListSelectionModel;
 
 import app.MainFrame;
 import cbrApp.CbrApp;
+import controller.PostaviDijagnozuCase;
 import model.Rezim;
+import ucm.gaia.jcolibri.method.retrieve.RetrievalResult;
 
 public class NoviCasePregled extends JDialog{
 
@@ -43,9 +46,9 @@ public class NoviCasePregled extends JDialog{
 	private JPanel pane = new JPanel();
 	private JPanel pane1 = new JPanel();
 	private JButton btnDalje;
-	private String simp;
-	//private Collection<RetrievalResult> listaSimp = new ArrayList<RetrievalResult>();
-	private ArrayList<String> listaSimp = new ArrayList<>();
+	private ArrayList<String> listaSim = new ArrayList<>();
+	private Collection<RetrievalResult> listaSimp = new ArrayList<RetrievalResult>();
+
 	
 	public NoviCasePregled() {
 		
@@ -76,14 +79,12 @@ public class NoviCasePregled extends JDialog{
 		sviSimptomi.setLayoutOrientation(JList.VERTICAL);
 		sviSimptomi.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listSc = new JScrollPane();
-		listSc.setViewportView(sviSimptomi);
 		MainFrame.getInstance().setRezim(Rezim.CBR);
-		
+		//ArrayList<String> listaSimp = MainFrame.getInstance().getBaza().vratiSimptome();
 		CbrApp app = new CbrApp();
-		//app.run(simp.getSimptomi());
-		app.run(simp);
-	//	listaSimp = MainFrame.getInstance().getRet();
-		ubaciSimptome(listaSimp);
+		app.run(listaSim);
+		ubaciSimptome();
+
 		listSc.setViewportView(sviSimptomi);
 	
 		
@@ -92,6 +93,11 @@ public class NoviCasePregled extends JDialog{
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				// TODO Auto-generated method stub
+				if(arg0.getClickCount() == 1) {
+					
+					dodajSimptom(getSviSimptomi().getSelectedValue());
+					
+				}
 			
 			}
 
@@ -134,7 +140,8 @@ public class NoviCasePregled extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-			
+				MainFrame.getInstance().setDijagnozaCase(new PostaviDijagnozuCase());
+				MainFrame.getInstance().getDijagnozaCase().setVisible(true);
 			}
 			
 		});
@@ -176,17 +183,30 @@ public class NoviCasePregled extends JDialog{
 		this.sviSimptomi = sviSimptomi;
 	}
 	
-	public void ubaciSimptome(ArrayList<String> lista) {
-		dlmSviSimptomi = new DefaultListModel<String>();
-	/*	
-		for (RetrievalResult nse : listaSimp)
-			dlmSviSimptomi.addElement(nse.get_case().getDescription() + "=>" + nse.getEval());
-	*/
+	/*public void ubaciSimptome(ArrayList<String> lista)
+	{
 		for (String s : lista)
 			dlmSviSimptomi.addElement(s);
 
+	}*/
+	
+	public void ubaciSimptome() {
+		dlmSviSimptomi = new DefaultListModel<String>();
 		
+		for (RetrievalResult nse : listaSimp)
+			dlmSviSimptomi.addElement(nse.get_case().getDescription() + "=>" + nse.getEval());
+	
 		sviSimptomi = new JList<String>(dlmSviSimptomi);
+	}
+	
+	public boolean dodajSimptom(String s) {
+		if(dlmIzabraniSimptomi.contains(s)) {
+			return false;
+		}
+		
+		dlmIzabraniSimptomi.addElement(s);
+		return true;
+		
 	}
 }
 

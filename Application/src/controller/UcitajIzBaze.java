@@ -52,29 +52,9 @@ public class UcitajIzBaze {
 	}
 	
 	public ArrayList<String> vratiBolesti() {
-
-		
-	/*	JIPEngine engine = new JIPEngine();//poziva jipProlog 
-		engine.consultFile("data/program.pl");
-		JIPQuery query = engine.openSynchronousQuery("symptoms(B,S,P)");
-
-		JIPTerm solution;
-
-		while ((solution = query.nextSolution()) != null)
-		{
-			//uzima niz JIPVariable variabla koje sadrze variable tipa JIPTerm 
-			JIPVariable[] vars = solution.getVariables();
-
-			String bolest;
-
-			bolest = vars[0].toString();
-			
-			this.bolesti.add(bolest);
-	
-		}*/
 		
 		String simptomi = "[";
-
+	
 		ListModel<String> lM = MainFrame.getInstance().getNoviPregled().getIzabraniSimptomi().getModel();
 
 		for (int i = 0; i < lM.getSize();)
@@ -85,15 +65,14 @@ public class UcitajIzBaze {
 		simptomi = simptomi.substring(0, simptomi.length() - 2);
 
 		simptomi = simptomi.concat(" ]");
-
+	
 		JIPEngine engine = new JIPEngine();
 		engine.consultFile("data/program.pl");
-		//JIPQuery query = engine.openSynchronousQuery("vratiBolesti(" + simptomi + ",B,P)");
-		JIPQuery query = engine.openSynchronousQuery("vratiBole(S, B)");
-		
-		
+		//JIPQuery query = engine.openSynchronousQuery("vratiBole("+simptomi+",B)");
+		//JIPQuery query = engine.openSynchronousQuery("vratiBol(S,B)");
+		JIPQuery query = engine.openSynchronousQuery("pronadji("+simptomi+",B)");
 		JIPTerm solution;
-		
+	
 		while ((solution = query.nextSolution()) != null)
 		{
 			//uzima niz JIPVariable variabla koje sadrze variable tipa JIPTerm 
@@ -101,22 +80,23 @@ public class UcitajIzBaze {
 
 			String bolest;
 
-		//	bolest = vars[0].toString();
-			bolest = vars[1].toString();
+		
+			bolest = vars[0].toString();
 			
 			this.bolesti.add(bolest);
 	
 		}
+		
 
-	/*	Map<String,String> dupMap = new TreeMap<String, String>();
+	//	Map<String,String> dupMap = new TreeMap<String, String>();
 		
-		ArrayList<String> parsed = new ArrayList<String>();
+		//ArrayList<String> parsed = new ArrayList<String>(dupMap.values());
 		
-		String pattern = ",";
+		//String pattern = "'.'";
 
 		// I assume this holds all the values:
 	//	List<String> uniqueList = new ArrayList<String>(dupMap.values()); 
-		bolesti = new ArrayList<String>(dupMap.values()); 
+	/*	bolesti = new ArrayList<String>(dupMap.values()); 
 		
 		for (String src : bolesti) {
 		    String[] parts = src.split(pattern);
@@ -124,16 +104,21 @@ public class UcitajIzBaze {
 		        String firstValue = parts[1]; // value to left of :
 		        String secondValue = parts[2]; // value between : and -
 		        String thirdValue = parts[3]; // value after -
-		
+		        
+		        bolesti.add(firstValue);
+		        bolesti.add(secondValue);
+		        bolesti.add(thirdValue);
+		   
 		    }
-		}
-		*/
+		}*/
+	
 		
 		return bolesti;
 	
 
 		
 	}
+	
 	
 	public ArrayList<String> vratiLekove()
 	{
@@ -152,7 +137,8 @@ public class UcitajIzBaze {
 		JIPEngine engine = new JIPEngine();//poziva jipProlog 
 		engine.consultFile("data/program.pl");
 	//	JIPQuery query = engine.openSynchronousQuery("vratiTerap(B, T)");
-		JIPQuery query = engine.openSynchronousQuery("therapy(B, T, V)");
+		//JIPQuery query = engine.openSynchronousQuery("vratiTerapiju(B,T)");
+		JIPQuery query = engine.openSynchronousQuery("vratiTee(B,T,P)");
 
 		JIPTerm solution;
 

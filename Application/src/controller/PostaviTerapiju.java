@@ -25,6 +25,25 @@ import model.Rezim;
 
 public class PostaviTerapiju extends JDialog{
 
+	public DefaultListModel<String> getDlmIzabranaIsp() {
+		return dlmIzabranaIsp;
+	}
+
+
+	public void setDlmIzabranaIsp(DefaultListModel<String> dlmIzabranaIsp) {
+		this.dlmIzabranaIsp = dlmIzabranaIsp;
+	}
+
+
+	public DefaultListModel<String> getDlmIzabraniLekovi() {
+		return dlmIzabraniLekovi;
+	}
+
+
+	public void setDlmIzabraniLekovi(DefaultListModel<String> dlmIzabraniLekovi) {
+		this.dlmIzabraniLekovi = dlmIzabraniLekovi;
+	}
+
 	/**
 	 * 
 	 */
@@ -193,9 +212,9 @@ public class PostaviTerapiju extends JDialog{
 		});
 		
 		btnSacuvaj = new JButton("Sacuvaj");
-		btnSacuvaj.addActionListener(new ActionListener() {
+		btnSacuvaj.addActionListener(new ActionSacuvajPr());
 
-			@Override
+			/*@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				SacuvajPregled dataP=new SacuvajPregled();
@@ -211,9 +230,9 @@ public class PostaviTerapiju extends JDialog{
 				
 				System.out.println("Uspesno sacuvan pregled!");
 			}
+			*/
 			
-			
-		});
+		//});
 		
 	}
 	

@@ -29,6 +29,7 @@ import javax.swing.tree.TreeSelectionModel;
 import controller.Close;
 import controller.DijalogZaBolesti;
 import controller.PostaviDijagnozu;
+import controller.PostaviDijagnozuCase;
 import controller.PostaviTerapiju;
 import controller.UcitajIzBaze;
 import model.Pacijent;
@@ -69,11 +70,12 @@ public class MainFrame extends JFrame{
 	private NoviPregled noviPregled;
 	private NoviCasePregled noviCasePregled;
 	private PostaviDijagnozu dijagnoza;
+	private PostaviDijagnozuCase dijagnozaCase;
 	private PostaviTerapiju postaviTerapiju;
 	private Baza bazaCase;
 	private Collection<RetrievalResult> ret;
 	
-	private MainFrame() {
+	public MainFrame() {
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();
 		int screenHeight = screenSize.height;
@@ -373,6 +375,14 @@ public class MainFrame extends JFrame{
 
 	public void setRet(Collection<RetrievalResult> ret) {
 		this.ret = ret;
+	}
+
+	public PostaviDijagnozuCase getDijagnozaCase() {
+		return dijagnozaCase;
+	}
+
+	public void setDijagnozaCase(PostaviDijagnozuCase dijagnozaCase) {
+		this.dijagnozaCase = dijagnozaCase;
 	}
 	
 }

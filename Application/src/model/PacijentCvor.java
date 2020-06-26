@@ -24,6 +24,10 @@ public class PacijentCvor {
 		return ime;
 	}
 	
+	public String getPrezime() {
+		
+		return prezime;
+	}
 	public void setIme(String ime){
 		this.ime=ime;
 	}

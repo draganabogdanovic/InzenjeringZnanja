@@ -22,6 +22,7 @@ import app.MainFrame;
 import controller.PacijentController;
 import controller.ResourceManager;
 import controller.SacuvajPacijenta;
+import model.Karton;
 import model.Pacijent;
 import cbr.Baza;
 
@@ -101,7 +102,7 @@ public class PacijentView extends JPanel{
 				data.prezime=tfPrezime.getText();
 				data.JMBG=tfJMBG.getText();
 				try{
-					ResourceManager.save(data,  "PACIJENTI.txt");
+					ResourceManager.save(data,  "data/p.txt");
 				}catch(Exception e){
 					System.out.println("Nece da se sacuva"+e.getMessage());
 				}
@@ -187,7 +188,7 @@ public class PacijentView extends JPanel{
 	
 	private void ok() {
 		
-		if (pacijentCon == null) {
+		/*if (pacijentCon == null) {
 			pacijentCon = new PacijentController(pacijent,this);
 		}
 		String Ime = tfIme.getText().trim();
@@ -196,8 +197,20 @@ public class PacijentView extends JPanel{
 		Date Datum = kal.getDate();
 		
 		pacijentCon.updatesPacijent(Ime, Prezime, JMBG, Datum);
-
+	*/
 	
+		String Ime = tfIme.getText().trim();
+		String Prezime = tfPrezime.getText().trim();
+		String JMBG = tfJMBG.getText().trim();
+		Date Datum = kal.getDate();
+		
+		Pacijent pac = new Pacijent(Ime, Prezime, JMBG);
+		DefaultMutableTreeNode element = (DefaultMutableTreeNode) MainFrame.getInstance().getModel().getRoot();
+
+		MainFrame.getInstance().getModel().insertNodeInto(new DefaultMutableTreeNode(pac), element,
+				element.getChildCount());
+
+		Karton.getInstance().dodajPacijenta(pac);
 	}
 
 	

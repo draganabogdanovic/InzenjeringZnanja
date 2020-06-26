@@ -22,9 +22,18 @@ import javax.swing.ListSelectionModel;
 
 import app.MainFrame;
 import controller.PostaviDijagnozu;
+import model.Pacijent;
 import model.Rezim;
 
 public class NoviPregled extends JDialog{
+
+	public DefaultListModel<String> getDlmIzabraniSimptomi() {
+		return dlmIzabraniSimptomi;
+	}
+
+	public void setDlmIzabraniSimptomi(DefaultListModel<String> dlmIzabraniSimptomi) {
+		this.dlmIzabraniSimptomi = dlmIzabraniSimptomi;
+	}
 
 	/**
 	 * 
@@ -46,6 +55,7 @@ public class NoviPregled extends JDialog{
 	private JPanel pane = new JPanel();
 	private JPanel pane1 = new JPanel();
 	private JButton btnDalje;
+	private Pacijent pacijent;
 
 	public NoviPregled() {
 		
@@ -198,6 +208,14 @@ public class NoviPregled extends JDialog{
 	public void setSviSimptomi(JList<String> sviSimptomi)
 	{
 		this.sviSimptomi = sviSimptomi;
+	}
+
+	public Pacijent getPacijent() {
+		return pacijent;
+	}
+
+	public void setPacijent(Pacijent pacijent) {
+		this.pacijent = pacijent;
 	}
 }
 

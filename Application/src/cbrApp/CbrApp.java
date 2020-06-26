@@ -1,6 +1,7 @@
 package cbrApp;
 
 import java.util.Collection;
+import java.util.List;
 
 import cbr.Simptomi;
 import connector.CsvConnector;
@@ -51,10 +52,11 @@ public class CbrApp implements StandardCBRApplication {
 		
 		//MainFrame.getInstance().getMapaBolesti();
 		Collection<RetrievalResult> eval = NNScoringMethod.evaluateSimilarity(_caseBase.getCases(), query, simConfig);
-		eval = SelectCases.selectTopKRR(eval, 4);
-		System.out.println("Retrieved cases:");
+		eval = SelectCases.selectTopKRR(eval, 70);
+		//System.out.println("Retrieved cases:");
+		System.out.println("Svi simptomi:\n");
 		for (RetrievalResult nse : eval)
-			System.out.println(nse.get_case().getDescription() + " -> " + nse.getEval());
+			System.out.println(nse.get_case().getDescription() );
 	}
 
 	public void postCycle() throws ExecutionException {
@@ -64,12 +66,13 @@ public class CbrApp implements StandardCBRApplication {
 	public CBRCaseBase preCycle() throws ExecutionException {
 		_caseBase.init(_connector);
 		java.util.Collection<CBRCase> cases = _caseBase.getCases();
+		/*System.out.println("Svi simptomi:");
 		for (CBRCase c: cases)
-			System.out.println(c.getDescription());
+			System.out.println(c.getDescription());*/
 		return _caseBase;
 	}
 
-	public void run(String simptomi) {
+	public void run(List<String> disease) {
 		CbrApp recommender = new CbrApp();
 		try {
 			recommender.configure();
@@ -77,92 +80,9 @@ public class CbrApp implements StandardCBRApplication {
 			recommender.preCycle();
 
 			CBRQuery query = new CBRQuery();
-			
-		//	TransactionDescription txDescription = new TransactionDescription();
-		//	RealEstateDescription reDescription = new RealEstateDescription();
-			
-			//List<String> izabrani = MainFrame.getInstance().getIzabrani;
-		/*	Pregled pregled = new Pregled();
-			pregled.setHunger(1);
-			pregled.setFatigue(1);
-			pregled.setPeeing_more_often(0);
-			pregled.setDry_mouth(1);
-			pregled.setItchy_skin(1);
-			pregled.setBlurred_vision(1);
-			pregled.setWeight_loss(1);
-			pregled.setNausea(1);
-			pregled.setVomiting(1);
-			pregled.setYeast_infections(0);
-			pregled.setSlow_healing_sores_or_cuts(0);
-			pregled.setPain_in_legs(0);
-			pregled.setFast_heartbeat(0);
-			pregled.setPale_skin(0);
-			pregled.setHeadache(0);
-			pregled.setNightmares(0);
-			pregled.setCoordination_problems(0);
-			pregled.setSeizures(0);
-			pregled.setSweating(0);
-			pregled.setHeavy_thirst(0);
-			pregled.setTingling_feet(0);
-			pregled.setSugar_in_urine(0);
-			pregled.setVaginal_infection(0);
-			pregled.setSkin_infection(0);
-			pregled.setDry_skin(0);
-			pregled.setHigh_fever(0);
-			pregled.setVision_loss(0);
-			pregled.setHallucinations(0);
-			pregled.setWeakness(0);
-			pregled.setBack_pain(0);
-			pregled.setA_stooped_posture(0);
-			pregled.setEasily_broken_bones(0);
-			pregled.setA_lump_on_the_neck(0);
-			pregled.setChanged_voice(0);
-			pregled.setDifficulty_swallowing(0);
-			pregled.setThroat_pain(0);
-			pregled.setKidney_stones(0);
-			pregled.setAbdominal_pain(0);
-			pregled.setDepression(0);
-			pregled.setCramps_in_legs(0);
-			pregled.setTwitching_muscles(0);
-			pregled.setHair_loss(0);
-			pregled.setBrittle_nails(0);
-			pregled.setLow_sex_drive(0);
-			pregled.setErectile_dysfunction(0);
-			pregled.setLow_semen_volume(0);
-			pregled.setLoss_of_muscle_mass(0);
-			pregled.setIncreased_body_fat(0);
-			pregled.setMood_changes(0);
-			pregled.setAffected_memory(0);
-			pregled.setLow_blood_counts(0);
-			pregled.setIrregular_periods(0);
-			pregled.setHot_flashes(0);
-			pregled.setChills(0);
-			pregled.setNight_sweats(0);
-			pregled.setSleep_problems(0);
-			pregled.setWeight_gain(0);
-			pregled.setThinning_hair(0);
-			pregled.setHyperpigmentation(0);
-			pregled.setLow_blood_pressure(0);
-			pregled.setSalt_craving(0);
-			pregled.setHypoglycemia(0);
-			pregled.setDiarrhea(0);
-			pregled.setMuscle_pain(0);
-			pregled.setIrritability(0);
-			pregled.setBody_hair_loss(0);
-			pregled.setStriae(0);
-			pregled.setAnce(0);
-			pregled.setDecreased_libido(0);
-			pregled.setCognitive_difficulties(0);*/
-			
-			/*reDescription.setAge(25);
-			reDescription.setDistanceToPublicTransportation(300);
-			reDescription.setLocalStores(5);
-			txDescription.setRealEstateDescription(reDescription);
-			txDescription.setYear(2013);*/
-			
-		   
+		
 			Simptomi s = new Simptomi();
-			//s.setSimptomi(simptomi);
+			s.setDisease(disease);
 			query.setDescription(s);
 			recommender.cycle(query);
 

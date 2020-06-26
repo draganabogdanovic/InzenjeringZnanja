@@ -1,14 +1,128 @@
-simptomi(hunger, diabetes_type_1, 88).
-simptomi(hunger, diabetes_type_2, 86).
-simptomi(hunger, hyperglycemia, 51).
 
-simptomi(fatigue, diabetes_type_1, 52).
-simptomi(fatigue, diabetes_type_2, 52).
-simptomi(hyperglycemia, fatigue, 40).
+disease1(diabetes_type_1, [weight_gain]).
+disease1(diabetes_type_1, [itchy_skin]).
+disease1(diabetes_type_1, [nausea]).
+disease1(diabetes_type_1, [vomiting]).
+disease1(diabetes_type_1, [blurred_vision]).
+disease1(diabetes_type_1, [dry_mouth]).
+disease1(diabetes_type_1, [peeing_more_often]).
+disease1(diabetes_type_1, [fatigue]).
+disease1(diabetes_type_1, [hunger]).
 
-simptomi(dry_mouth, diabetes_type_1, 72).
-simptomi(hunger, diabetes_type_2, 86).
+disease1(diabetes_type_2, [yeast_infection]).
+disease1(diabetes_type_2, [slow_healing_sores_or_cuts]).
+disease1(diabetes_type_2, [pain_in_legs]).
+disease1(diabetes_type_2, [hunger]).
+disease1(diabetes_type_2, [fatigue]).
+disease1(diabetes_type_2, [peeing_more_often]).
+disease1(diabetes_type_2, [dry_mouth]).
+disease1(diabetes_type_2, [itchy_skin]).
+disease1(diabetes_type_2, [blurred_vision]).
 
+
+disease1(hypoglycemia, [fast_heartbeat]).
+disease1(hypoglycemia, [pale_skin]).
+disease1(hypoglycemia, [headache]).
+disease1(hypoglycemia, [nightmares]).
+disease1(hypoglycemia, [coordination_problems]).
+disease1(hypoglycemia, [seizures]).
+disease1(hypoglycemia, [sweating]).
+
+disease1(hyperglycemia, [heavy_thirst]).
+disease1(hyperglycemia, [blurred_vision]).
+disease1(hyperglycemia, [peeing_more_often]).
+disease1(hyperglycemia, [hunger]).
+disease1(hyperglycemia, [tingling_feet]).
+disease1(hyperglycemia, [fatigue]).
+disease1(hyperglycemia, [sugar_in_urine]).
+disease1(hyperglycemia, [weight_loss]).
+disease1(hyperglycemia, [vaginal_infection]).
+disease1(hyperglycemia, [skin_infection]).
+disease1(hyperglycemia, [slow_healing_sores_or_cuts]).
+
+disease1(diabetic_coma, [dry_mought]).
+disease1(diabetic_coma, [heavy_thirst]).
+disease1(diabetic_coma, [dry_skin]).
+disease1(diabetic_coma, [high_fever]).
+disease1(diabetic_coma, [vision_loss]).
+disease1(diabetic_coma, [hallucinations]).
+disease1(diabetic_coma, [weakness]).
+
+disease1(osteoporosis, [back_pain]).
+disease1(osteoporosis, [weight_loss]).
+disease1(osteoporosis, [a_stooped_posture]).
+disease1(osteoporosis, [easily_broken_bones]).
+
+disease1(thyroid_cancer, [throat_pain]).
+disease1(thyroid_cancer, [a_lump_on_the_neck]).
+disease1(thyroid_cancer, [changed_voice]).
+disease1(thyroid_cancer, [difficulty_swallowing]).
+
+disease1(hyperparathyroidism, [easily_broken_bones]).
+disease1(hyperparathyroidism, [kidney_stones]).
+disease1(hyperparathyroidism, [peeing_more_often]).
+disease1(hyperparathyroidism, [abdominal_pain]).
+disease1(hyperparathyroidism, [weakness]).
+disease1(hyperparathyroidism, [depression]).
+disease1(hyperparathyroidism, [nausea]).
+disease1(hyperparathyroidism, [vomiting]).
+
+disease1(hypoparathyroidism, [tingling_feet]).
+disease1(hypoparathyroidism, [cramps_in_legs]).
+disease1(hypoparathyroidism, [twitching_muscles]).
+disease1(hypoparathyroidism, [fatigue]).
+disease1(hypoparathyroidism, [hair_loss]).
+disease1(hypoparathyroidism, [dry_skin]).
+disease1(hypoparathyroidism, [brittle_nails]).
+
+disease1(low_testosterone, [low_sex_drive]).
+disease1(low_testosterone, [erectile_dysfunction]).
+disease1(low_testosterone, [low_semen_volume]).
+disease1(low_testosterone, [hair_loss]).
+disease1(low_testosterone, [fatigue]).
+disease1(low_testosterone, [loss_of_muscle_mass]).
+disease1(low_testosterone, [increased_body_fat]).
+disease1(low_testosterone, [mood_changes]).
+disease1(low_testosterone, [affected_memory]).
+disease1(low_testosterone, [low_blood_counts]).
+
+disease1(menopause, [irregular_periods]).
+disease1(menopause, [hot_flashes]).
+disease1(menopause, [chills]).
+disease1(menopause, [night_sweats]).
+disease1(menopause, [sleep_problems]).
+disease1(menopause, [mood_changes]).
+disease1(menopause, [weight_gain]).
+disease1(menopause, [thinning_hair]).
+disease1(menopause, [dry_skin]).
+
+disease1(addisons_disease, [fatigue]).
+disease1(addisons_disease, [weight_loss]).
+disease1(addisons_disease, [hyperpigmentation]).
+disease1(addisons_disease, [low_blood_pressure]).
+disease1(addisons_disease, [salt_craving]).
+disease1(addisons_disease, [hypoglycemia]).
+disease1(addisons_disease, [nausea]).
+disease1(addisons_disease, [diarrhea]).
+disease1(addisons_disease, [vomiting]).
+disease1(addisons_disease, [abdominal_pain]).
+disease1(addisons_disease, [muscle_pain]).
+disease1(addisons_disease, [irritability]).
+disease1(addisons_disease, [body_hair_loss]).
+
+disease1(cushing_syndrome, [weight_gain]).
+disease1(cushing_syndrome, [striae]).
+disease1(cushing_syndrome, [slow_healing_sores_or_cuts]).
+disease1(cushing_syndrome, [ance]).
+disease1(cushing_syndrome, [decreased_libido]).
+disease1(cushing_syndrome, [erectile_dysfunction]).
+disease1(cushing_syndrome, [congnitive_difficulties]).
+disease1(cushing_syndrome, [headache]).
+
+
+
+
+pronadji(S,B) :- disease1(B,S).
 
 symptoms(diabetes_type_1, hunger, 88).
 symptoms(diabetes_type_1, fatigue, 52).
@@ -56,19 +170,19 @@ symptoms(diabetic_coma, dry_mought, 32).
 symptoms(diabetic_coma, heavy_thirst, 54).
 symptoms(diabetic_coma, dry_skin, 66).
 symptoms(diabetic_coma, high_fever, 95).
-symptoms(diabetic_coma, vidion_loss, 87).
+symptoms(diabetic_coma, vision_loss, 87).
 symptoms(diabetic_coma, hallucinations, 79).
 symptoms(diabetic_coma, weakness, 41).
 
-symptoms(osteoporosis, pack_pain, 89).
+symptoms(osteoporosis, back_pain, 89).
 symptoms(osteoporosis, weight_loss, 54).
 symptoms(osteoporosis, a_stooped_posture, 66).
 symptoms(osteoporosis, easily_broken_bones, 85).
 
-symptoms(throid_cancer, a_lump_on_the_neck, 95).
-symptoms(throid_cancer, change_voice, 83).
-symptoms(throid_cancer, difficulty_swalloving, 79).
-symptoms(throid_cancer, throat_pain, 75).
+symptoms(thyroid_cancer, a_lump_on_the_neck, 95).
+symptoms(thyroid_cancer, change_voice, 83).
+symptoms(thyroid_cancer, difficulty_swallowing, 79).
+symptoms(thyroid_cancer, throat_pain, 75).
 
 symptoms(hyperparathyroidism, easily_broken_bones, 71).
 symptoms(hyperparathyroidism, kidney_stones, 79).
@@ -558,10 +672,18 @@ treatment(menopause, [hormone_therapy, vaginal_estrogen, antidepressants, gabape
 treatment(addisons_disease, [hydrocortisone, prednisone, methylprednisolone, fludrocortisone_acetate, intravenous_injections]).
 treatment(cushing_syndrome, [surgery, reducing_corticosteroid_drug, radiation_therapy, mifepristone]).
 
-vratiBolesti(Simp, Bolest, No) :- disease(Bolest, Lista).
+treatment1(insulin_therapy, [diabetes_type_1, diabetes_type_2, hyperglycemia, diabetic_coma]).
+treatment1(diet, [diabetes_type_1, diabetes_type_2, hyperglycemia, hypoparathyroidism, low_testosterone]).
+treatment1(exercise, [diabetes_type_1, diabetes_type_2, hyperglycemia]).
 
-vratiBol(S, L) :- findall([S], diseaseSym(B, S, V), L1), sort(L1, L).
+vratiBolesti(Simp, Bolest, N) :- disease(Bolest, Lista).
 
-vratiBole(S, L) :- findall([B], simptomi(S, B, V), L1), sort(L1, L).
-vratiTerap(B, L2) :- findall([T], treatment(B, T), L1), sort(L1, L2).
+vrati(S,L) :- findall([S], disease(B,S),L1), sort(L1,L).
 
+vratiBol(S,L) :- findall([B], simptomi(S,B,V),L1), sort(L1, L).
+
+vratiBolest(S,B,V) :- disease(B,V).
+vratiTerapiju(B,L2) :- findall([T], therapy(B,T,P), L1), sort(L1, L2).
+vratiT(B,L) :- findall([T], treatment(B,T),L1), sort(L1,L).
+
+vratiTee(B,T,P) :- treatment1(T,L).

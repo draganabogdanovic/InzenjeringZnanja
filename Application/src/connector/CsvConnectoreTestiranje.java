@@ -6,7 +6,8 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import model.Testiranje;
+import cbr.Dijagnoza;
+import cbr.StringListMapper;
 import ucm.gaia.jcolibri.cbrcore.CBRCase;
 import ucm.gaia.jcolibri.cbrcore.CaseBaseFilter;
 import ucm.gaia.jcolibri.cbrcore.Connector;
@@ -54,9 +55,12 @@ public class CsvConnectoreTestiranje implements Connector{
 
 				CBRCase cbrCase = new CBRCase();
 				
-				Testiranje t = new Testiranje(line);
+				Dijagnoza d = new Dijagnoza();
+				
+				d.setDij(values[0]);
+				d.setSimptomi(StringListMapper.toList(values[1]));
 
-				cbrCase.setDescription(t);
+				cbrCase.setDescription(d);
 				cases.add(cbrCase);
 				
 			}

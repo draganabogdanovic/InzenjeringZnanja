@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
@@ -27,7 +28,7 @@ public class Close extends WindowAdapter{
 		else
 		{
 
-			String pathPacijenti = "PACIJENTI.txt";
+			/*String pathPacijenti = "data/p.txt";
 
 		   try
 			{
@@ -49,7 +50,7 @@ public class Close extends WindowAdapter{
 			{
 				e.printStackTrace();
 			}
-
+*/
 			System.exit(0);
 		}
 

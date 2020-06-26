@@ -35,7 +35,7 @@ public class CsvConnector implements Connector {
 
 		
 				Simptomi symptoms = new Simptomi();
-				symptoms.setSimptomi(StringListMapper.toList(values[0]));
+				symptoms.setSimptomi(values[0]);
 				
 				cbrCase.setDescription(symptoms);
 				cases.add(cbrCase);

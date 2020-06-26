@@ -9,8 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Collection;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -22,13 +21,13 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
 import app.MainFrame;
+import cbr.Simptomi;
+import cbrApp.CbrTestiranje;
 import model.Rezim;
+import ucm.gaia.jcolibri.method.retrieve.RetrievalResult;
 
-public class PostaviDijagnozu extends JDialog{	
+public class PostaviDijagnozuCase extends JDialog{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JLabel lbl;
 	private JLabel lblIzabraneBolesti;
@@ -42,10 +41,11 @@ public class PostaviDijagnozu extends JDialog{
 	private JPanel pane = new JPanel();
 	private JPanel pane1 = new JPanel();
 	private JButton btnIdi;
-	private HashMap<String, String> listaBolesti = new HashMap<String, String>();
+	private ArrayList<String> simptomi = new ArrayList<String>();
+	private Collection<RetrievalResult> listaB = new ArrayList<RetrievalResult>();
 	
 
-	public PostaviDijagnozu() {
+	public PostaviDijagnozuCase() {
 		
 		init();
 		constructGUI();
@@ -74,15 +74,17 @@ public class PostaviDijagnozu extends JDialog{
 		sveBolesti.setLayoutOrientation(JList.VERTICAL);
 		sveBolesti.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listScB = new JScrollPane();
+		listScB.setViewportView(sveBolesti);
 		
-		MainFrame.getInstance().setRezim(Rezim.RBR);
+		MainFrame.getInstance().setRezim(Rezim.CBR);
 	//	ArrayList<String> listaBolesti =
 		
 		//MainFrame.getInstance().getBaza().vratiBolesti();
 		//MainFrame.getInstance().getDijagnoza().ubaciBolesti();
-		ArrayList<String> listaBolesti = MainFrame.getInstance().getBaza().vratiBolesti();
-		ubaciBolesti(listaBolesti);
-		listScB.setViewportView(sveBolesti);
+		CbrTestiranje appT = new CbrTestiranje();
+		appT.run(simptomi);
+		ubaciBolesti();
+		
 		
 		btnIdi = new JButton("Dalje");
 		btnIdi.addActionListener(new ActionListener() {
@@ -90,8 +92,6 @@ public class PostaviDijagnozu extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				MainFrame.getInstance().setTerapija(new PostaviTerapiju());
-				MainFrame.getInstance().getTerapija().setVisible(true);
 				
 			}
 			
@@ -166,11 +166,13 @@ public class PostaviDijagnozu extends JDialog{
 	
 	}
 	
-	public void ubaciBolesti(ArrayList<String> listaBolesti) {
+	public void ubaciBolesti() {
 		
-		for (String s : listaBolesti) 
-			dlmSveBolesti.addElement(s);
+		dlmSveBolesti = new DefaultListModel<String>();
 		
+		for (RetrievalResult nse : listaB)
+			dlmSveBolesti.addElement(nse.get_case().getDescription() + "=>" + nse.getEval());	
+		sveBolesti = new JList<String>(dlmSveBolesti);
 	}
 
 	
@@ -190,14 +192,6 @@ public class PostaviDijagnozu extends JDialog{
 		return sveBolesti;
 	}
 
-	public HashMap<String, String> getListaBolesti() {
-		return listaBolesti;
-	}
-
-	public void setListaBolesti(HashMap<String, String> listaBolesti) {
-		this.listaBolesti = listaBolesti;
-	}
-
 	public void setSveBolesti(JList<String> sveBolesti)
 	{
 		this.sveBolesti = sveBolesti;
@@ -213,3 +207,4 @@ public class PostaviDijagnozu extends JDialog{
 
 
 }
+

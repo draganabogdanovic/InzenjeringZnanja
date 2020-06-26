@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -12,8 +11,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import app.MainFrame;
 import model.Karton;
 import model.Pacijent;
-import cbr.Simptomi;
-import ucm.gaia.jcolibri.method.retrieve.RetrievalResult;
 import ucm.gaia.jcolibri.util.FileIO;
 
 public class Baza implements Serializable{
@@ -23,7 +20,8 @@ public class Baza implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private static Baza instance = null;
 	private ArrayList<Pacijent> pacijenti;
-	private ArrayList<Simptomi> listaSimptoma;
+	private ArrayList<String> listaSimptoma;
+	private ArrayList<Dijagnoza> listaBolesti;
 	private Simptomi simptomi;
 	private Pacijent pacijent;
 	
@@ -36,16 +34,18 @@ public class Baza implements Serializable{
 	
 	private Baza() {
 		init();
-		initSimptomi();
+		//initSimptomi();
+		initBolesti();
 	}
 	
 	private void init() {
 		this.pacijenti = new ArrayList<Pacijent>();
-		this.listaSimptoma = new ArrayList<Simptomi>();
+		this.listaSimptoma = new ArrayList<String>();
+		this.listaBolesti = new ArrayList<Dijagnoza>();
 	}
 	
 	private void initSimptomi() {
-		try {
+		/*try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(FileIO.openFile("data/simptomii.csv")));
 			if(br == null) {
 				throw new Exception("error");
@@ -60,7 +60,7 @@ public class Baza implements Serializable{
 				String [] values = line.split(";");
 				Simptomi s = new Simptomi();
 			//	Simptomi.setSimptomi(value[0]);
-				s.setSimptomi(StringListMapper.toList(values[0]));
+				//s.setSimptomi(StringListMapper.toList(values[0]));
 				this.listaSimptoma.add(s);
 			}
 			
@@ -70,14 +70,43 @@ public class Baza implements Serializable{
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		}*/
+	}
+	
+	private void initBolesti() {
+		
+		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader(FileIO.openFile("data/cases_pregled.csv")));
+			if (br == null)
+				throw new Exception("Error opening file");
+
+			String line = "";
+			while ((line = br.readLine()) != null) {
+				if (line.startsWith("#") || (line.length() == 0))
+					continue;
+				String[] values = line.split(";");
+
+
+				Dijagnoza diagnosis = new Dijagnoza();
+				
+				diagnosis.setSimptomi(StringListMapper.toList(values[0]));
+				diagnosis.setDij(values[1]);
+				
+				this.listaBolesti.add(diagnosis);
+			
+			}
+			br.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
-	public ArrayList<Simptomi> getListaSimptoma() {
+	public ArrayList<String> getListaSimptoma() {
 		return listaSimptoma;
 	}
 
-	public void setListaSimptoma(ArrayList<Simptomi> listaSimptoma) {
+	public void setListaSimptoma(ArrayList<String> listaSimptoma) {
 		this.listaSimptoma = listaSimptoma;
 	}
 

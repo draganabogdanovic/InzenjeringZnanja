@@ -78,4 +78,11 @@ public class Pacijent implements Serializable {
 		this.kartonPacijenta = kartonPacijenta;
 	}
 	
+	@Override
+	public String toString()
+	{
+		return ""+ime
+				+","+ prezime+"";
+	}
+	
 }

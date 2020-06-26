@@ -92,9 +92,8 @@ public class PregledPacijenta implements Serializable {
 	@Override
 	public String toString()
 	{
-		return "PregledPacijenta [listaSimptoma=" + listaSimptoma + ", datumPregleda=" + datumPregleda
-				+ ", listaLekova=" + listaLekova + ", listaTerapija=" + listaTerapija + ", bolest=" + bolest
-				+ ", nalaz=" + nalaz + "]";
+		return " datumPregleda=" + datumPregleda
+				+ "";
 	}
 
 	public String getNalaz()
